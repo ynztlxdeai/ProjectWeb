@@ -16,6 +16,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ProjectControl" />
         <module name="ProjectDao" />
         <module name="ProjectEntity" />
         <module name="ProjectService" />
@@ -23,6 +24,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ProjectControl" target="1.8" />
       <module name="ProjectDao" target="1.8" />
       <module name="ProjectEntity" target="1.8" />
       <module name="ProjectService" target="1.8" />

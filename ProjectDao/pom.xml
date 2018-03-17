@@ -11,5 +11,10 @@
 
     <artifactId>ProjectDao</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>ProjectWeb</groupId>
+            <artifactId>ProjectEntity</artifactId>
+        </dependency>
+    </dependencies>
 </project>

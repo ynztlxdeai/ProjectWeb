@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ProjectControl/ProjectControl.iml" filepath="$PROJECT_DIR$/ProjectControl/ProjectControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectDao/ProjectDao.iml" filepath="$PROJECT_DIR$/ProjectDao/ProjectDao.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectEntity/ProjectEntity.iml" filepath="$PROJECT_DIR$/ProjectEntity/ProjectEntity.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectService/ProjectService.iml" filepath="$PROJECT_DIR$/ProjectService/ProjectService.iml" />

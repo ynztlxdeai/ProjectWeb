@@ -15,6 +15,7 @@
         <module>ProjectEntity</module>
         <module>ProjectService</module>
         <module>ProjectDao</module>
+        <module>ProjectControl</module>
     </modules>
 
 

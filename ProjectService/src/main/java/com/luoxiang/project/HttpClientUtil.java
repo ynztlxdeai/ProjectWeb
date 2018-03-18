@@ -63,7 +63,7 @@ public class HttpClientUtil {
         nvps.add(new BasicNameValuePair("bfa001", "201801"));
         nvps.add(new BasicNameValuePair("bab301", "01"));
         nvps.add(new BasicNameValuePair("page", "1"));
-        nvps.add(new BasicNameValuePair("rows", "50"));
+        nvps.add(new BasicNameValuePair("rows", "1"));
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
 

@@ -2,8 +2,10 @@ package com.luoxiang.project.mapper;
 
 import com.luoxiang.project.po.Baomingqingkuang;
 import com.luoxiang.project.po.BaomingqingkuangExample;
-import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BaomingqingkuangMapper {
     int countByExample(BaomingqingkuangExample example);

@@ -1,6 +1,5 @@
 package com.luoxiang.project.mapper;
 
-import com.luoxiang.project.po.Baomingqingkuang;
 import com.luoxiang.project.po.LastYear;
 import com.luoxiang.project.po.LastYearExample;
 
@@ -32,5 +31,5 @@ public interface LastYearMapper {
 
     int updateByPrimaryKey(LastYear record);
 
-        List<Baomingqingkuang> selectAll();
+        List<LastYear> selectAll();
 }

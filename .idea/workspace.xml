@@ -7,9 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fb2b0e4-411c-4f07-b305-ade5066db1dd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" afterPath="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" />
+      <change beforePath="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" afterPath="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" />
+      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,10 +47,11 @@
       <file leaf-file-name="HttpClientUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1009">
-              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="129">
+              <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding>
-                <element signature="e#3610#3625#0" expanded="true" />
+                <element signature="e#3702#3717#0" expanded="true" />
+                <element signature="e#7427#7442#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,17 +60,18 @@
       <file leaf-file-name="LastYearMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="311">
+              <caret line="265" column="18" lean-forward="false" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
               <folding>
-                <marker date="1521346172609" expanded="true" signature="3837:3949" ph="select from last_year" />
-                <marker date="1521346172609" expanded="true" signature="4036:4102" ph="delete from last_year... " />
-                <marker date="1521346172609" expanded="true" signature="4208:4229" ph="delete from last_year... " />
-                <marker date="1521346172609" expanded="true" signature="4412:4791" ph="insert into last_year... " />
-                <marker date="1521346172609" expanded="true" signature="6395:6425" ph="select count... last_year" />
-                <marker date="1521346172609" expanded="true" signature="7691:8137" ph="update last_year... " />
-                <marker date="1521346172609" expanded="true" signature="8351:9116" ph="update last_year... " />
-                <marker date="1521346172609" expanded="true" signature="9218:9611" ph="update last_year... " />
+                <marker date="1521346342191" expanded="true" signature="3837:3949" ph="select from last_year" />
+                <marker date="1521346342191" expanded="true" signature="4036:4102" ph="delete from last_year... " />
+                <marker date="1521346342191" expanded="true" signature="4208:4229" ph="delete from last_year... " />
+                <marker date="1521346342191" expanded="true" signature="4412:4791" ph="insert into last_year... " />
+                <marker date="1521346342191" expanded="true" signature="6395:6425" ph="select count... last_year" />
+                <marker date="1521346342191" expanded="true" signature="7691:8137" ph="update last_year... " />
+                <marker date="1521346342191" expanded="true" signature="8351:9116" ph="update last_year... " />
+                <marker date="1521346342191" expanded="true" signature="9218:9611" ph="update last_year... " />
+                <marker date="1521346342191" expanded="true" signature="9682:9799" ph="select disti... last_year" />
               </folding>
             </state>
           </provider>
@@ -75,14 +80,34 @@
       <file leaf-file-name="LastYearMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="616">
+              <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LastYearExample.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BmqkController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="42" column="132" lean-forward="false" selection-start-line="42" selection-start-column="132" selection-end-line="42" selection-end-column="132" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GwyService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LastYearExample.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/po/LastYearExample.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -95,8 +120,8 @@
       <file leaf-file-name="BaomingqingkuangMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/BaomingqingkuangMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="204" column="28" lean-forward="false" selection-start-line="204" selection-start-column="22" selection-end-line="204" selection-end-column="28" />
+            <state relative-caret-position="78">
+              <caret line="275" column="2" lean-forward="false" selection-start-line="275" selection-start-column="2" selection-end-line="282" selection-end-column="11" />
               <folding>
                 <marker date="1521334977651" expanded="true" signature="3870:3989" ph="select from baomingqingkuang" />
                 <marker date="1521334977651" expanded="true" signature="4076:4149" ph="delete from baomingqingkuang... " />
@@ -112,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GwyServiceImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GwyServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
-              <caret line="42" column="39" lean-forward="false" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="39" />
+            <state relative-caret-position="188">
+              <caret line="93" column="20" lean-forward="false" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -198,14 +223,15 @@
         <option value="$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/BaomingqingkuangMapper.xml" />
         <option value="$PROJECT_DIR$/ProjectControl/src/main/resources/springmvc.xml" />
         <option value="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/CommBean.java" />
-        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" />
-        <option value="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" />
         <option value="$PROJECT_DIR$/ProjectControl/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/ProjectControl/src/main/resources/jdbc.properties" />
-        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" />
         <option value="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/ServerBean.java" />
-        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" />
+        <option value="$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml" />
         <option value="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" />
+        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" />
+        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" />
+        <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" />
       </list>
     </option>
   </component>
@@ -246,7 +272,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -849,15 +875,15 @@
       <updated>1521287899945</updated>
       <workItem from="1521287905825" duration="455000" />
       <workItem from="1521329271540" duration="1546000" />
-      <workItem from="1521331012896" duration="9640000" />
+      <workItem from="1521331012896" duration="11553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16556000" />
+    <option name="totallyTimeSpent" value="18469000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -866,11 +892,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20700152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46289754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46289754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -880,8 +907,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52120143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4178082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2366819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286219" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -889,38 +916,38 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286219" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952815" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952815" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20700152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46289754" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52120143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36225265" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52120143" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2366819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286219" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286219" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -933,10 +960,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="16" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1164,14 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/BaomingqingkuangMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/spring/spring-application.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-402">
@@ -1201,24 +1228,6 @@
         <state relative-caret-position="12">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1262,10 +1271,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/po/LastYearExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/BaomingqingkuangMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="204" column="28" lean-forward="false" selection-start-line="204" selection-start-column="22" selection-end-line="204" selection-end-column="28" />
+        <state relative-caret-position="78">
+          <caret line="275" column="2" lean-forward="false" selection-start-line="275" selection-start-column="2" selection-end-line="282" selection-end-column="11" />
           <folding>
             <marker date="1521334977651" expanded="true" signature="3870:3989" ph="select from baomingqingkuang" />
             <marker date="1521334977651" expanded="true" signature="4076:4149" ph="delete from baomingqingkuang... " />
@@ -1280,53 +1297,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/BaomingqingkuangMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="42" column="39" lean-forward="false" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="39" />
+        <state relative-caret-position="364">
+          <caret line="34" column="25" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1009">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding>
-            <element signature="e#3610#3625#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="311">
+          <caret line="265" column="18" lean-forward="false" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
           <folding>
-            <marker date="1521346172609" expanded="true" signature="3837:3949" ph="select from last_year" />
-            <marker date="1521346172609" expanded="true" signature="4036:4102" ph="delete from last_year... " />
-            <marker date="1521346172609" expanded="true" signature="4208:4229" ph="delete from last_year... " />
-            <marker date="1521346172609" expanded="true" signature="4412:4791" ph="insert into last_year... " />
-            <marker date="1521346172609" expanded="true" signature="6395:6425" ph="select count... last_year" />
-            <marker date="1521346172609" expanded="true" signature="7691:8137" ph="update last_year... " />
-            <marker date="1521346172609" expanded="true" signature="8351:9116" ph="update last_year... " />
-            <marker date="1521346172609" expanded="true" signature="9218:9611" ph="update last_year... " />
+            <marker date="1521346342191" expanded="true" signature="3837:3949" ph="select from last_year" />
+            <marker date="1521346342191" expanded="true" signature="4036:4102" ph="delete from last_year... " />
+            <marker date="1521346342191" expanded="true" signature="4208:4229" ph="delete from last_year... " />
+            <marker date="1521346342191" expanded="true" signature="4412:4791" ph="insert into last_year... " />
+            <marker date="1521346342191" expanded="true" signature="6395:6425" ph="select count... last_year" />
+            <marker date="1521346342191" expanded="true" signature="7691:8137" ph="update last_year... " />
+            <marker date="1521346342191" expanded="true" signature="8351:9116" ph="update last_year... " />
+            <marker date="1521346342191" expanded="true" signature="9218:9611" ph="update last_year... " />
+            <marker date="1521346342191" expanded="true" signature="9682:9799" ph="select disti... last_year" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <element signature="e#3702#3717#0" expanded="true" />
+            <element signature="e#7427#7442#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="616">
+          <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/po/LastYearExample.java">
+    <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="56">
+          <caret line="42" column="132" lean-forward="false" selection-start-line="42" selection-start-column="132" selection-end-line="42" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="93" column="20" lean-forward="false" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
           <folding />
         </state>
       </provider>

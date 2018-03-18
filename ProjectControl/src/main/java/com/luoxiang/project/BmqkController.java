@@ -37,5 +37,12 @@ public class BmqkController {
         return gwyServiceImpl.update(cookies);
     }
 
+    @RequestMapping("updateLast")
+    public @ResponseBody
+    CommBean updateLast(String cookies){
+        //http://localhost:8080/start/updateLast?cookies=JSESSIONID=_BQ3VPkugH89P2UNlm-pjOEB0aSw8EHFYtV1nY_D0JQ_yMYYICNx!-1501360179
+        return gwyServiceImpl.updateLast(cookies);
+    }
+
 
 }

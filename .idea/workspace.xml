@@ -7,14 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fb2b0e4-411c-4f07-b305-ade5066db1dd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/CommBean.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" afterPath="$PROJECT_DIR$/ProjectControl/src/main/java/com/luoxiang/project/BmqkController.java" />
-      <change beforePath="$PROJECT_DIR$/ProjectControl/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/ProjectControl/src/main/webapp/WEB-INF/web.xml" />
-      <change beforePath="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/ServerBean.java" afterPath="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/ServerBean.java" />
-      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" />
-      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/GwyService.java" />
-      <change beforePath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" afterPath="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,7 +41,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HttpClientUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HttpClientUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1009">
@@ -54,6 +49,45 @@
               <folding>
                 <element signature="e#3610#3625#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LastYearMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1521346172609" expanded="true" signature="3837:3949" ph="select from last_year" />
+                <marker date="1521346172609" expanded="true" signature="4036:4102" ph="delete from last_year... " />
+                <marker date="1521346172609" expanded="true" signature="4208:4229" ph="delete from last_year... " />
+                <marker date="1521346172609" expanded="true" signature="4412:4791" ph="insert into last_year... " />
+                <marker date="1521346172609" expanded="true" signature="6395:6425" ph="select count... last_year" />
+                <marker date="1521346172609" expanded="true" signature="7691:8137" ph="update last_year... " />
+                <marker date="1521346172609" expanded="true" signature="8351:9116" ph="update last_year... " />
+                <marker date="1521346172609" expanded="true" signature="9218:9611" ph="update last_year... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LastYearMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LastYearExample.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/po/LastYearExample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -171,6 +205,7 @@
         <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/service/impl/GwyServiceImpl.java" />
         <option value="$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/bean/ServerBean.java" />
         <option value="$PROJECT_DIR$/ProjectService/src/main/java/com/luoxiang/project/HttpClientUtil.java" />
+        <option value="$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java" />
       </list>
     </option>
   </component>
@@ -211,7 +246,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -313,6 +348,96 @@
             <path>
               <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectDao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectDao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectDao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectDao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectDao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectEntity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="po" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectWeb" type="462c0819:PsiDirectoryNode" />
               <item name="ProjectService" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -402,8 +527,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\workspace\ProjectWeb\ProjectEntity\src\main\java\com\luoxiang\project\po" />
-      <recent name="F:\workspace\ProjectWeb\ProjectControl\src\main\resources\mapper" />
       <recent name="F:\workspace\ProjectWeb\ProjectDao\src\main\java\com\luoxiang\project\mapper" />
+      <recent name="F:\workspace\ProjectWeb\ProjectControl\src\main\resources\mapper" />
       <recent name="F:\workspace\ProjectWeb\ProjectControl\src\main" />
       <recent name="F:\workspace\ProjectWeb\ProjectUtils\src\main\java\com\luoxiang\common" />
     </key>
@@ -724,15 +849,15 @@
       <updated>1521287899945</updated>
       <workItem from="1521287905825" duration="455000" />
       <workItem from="1521329271540" duration="1546000" />
-      <workItem from="1521331012896" duration="9559000" />
+      <workItem from="1521331012896" duration="9640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16475000" />
+    <option name="totallyTimeSpent" value="16556000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -745,7 +870,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20700152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46289754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46289754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -755,8 +880,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52120143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4178082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32685512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4178082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286219" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -816,27 +941,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/mvn/repository/com/aliyun/mns/aliyun-sdk-mns/1.1.8/aliyun-sdk-mns-1.1.8-jar-with-dependencies.jar!/shaded/org/apache/http/HttpEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/mvn/repository/com/aliyun/mns/aliyun-sdk-mns/1.1.8/aliyun-sdk-mns-1.1.8-jar-with-dependencies.jar!/shaded/org/apache/http/message/BasicNameValuePair.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/mvn/repository/com/aliyun/mns/aliyun-sdk-mns/1.1.8/aliyun-sdk-mns-1.1.8-jar-with-dependencies.jar!/shaded/org/apache/http/client/methods/Configurable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/mvn/repository/com/aliyun/mns/aliyun-sdk-mns/1.1.8/aliyun-sdk-mns-1.1.8-jar-with-dependencies.jar!/shaded/org/apache/http/client/methods/HttpGet.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
@@ -1191,6 +1295,39 @@
           <folding>
             <element signature="e#3610#3625#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectControl/src/main/resources/mapper/LastYearMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521346172609" expanded="true" signature="3837:3949" ph="select from last_year" />
+            <marker date="1521346172609" expanded="true" signature="4036:4102" ph="delete from last_year... " />
+            <marker date="1521346172609" expanded="true" signature="4208:4229" ph="delete from last_year... " />
+            <marker date="1521346172609" expanded="true" signature="4412:4791" ph="insert into last_year... " />
+            <marker date="1521346172609" expanded="true" signature="6395:6425" ph="select count... last_year" />
+            <marker date="1521346172609" expanded="true" signature="7691:8137" ph="update last_year... " />
+            <marker date="1521346172609" expanded="true" signature="8351:9116" ph="update last_year... " />
+            <marker date="1521346172609" expanded="true" signature="9218:9611" ph="update last_year... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectDao/src/main/java/com/luoxiang/project/mapper/LastYearMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectEntity/src/main/java/com/luoxiang/project/po/LastYearExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luoxiang.project.mapper.LastYearMapper" >
+  <resultMap id="BaseResultMap" type="com.luoxiang.project.po.LastYear" >
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="JobUnit" property="jobunit" jdbcType="VARCHAR" />
+    <result column="Job" property="job" jdbcType="VARCHAR" />
+    <result column="JobCode" property="jobcode" jdbcType="VARCHAR" />
+    <result column="Numbers" property="numbers" jdbcType="INTEGER" />
+    <result column="NeedPersionNum" property="needpersionnum" jdbcType="INTEGER" />
+    <result column="TestAre" property="testare" jdbcType="VARCHAR" />
+    <result column="Perfessional" property="perfessional" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    job_id, JobUnit, Job, JobCode, Numbers, NeedPersionNum, TestAre, Perfessional
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.LastYearExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from last_year
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from last_year
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from last_year
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luoxiang.project.po.LastYearExample" >
+    delete from last_year
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luoxiang.project.po.LastYear" >
+    insert into last_year (job_id, JobUnit, Job, 
+      JobCode, Numbers, NeedPersionNum, 
+      TestAre, Perfessional)
+    values (#{jobId,jdbcType=INTEGER}, #{jobunit,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{jobcode,jdbcType=VARCHAR}, #{numbers,jdbcType=INTEGER}, #{needpersionnum,jdbcType=INTEGER}, 
+      #{testare,jdbcType=VARCHAR}, #{perfessional,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.luoxiang.project.po.LastYear" >
+    insert into last_year
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobunit != null" >
+        JobUnit,
+      </if>
+      <if test="job != null" >
+        Job,
+      </if>
+      <if test="jobcode != null" >
+        JobCode,
+      </if>
+      <if test="numbers != null" >
+        Numbers,
+      </if>
+      <if test="needpersionnum != null" >
+        NeedPersionNum,
+      </if>
+      <if test="testare != null" >
+        TestAre,
+      </if>
+      <if test="perfessional != null" >
+        Perfessional,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobunit != null" >
+        #{jobunit,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="jobcode != null" >
+        #{jobcode,jdbcType=VARCHAR},
+      </if>
+      <if test="numbers != null" >
+        #{numbers,jdbcType=INTEGER},
+      </if>
+      <if test="needpersionnum != null" >
+        #{needpersionnum,jdbcType=INTEGER},
+      </if>
+      <if test="testare != null" >
+        #{testare,jdbcType=VARCHAR},
+      </if>
+      <if test="perfessional != null" >
+        #{perfessional,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luoxiang.project.po.LastYearExample" resultType="java.lang.Integer" >
+    select count(*) from last_year
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update last_year
+    <set >
+      <if test="record.jobId != null" >
+        job_id = #{record.jobId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobunit != null" >
+        JobUnit = #{record.jobunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.job != null" >
+        Job = #{record.job,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobcode != null" >
+        JobCode = #{record.jobcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numbers != null" >
+        Numbers = #{record.numbers,jdbcType=INTEGER},
+      </if>
+      <if test="record.needpersionnum != null" >
+        NeedPersionNum = #{record.needpersionnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.testare != null" >
+        TestAre = #{record.testare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perfessional != null" >
+        Perfessional = #{record.perfessional,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update last_year
+    set job_id = #{record.jobId,jdbcType=INTEGER},
+      JobUnit = #{record.jobunit,jdbcType=VARCHAR},
+      Job = #{record.job,jdbcType=VARCHAR},
+      JobCode = #{record.jobcode,jdbcType=VARCHAR},
+      Numbers = #{record.numbers,jdbcType=INTEGER},
+      NeedPersionNum = #{record.needpersionnum,jdbcType=INTEGER},
+      TestAre = #{record.testare,jdbcType=VARCHAR},
+      Perfessional = #{record.perfessional,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luoxiang.project.po.LastYear" >
+    update last_year
+    <set >
+      <if test="jobunit != null" >
+        JobUnit = #{jobunit,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        Job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="jobcode != null" >
+        JobCode = #{jobcode,jdbcType=VARCHAR},
+      </if>
+      <if test="numbers != null" >
+        Numbers = #{numbers,jdbcType=INTEGER},
+      </if>
+      <if test="needpersionnum != null" >
+        NeedPersionNum = #{needpersionnum,jdbcType=INTEGER},
+      </if>
+      <if test="testare != null" >
+        TestAre = #{testare,jdbcType=VARCHAR},
+      </if>
+      <if test="perfessional != null" >
+        Perfessional = #{perfessional,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luoxiang.project.po.LastYear" >
+    update last_year
+    set JobUnit = #{jobunit,jdbcType=VARCHAR},
+      Job = #{job,jdbcType=VARCHAR},
+      JobCode = #{jobcode,jdbcType=VARCHAR},
+      Numbers = #{numbers,jdbcType=INTEGER},
+      NeedPersionNum = #{needpersionnum,jdbcType=INTEGER},
+      TestAre = #{testare,jdbcType=VARCHAR},
+      Perfessional = #{perfessional,jdbcType=VARCHAR}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from last_year
+  </select>
+</mapper>

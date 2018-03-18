@@ -31,4 +31,6 @@ public interface BaomingqingkuangMapper {
     int updateByPrimaryKeySelective(Baomingqingkuang record);
 
     int updateByPrimaryKey(Baomingqingkuang record);
+
+    List<Baomingqingkuang> selectAll();
 }

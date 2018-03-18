@@ -86,6 +86,8 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -255,4 +257,29 @@
       Perfessional = #{perfessional,jdbcType=VARCHAR}
     where job_id = #{jobId,jdbcType=INTEGER}
   </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from baomingqingkuang
+  </select>
+
 </mapper>

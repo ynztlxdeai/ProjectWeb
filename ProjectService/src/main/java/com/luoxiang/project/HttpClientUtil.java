@@ -1,5 +1,11 @@
 package com.luoxiang.project;
 
+import com.luoxiang.common.JSONUtils;
+import com.luoxiang.project.bean.ServerBean;
+import com.luoxiang.project.mapper.BaomingqingkuangMapper;
+import com.luoxiang.project.po.Baomingqingkuang;
+import com.luoxiang.project.po.BaomingqingkuangExample;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -11,6 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,13 +36,44 @@ import java.util.List;
 
 
 public class HttpClientUtil {
+
+    public static Integer page = 1;
+
+    public static Integer rows = 1500;
+
+    public static String[] are = {
+            "11",//东莞
+            "21",//云浮
+            "05",//佛山
+            "01",//广州
+            "09",//惠州
+            "20",//揭阳
+            "08",//梅州
+            "04",//汕头
+            "10",//汕尾
+            "13",//江门
+            "07",//河源
+            "02",//深圳
+            "18",//清远
+            "15",//湛江
+            "19",//潮州
+            "03",//珠海
+            "99",//省直
+            "17",//肇庆
+            "16",//茂名
+            "14",//阳江
+            "06"
+            //韶关
+
+    };
+
     public static void main(String[] args){
 
 
-        getData("JSESSIONID=5fs2asBpDUfkKY5AmfmVxgasF1HGfANx4watlDZV4xN0MLchKx5D!-1814372133");
+        getData("JSESSIONID=rc02odV4e01r0uuEPklUTtY_yX8BtJIR2ew2Ah--6sHVejLwrfou!-1814372133" , null , null);
     }
 
-    private static void getData(String cookies) {
+    private static void getData(String cookies , HashMap<String , Baomingqingkuang> hashMap ,  BaomingqingkuangMapper baomingqingkuangMapper) {
         String     url        = "http://ggfw.gdhrss.gov.cn/gwyks/exam/details/spQuery.do";
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost   httpPost   = new HttpPost(url);
@@ -60,25 +98,50 @@ public class HttpClientUtil {
 
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         nvps.add(new BasicNameValuePair("bfa001", "201801"));
-        nvps.add(new BasicNameValuePair("bab301", "01"));
-        nvps.add(new BasicNameValuePair("page", "1"));
-        nvps.add(new BasicNameValuePair("rows", "2"));
-        try {
-            httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
+
+        for (int i = 0; i < are.length; i++) {
+            nvps.add(new BasicNameValuePair("bab301", are[i]));
+            nvps.add(new BasicNameValuePair("page", page.toString()));
+            nvps.add(new BasicNameValuePair("rows", rows.toString()));
+
+            try {
+                httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
+                HttpResponse response = httpClient.execute(httpPost);
+                HttpEntity   entity   = response.getEntity();
+                if (entity != null){
+                    String       s        = EntityUtils.toString(entity, "UTF-8");
+                    EntityUtils.consume(entity);
+                    ServerBean serverBean = JSONUtils.toBean(s, ServerBean.class);
+                    List<ServerBean.RowsBean> rows = serverBean.getRows();
+                    String jobCode = null;
+                    for (ServerBean.RowsBean rowsBean : rows) {
+                        if (hashMap != null){
+                            jobCode = rowsBean.getBab301();
+                            Baomingqingkuang baomingqingkuang = hashMap.get(jobCode);
+                            int currentNums = rowsBean.getAab119();
+                            if (baomingqingkuang != null && baomingqingkuang.getNumbers() != currentNums){
+                                baomingqingkuang.setNumbers(currentNums);
+                                BaomingqingkuangExample example = new BaomingqingkuangExample();
+                                baomingqingkuangMapper.updateByExample(baomingqingkuang ,
+                                                                       example);
+                            }else {
+                                continue;
+                            }
+
+                        }else {
+                            break;
+                        }
 
 
-            HttpResponse response = httpClient.execute(httpPost);
-            HttpEntity   entity   = response.getEntity();
-            if (entity != null){
-                String       s        = EntityUtils.toString(entity, "UTF-8");
-                EntityUtils.consume(entity);
-                System.out.println(s);
+                    }
+
+                }
+
+            } catch (Exception e) {
+
             }
-
-
-
-        } catch (Exception e) {
-
         }
+
+
     }
 }

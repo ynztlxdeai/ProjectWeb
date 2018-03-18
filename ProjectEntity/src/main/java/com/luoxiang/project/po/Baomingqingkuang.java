@@ -15,6 +15,8 @@ public class Baomingqingkuang {
 
     private String testare;
 
+    private String perfessional;
+
     public Integer getJobId() {
         return jobId;
     }
@@ -69,5 +71,13 @@ public class Baomingqingkuang {
 
     public void setTestare(String testare) {
         this.testare = testare == null ? null : testare.trim();
+    }
+
+    public String getPerfessional() {
+        return perfessional;
+    }
+
+    public void setPerfessional(String perfessional) {
+        this.perfessional = perfessional == null ? null : perfessional.trim();
     }
 }

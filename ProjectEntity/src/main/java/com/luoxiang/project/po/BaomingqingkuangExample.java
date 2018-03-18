@@ -563,6 +563,76 @@ public class BaomingqingkuangExample {
             addCriterion("TestAre not between", value1, value2, "testare");
             return (Criteria) this;
         }
+
+        public Criteria andPerfessionalIsNull() {
+            addCriterion("Perfessional is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalIsNotNull() {
+            addCriterion("Perfessional is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalEqualTo(String value) {
+            addCriterion("Perfessional =", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalNotEqualTo(String value) {
+            addCriterion("Perfessional <>", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalGreaterThan(String value) {
+            addCriterion("Perfessional >", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalGreaterThanOrEqualTo(String value) {
+            addCriterion("Perfessional >=", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalLessThan(String value) {
+            addCriterion("Perfessional <", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalLessThanOrEqualTo(String value) {
+            addCriterion("Perfessional <=", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalLike(String value) {
+            addCriterion("Perfessional like", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalNotLike(String value) {
+            addCriterion("Perfessional not like", value, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalIn(List<String> values) {
+            addCriterion("Perfessional in", values, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalNotIn(List<String> values) {
+            addCriterion("Perfessional not in", values, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalBetween(String value1, String value2) {
+            addCriterion("Perfessional between", value1, value2, "perfessional");
+            return (Criteria) this;
+        }
+
+        public Criteria andPerfessionalNotBetween(String value1, String value2) {
+            addCriterion("Perfessional not between", value1, value2, "perfessional");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

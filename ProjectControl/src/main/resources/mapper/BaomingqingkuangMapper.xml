@@ -9,6 +9,7 @@
     <result column="Numbers" property="numbers" jdbcType="INTEGER" />
     <result column="NeedPersionNum" property="needpersionnum" jdbcType="INTEGER" />
     <result column="TestAre" property="testare" jdbcType="VARCHAR" />
+    <result column="Perfessional" property="perfessional" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    job_id, JobUnit, Job, JobCode, Numbers, NeedPersionNum, TestAre
+    job_id, JobUnit, Job, JobCode, Numbers, NeedPersionNum, TestAre, Perfessional
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.BaomingqingkuangExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.luoxiang.project.po.Baomingqingkuang" >
     insert into baomingqingkuang (job_id, JobUnit, Job, 
       JobCode, Numbers, NeedPersionNum, 
-      TestAre)
+      TestAre, Perfessional)
     values (#{jobId,jdbcType=INTEGER}, #{jobunit,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
       #{jobcode,jdbcType=VARCHAR}, #{numbers,jdbcType=INTEGER}, #{needpersionnum,jdbcType=INTEGER}, 
-      #{testare,jdbcType=VARCHAR})
+      #{testare,jdbcType=VARCHAR}, #{perfessional,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.luoxiang.project.po.Baomingqingkuang" >
     insert into baomingqingkuang
@@ -133,6 +134,9 @@
       <if test="testare != null" >
         TestAre,
       </if>
+      <if test="perfessional != null" >
+        Perfessional,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="jobId != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="testare != null" >
         #{testare,jdbcType=VARCHAR},
+      </if>
+      <if test="perfessional != null" >
+        #{perfessional,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.testare != null" >
         TestAre = #{record.testare,jdbcType=VARCHAR},
       </if>
+      <if test="record.perfessional != null" >
+        Perfessional = #{record.perfessional,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       JobCode = #{record.jobcode,jdbcType=VARCHAR},
       Numbers = #{record.numbers,jdbcType=INTEGER},
       NeedPersionNum = #{record.needpersionnum,jdbcType=INTEGER},
-      TestAre = #{record.testare,jdbcType=VARCHAR}
+      TestAre = #{record.testare,jdbcType=VARCHAR},
+      Perfessional = #{record.perfessional,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="testare != null" >
         TestAre = #{testare,jdbcType=VARCHAR},
       </if>
+      <if test="perfessional != null" >
+        Perfessional = #{perfessional,jdbcType=VARCHAR},
+      </if>
     </set>
     where job_id = #{jobId,jdbcType=INTEGER}
   </update>
@@ -237,7 +251,8 @@
       JobCode = #{jobcode,jdbcType=VARCHAR},
       Numbers = #{numbers,jdbcType=INTEGER},
       NeedPersionNum = #{needpersionnum,jdbcType=INTEGER},
-      TestAre = #{testare,jdbcType=VARCHAR}
+      TestAre = #{testare,jdbcType=VARCHAR},
+      Perfessional = #{perfessional,jdbcType=VARCHAR}
     where job_id = #{jobId,jdbcType=INTEGER}
   </update>
 </mapper>

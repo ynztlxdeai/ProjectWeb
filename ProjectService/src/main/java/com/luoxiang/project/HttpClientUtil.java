@@ -32,8 +32,7 @@ public class HttpClientUtil {
     public static void main(String[] args){
 
 
-
-        getData("JSESSIONID=yAYz9HG9GjK63Iy-8dByLyeKbaixt9f0C1gK6g8QwsvfEf8XZF1i!1739900296");
+        getData("JSESSIONID=5fs2asBpDUfkKY5AmfmVxgasF1HGfANx4watlDZV4xN0MLchKx5D!-1814372133");
     }
 
     private static void getData(String cookies) {
@@ -63,7 +62,7 @@ public class HttpClientUtil {
         nvps.add(new BasicNameValuePair("bfa001", "201801"));
         nvps.add(new BasicNameValuePair("bab301", "01"));
         nvps.add(new BasicNameValuePair("page", "1"));
-        nvps.add(new BasicNameValuePair("rows", "1"));
+        nvps.add(new BasicNameValuePair("rows", "2"));
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
 

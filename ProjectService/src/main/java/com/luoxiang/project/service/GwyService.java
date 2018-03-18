@@ -1,5 +1,6 @@
 package com.luoxiang.project.service;
 
+import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.Baomingqingkuang;
 
 import java.util.HashMap;
@@ -22,5 +23,6 @@ import java.util.HashMap;
 public interface GwyService {
     HashMap<String , Baomingqingkuang> initMap();
 
+    CommBean update(String cookies);
 
 }

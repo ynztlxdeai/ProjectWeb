@@ -1,10 +1,9 @@
 package com.luoxiang.project;
 
-import com.luoxiang.common.JSONUtils;
+import com.google.gson.Gson;
 import com.luoxiang.project.bean.ServerBean;
 import com.luoxiang.project.mapper.BaomingqingkuangMapper;
 import com.luoxiang.project.po.Baomingqingkuang;
-import com.luoxiang.project.po.BaomingqingkuangExample;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -70,10 +69,15 @@ public class HttpClientUtil {
     public static void main(String[] args){
 
 
-        getData("JSESSIONID=rc02odV4e01r0uuEPklUTtY_yX8BtJIR2ew2Ah--6sHVejLwrfou!-1814372133" , null , null);
+        try {
+            getData("JSESSIONID=rc02odV4e01r0uuEPklUTtY_yX8BtJIR2ew2Ah--6sHVejLwrfou!-1814372133" , null , null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private static void getData(String cookies , HashMap<String , Baomingqingkuang> hashMap ,  BaomingqingkuangMapper baomingqingkuangMapper) {
+    public static void getData(String cookies , HashMap<String , Baomingqingkuang> hashMap ,
+                               BaomingqingkuangMapper baomingqingkuangMapper) throws  Exception{
         String     url        = "http://ggfw.gdhrss.gov.cn/gwyks/exam/details/spQuery.do";
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost   httpPost   = new HttpPost(url);
@@ -96,34 +100,39 @@ public class HttpClientUtil {
         params.setParameter("page","1");
         params.setParameter("rows","50");*/
 
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        nvps.add(new BasicNameValuePair("bfa001", "201801"));
+
 
         for (int i = 0; i < are.length; i++) {
+            List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+            nvps.add(new BasicNameValuePair("bfa001", "201801"));
             nvps.add(new BasicNameValuePair("bab301", are[i]));
             nvps.add(new BasicNameValuePair("page", page.toString()));
             nvps.add(new BasicNameValuePair("rows", rows.toString()));
 
-            try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
                 HttpResponse response = httpClient.execute(httpPost);
                 HttpEntity   entity   = response.getEntity();
                 if (entity != null){
                     String       s        = EntityUtils.toString(entity, "UTF-8");
                     EntityUtils.consume(entity);
-                    ServerBean serverBean = JSONUtils.toBean(s, ServerBean.class);
+                    Gson gson = new Gson();
+                    ServerBean serverBean = gson.fromJson(s, ServerBean.class);
+                   // ServerBean serverBean = JSONUtils.toBean(s, ServerBean.class);
                     List<ServerBean.RowsBean> rows = serverBean.getRows();
                     String jobCode = null;
                     for (ServerBean.RowsBean rowsBean : rows) {
                         if (hashMap != null){
-                            jobCode = rowsBean.getBab301();
+                            jobCode = rowsBean.getBfe301();
                             Baomingqingkuang baomingqingkuang = hashMap.get(jobCode);
+
                             int currentNums = rowsBean.getAab119();
-                            if (baomingqingkuang != null && baomingqingkuang.getNumbers() != currentNums){
-                                baomingqingkuang.setNumbers(currentNums);
-                                BaomingqingkuangExample example = new BaomingqingkuangExample();
-                                baomingqingkuangMapper.updateByExample(baomingqingkuang ,
-                                                                       example);
+                            if (baomingqingkuang != null ){
+                                if (baomingqingkuang != null && baomingqingkuang.getNumbers() != currentNums){
+                                    baomingqingkuang.setNumbers(currentNums);
+
+
+                                    baomingqingkuangMapper.updateByPrimaryKey(baomingqingkuang);
+                                }
                             }else {
                                 continue;
                             }
@@ -137,9 +146,7 @@ public class HttpClientUtil {
 
                 }
 
-            } catch (Exception e) {
-
-            }
+            Thread.sleep(3000);
         }
 
 

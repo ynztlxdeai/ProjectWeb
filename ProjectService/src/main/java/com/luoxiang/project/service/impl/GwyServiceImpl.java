@@ -1,8 +1,12 @@
 package com.luoxiang.project.service.impl;
 
+import com.luoxiang.project.HttpClientUtil;
+import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.mapper.BaomingqingkuangMapper;
 import com.luoxiang.project.po.Baomingqingkuang;
 import com.luoxiang.project.service.GwyService;
+
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +27,7 @@ import javax.annotation.Resource;
  * upDateDesc:	        TODO
  */
 
-
+@Service
 public class GwyServiceImpl
         implements GwyService
 {
@@ -40,5 +44,21 @@ public class GwyServiceImpl
         }
 
         return hashMap;
+    }
+
+    @Override
+    public CommBean update(String cookies) {
+        HashMap<String, Baomingqingkuang> hashMap = initMap();
+        CommBean commBean = new CommBean();
+        try {
+            HttpClientUtil.getData(cookies , hashMap , baomingqingkuangMapper);
+            commBean.setCode(0);
+            commBean.setMsg("Success");
+        } catch (Exception e) {
+            e.printStackTrace();
+            commBean.setCode(-1);
+            commBean.setMsg("ERROR : " + e.getMessage());
+        }
+        return commBean;
     }
 }

@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 
 public interface GwyService {
+
     HashMap<String , Baomingqingkuang> initMap();
 
     public HashMap<String, LastYear> initMapLast();

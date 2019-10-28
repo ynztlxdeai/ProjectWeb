@@ -33,7 +33,6 @@ public class BmqkController {
     @RequestMapping("update")
     public @ResponseBody
     CommBean update(String cookies){
-
         return gwyServiceImpl.update(cookies);
     }
 

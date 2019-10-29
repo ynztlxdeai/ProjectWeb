@@ -1,9 +1,11 @@
 package com.luoxiang.poi;
 
+import org.apache.http.util.TextUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +33,7 @@ import java.util.Map;
 
 public class PoiReader {
 
-    public static final String FILE_PATH = "C:\\Users\\Vincent\\Downloads\\电子信息.xls";
+    public static final String FILE_PATH = "C:\\Users\\Vincent\\Downloads\\20.xls";
     public static final String JOB_CODE_TEMPLATE = "%s:%s:%s";
 
     // 读取，全部sheet表及数据
@@ -50,17 +52,107 @@ public class PoiReader {
                             System.out.print("\t");
                         }
                     }*/
-                    String jobCode = String.format(JOB_CODE_TEMPLATE,
-                                                  row.getCell(1),
-                                                  row.getCell(3),
-                                                  row.getCell(5));
-                    System.out.println(jobCode);
+                   String first = row.getCell(0).toString();
+                   String second = row.getCell(1).toString();
+                   StringBuffer stringBuffer = new StringBuffer();
+                   if (first.contains("[") && first.contains("]")){
+                       stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("]")));
+                   }else if (first.contains("[") && first.contains("】")){
+                       stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("】")));
+                   }else if (first.contains("【") && first.contains("】")){
+                       stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("】")));
+                   }else if (first.contains("【") && first.contains("]")){
+                       stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("]")));
+                   }
+
+                    if (second.contains("[") && second.contains("]")){
+                        stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("]")));
+                    }else if (second.contains("[") && second.contains("】")){
+                        stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("】")));
+                    }else if (second.contains("【") && second.contains("】")){
+                        stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("】")));
+                    }else if (second.contains("【") && second.contains("]")){
+                        stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("]")));
+                    }
+
+                    String finalCode = stringBuffer.toString().trim();
+                   if (!TextUtils.isEmpty(finalCode)){
+                       String jobCode = finalCode.substring(1);
+                       System.out.println(jobCode);
+                   }
                 }
                 System.out.println(""); // 读完一行后换行
             }
             System.out.println("读取sheet表：" + workbook.getSheetName(i) + " 完成");
         }
     }
+
+    public static void checkHasNums(HashMap<String , Integer> jobs)
+            throws Exception
+    {
+        File fileDir = new File("C:\\Users\\Vincent\\Downloads\\has");
+        File[] files = fileDir.listFiles();
+        for(File tmp : files){
+            if (tmp.getName().endsWith(".xls")){
+            HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(tmp));
+            HSSFSheet sheet = null;
+            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+                sheet = workbook.getSheetAt(i);
+                for (int j = 0; j < sheet.getLastRowNum() + 1; j++) {// getLastRowNum，获取最后一行的行标
+                    HSSFRow row = sheet.getRow(j);
+                    if (row != null) {
+                    /*for (int k = 0; k < row.getLastCellNum(); k++) {// getLastCellNum，是获取最后一个不为空的列是第几个
+                        if (row.getCell(k) != null) { // getCell 获取单元格数据
+                            System.out.print(row.getCell(k) + "\t");
+                        } else {
+                            System.out.print("\t");
+                        }
+                    }*/
+                        String first = row.getCell(0).toString();
+                        String second = row.getCell(1).toString();
+                        StringBuffer stringBuffer = new StringBuffer();
+                        if (first.contains("[") && first.contains("]")){
+                            stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("]")));
+                        }else if (first.contains("[") && first.contains("】")){
+                            stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("】")));
+                        }else if (first.contains("【") && first.contains("】")){
+                            stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("】")));
+                        }else if (first.contains("【") && first.contains("]")){
+                            stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("]")));
+                        }
+
+                        if (second.contains("[") && second.contains("]")){
+                            stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("]")));
+                        }else if (second.contains("[") && second.contains("】")){
+                            stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("】")));
+                        }else if (second.contains("【") && second.contains("】")){
+                            stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("】")));
+                        }else if (second.contains("【") && second.contains("]")){
+                            stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("]")));
+                        }
+
+                        String finalCode = stringBuffer.toString().trim();
+                        if (!TextUtils.isEmpty(finalCode)){
+                            String jobCode = finalCode.substring(1);
+                            if (jobs.containsKey(jobCode)){
+                                if (row.getCell(4).getCellType() == CellType.NUMERIC){
+                                    int has = (int) row.getCell(4).getNumericCellValue();
+                                    if (has != 0){
+                                        jobs.replace(jobCode , has);
+                                    }
+                                }
+
+                            }
+                        }
+
+                    }
+                    // 读完一行后换行
+                }
+            }}
+        }
+
+    }
+
     // 读取，指定sheet表及数据
     public static final void showExcel2() throws Exception {
         HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(new File("C:\\Users\\xiaozhilei.ALAMAP\\Desktop\\888888.xls")));

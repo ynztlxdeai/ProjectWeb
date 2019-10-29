@@ -1,5 +1,6 @@
 package com.luoxiang.project.service.impl;
 
+import com.luoxiang.poi.PoiReader;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.mapper.JiangSuMapper;
 import com.luoxiang.project.po.JiangSu;
@@ -7,7 +8,10 @@ import com.luoxiang.project.service.JiangSuService;
 
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -39,10 +43,37 @@ public class JiangSuServiceImpl
 
     @Override
     public CommBean update() {
-
+        List<JiangSu> list = jiangSuMapper.selectAll();
+        HashMap<String , JiangSu> allMap = new HashMap<>(list.size());
+        HashMap<String , Integer> result = new HashMap<>();
+        for (JiangSu tmp : list){
+            allMap.put(tmp.getJobCode() , tmp);
+            result.put(tmp.getJobCode() , 0);
+        }
         CommBean commBean = new CommBean();
-        commBean.setCode(jiangSuMapper.selectAll().size());
-        commBean.setMsg("成功");
+        try {
+            PoiReader.checkHasNums(result);
+            Iterator<Map.Entry<String, Integer>> iterator = result.entrySet()
+                                                                  .iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, Integer> next = iterator.next();
+                Integer                    value = next.getValue();
+                if (value == 0){
+                    continue;
+                }
+                String                     key  = next.getKey();
+                JiangSu                    jiangSu = allMap.get(key);
+                jiangSu.setHasNums(value);
+                jiangSuMapper.updateByPrimaryKey(jiangSu);
+            }
+            commBean.setCode(jiangSuMapper.selectAll().size());
+            commBean.setMsg("成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            commBean.setCode(-1);
+            commBean.setMsg(e.getMessage());
+        }
+
 
         return commBean;
     }

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luoxiang.project.mapper.ZheJiang02Mapper" >
+  <resultMap id="BaseResultMap" type="com.luoxiang.project.po.ZheJiang02" >
+    <result column="zhao_lu_dan_wei" property="zhaoLuDanWei" jdbcType="VARCHAR" />
+    <result column="job_code" property="jobCode" jdbcType="VARCHAR" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="zhi_wei_lei_bie" property="zhiWeiLeiBie" jdbcType="VARCHAR" />
+    <result column="zhi_wei_da_lei" property="zhiWeiDaLei" jdbcType="VARCHAR" />
+    <result column="zhi_wei_xiao_lei" property="zhiWeiXiaoLei" jdbcType="VARCHAR" />
+    <result column="zhao_kao_ren_shu" property="zhaoKaoRenShu" jdbcType="VARCHAR" />
+    <result column="zi_xun_dian_hua" property="ziXunDianHua" jdbcType="VARCHAR" />
+    <result column="xue_li" property="xueLi" jdbcType="VARCHAR" />
+    <result column="xue_wei" property="xueWei" jdbcType="VARCHAR" />
+    <result column="xing_bie" property="xingBie" jdbcType="VARCHAR" />
+    <result column="xian_you_shen_fen" property="xianYouShenFen" jdbcType="VARCHAR" />
+    <result column="zheng_zhi_mian_mao" property="zhengZhiMianMao" jdbcType="VARCHAR" />
+    <result column="ming_zu_yao_qiu" property="mingZuYaoQiu" jdbcType="VARCHAR" />
+    <result column="nian_ling_yao_qiu" property="nianLingYaoQiu" jdbcType="VARCHAR" />
+    <result column="hu_ji_yao_qiu" property="huJiYaoQiu" jdbcType="VARCHAR" />
+    <result column="zhuan_ye" property="zhuanYe" jdbcType="VARCHAR" />
+    <result column="bei_zhu" property="beiZhu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    zhao_lu_dan_wei, job_code, job_name, zhi_wei_lei_bie, zhi_wei_da_lei, zhi_wei_xiao_lei, 
+    zhao_kao_ren_shu, zi_xun_dian_hua, xue_li, xue_wei, xing_bie, xian_you_shen_fen, 
+    zheng_zhi_mian_mao, ming_zu_yao_qiu, nian_ling_yao_qiu, hu_ji_yao_qiu, zhuan_ye, 
+    bei_zhu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.ZheJiang02Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zhe_jiang_02
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.luoxiang.project.po.ZheJiang02Example" >
+    delete from zhe_jiang_02
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luoxiang.project.po.ZheJiang02" >
+    insert into zhe_jiang_02 (zhao_lu_dan_wei, job_code, job_name, 
+      zhi_wei_lei_bie, zhi_wei_da_lei, zhi_wei_xiao_lei, 
+      zhao_kao_ren_shu, zi_xun_dian_hua, xue_li, 
+      xue_wei, xing_bie, xian_you_shen_fen, 
+      zheng_zhi_mian_mao, ming_zu_yao_qiu, nian_ling_yao_qiu, 
+      hu_ji_yao_qiu, zhuan_ye, bei_zhu
+      )
+    values (#{zhaoLuDanWei,jdbcType=VARCHAR}, #{jobCode,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, 
+      #{zhiWeiLeiBie,jdbcType=VARCHAR}, #{zhiWeiDaLei,jdbcType=VARCHAR}, #{zhiWeiXiaoLei,jdbcType=VARCHAR}, 
+      #{zhaoKaoRenShu,jdbcType=VARCHAR}, #{ziXunDianHua,jdbcType=VARCHAR}, #{xueLi,jdbcType=VARCHAR}, 
+      #{xueWei,jdbcType=VARCHAR}, #{xingBie,jdbcType=VARCHAR}, #{xianYouShenFen,jdbcType=VARCHAR}, 
+      #{zhengZhiMianMao,jdbcType=VARCHAR}, #{mingZuYaoQiu,jdbcType=VARCHAR}, #{nianLingYaoQiu,jdbcType=VARCHAR}, 
+      #{huJiYaoQiu,jdbcType=VARCHAR}, #{zhuanYe,jdbcType=VARCHAR}, #{beiZhu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.luoxiang.project.po.ZheJiang02" >
+    insert into zhe_jiang_02
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zhaoLuDanWei != null" >
+        zhao_lu_dan_wei,
+      </if>
+      <if test="jobCode != null" >
+        job_code,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="zhiWeiLeiBie != null" >
+        zhi_wei_lei_bie,
+      </if>
+      <if test="zhiWeiDaLei != null" >
+        zhi_wei_da_lei,
+      </if>
+      <if test="zhiWeiXiaoLei != null" >
+        zhi_wei_xiao_lei,
+      </if>
+      <if test="zhaoKaoRenShu != null" >
+        zhao_kao_ren_shu,
+      </if>
+      <if test="ziXunDianHua != null" >
+        zi_xun_dian_hua,
+      </if>
+      <if test="xueLi != null" >
+        xue_li,
+      </if>
+      <if test="xueWei != null" >
+        xue_wei,
+      </if>
+      <if test="xingBie != null" >
+        xing_bie,
+      </if>
+      <if test="xianYouShenFen != null" >
+        xian_you_shen_fen,
+      </if>
+      <if test="zhengZhiMianMao != null" >
+        zheng_zhi_mian_mao,
+      </if>
+      <if test="mingZuYaoQiu != null" >
+        ming_zu_yao_qiu,
+      </if>
+      <if test="nianLingYaoQiu != null" >
+        nian_ling_yao_qiu,
+      </if>
+      <if test="huJiYaoQiu != null" >
+        hu_ji_yao_qiu,
+      </if>
+      <if test="zhuanYe != null" >
+        zhuan_ye,
+      </if>
+      <if test="beiZhu != null" >
+        bei_zhu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zhaoLuDanWei != null" >
+        #{zhaoLuDanWei,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode != null" >
+        #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiLeiBie != null" >
+        #{zhiWeiLeiBie,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiDaLei != null" >
+        #{zhiWeiDaLei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiXiaoLei != null" >
+        #{zhiWeiXiaoLei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhaoKaoRenShu != null" >
+        #{zhaoKaoRenShu,jdbcType=VARCHAR},
+      </if>
+      <if test="ziXunDianHua != null" >
+        #{ziXunDianHua,jdbcType=VARCHAR},
+      </if>
+      <if test="xueLi != null" >
+        #{xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="xueWei != null" >
+        #{xueWei,jdbcType=VARCHAR},
+      </if>
+      <if test="xingBie != null" >
+        #{xingBie,jdbcType=VARCHAR},
+      </if>
+      <if test="xianYouShenFen != null" >
+        #{xianYouShenFen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhengZhiMianMao != null" >
+        #{zhengZhiMianMao,jdbcType=VARCHAR},
+      </if>
+      <if test="mingZuYaoQiu != null" >
+        #{mingZuYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="nianLingYaoQiu != null" >
+        #{nianLingYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="huJiYaoQiu != null" >
+        #{huJiYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanYe != null" >
+        #{zhuanYe,jdbcType=VARCHAR},
+      </if>
+      <if test="beiZhu != null" >
+        #{beiZhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luoxiang.project.po.ZheJiang02Example" resultType="java.lang.Integer" >
+    select count(*) from zhe_jiang_02
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update zhe_jiang_02
+    <set >
+      <if test="record.zhaoLuDanWei != null" >
+        zhao_lu_dan_wei = #{record.zhaoLuDanWei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobCode != null" >
+        job_code = #{record.jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobName != null" >
+        job_name = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiLeiBie != null" >
+        zhi_wei_lei_bie = #{record.zhiWeiLeiBie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiDaLei != null" >
+        zhi_wei_da_lei = #{record.zhiWeiDaLei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiXiaoLei != null" >
+        zhi_wei_xiao_lei = #{record.zhiWeiXiaoLei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhaoKaoRenShu != null" >
+        zhao_kao_ren_shu = #{record.zhaoKaoRenShu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ziXunDianHua != null" >
+        zi_xun_dian_hua = #{record.ziXunDianHua,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueLi != null" >
+        xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueWei != null" >
+        xue_wei = #{record.xueWei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xingBie != null" >
+        xing_bie = #{record.xingBie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xianYouShenFen != null" >
+        xian_you_shen_fen = #{record.xianYouShenFen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhengZhiMianMao != null" >
+        zheng_zhi_mian_mao = #{record.zhengZhiMianMao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mingZuYaoQiu != null" >
+        ming_zu_yao_qiu = #{record.mingZuYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nianLingYaoQiu != null" >
+        nian_ling_yao_qiu = #{record.nianLingYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huJiYaoQiu != null" >
+        hu_ji_yao_qiu = #{record.huJiYaoQiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuanYe != null" >
+        zhuan_ye = #{record.zhuanYe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beiZhu != null" >
+        bei_zhu = #{record.beiZhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update zhe_jiang_02
+    set zhao_lu_dan_wei = #{record.zhaoLuDanWei,jdbcType=VARCHAR},
+      job_code = #{record.jobCode,jdbcType=VARCHAR},
+      job_name = #{record.jobName,jdbcType=VARCHAR},
+      zhi_wei_lei_bie = #{record.zhiWeiLeiBie,jdbcType=VARCHAR},
+      zhi_wei_da_lei = #{record.zhiWeiDaLei,jdbcType=VARCHAR},
+      zhi_wei_xiao_lei = #{record.zhiWeiXiaoLei,jdbcType=VARCHAR},
+      zhao_kao_ren_shu = #{record.zhaoKaoRenShu,jdbcType=VARCHAR},
+      zi_xun_dian_hua = #{record.ziXunDianHua,jdbcType=VARCHAR},
+      xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      xue_wei = #{record.xueWei,jdbcType=VARCHAR},
+      xing_bie = #{record.xingBie,jdbcType=VARCHAR},
+      xian_you_shen_fen = #{record.xianYouShenFen,jdbcType=VARCHAR},
+      zheng_zhi_mian_mao = #{record.zhengZhiMianMao,jdbcType=VARCHAR},
+      ming_zu_yao_qiu = #{record.mingZuYaoQiu,jdbcType=VARCHAR},
+      nian_ling_yao_qiu = #{record.nianLingYaoQiu,jdbcType=VARCHAR},
+      hu_ji_yao_qiu = #{record.huJiYaoQiu,jdbcType=VARCHAR},
+      zhuan_ye = #{record.zhuanYe,jdbcType=VARCHAR},
+      bei_zhu = #{record.beiZhu,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

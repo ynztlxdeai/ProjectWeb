@@ -48,26 +48,26 @@ public class JiangSuServiceImpl
         HashMap<String , Integer> result = new HashMap<>();
         for (JiangSu tmp : list){
             allMap.put(tmp.getJobCode() , tmp);
-            result.put(tmp.getJobCode() , 0);
+            result.put(tmp.getJobCode() , tmp.getHasNums());
         }
         CommBean commBean = new CommBean();
         try {
-            PoiReader.checkHasNums(result);
-            Iterator<Map.Entry<String, Integer>> iterator = result.entrySet()
-                                                                  .iterator();
+            List<String> listEx = PoiReader.checkHasNums(result);
+            Iterator<Map.Entry<String, Integer>> iterator = result.entrySet().iterator();
             while (iterator.hasNext()){
                 Map.Entry<String, Integer> next = iterator.next();
                 Integer                    value = next.getValue();
-                if (value == 0){
-                    continue;
-                }
                 String                     key  = next.getKey();
                 JiangSu                    jiangSu = allMap.get(key);
+                if (value == jiangSu.getHasNums()){
+                    continue;
+                }
                 jiangSu.setHasNums(value);
                 jiangSuMapper.updateByPrimaryKey(jiangSu);
             }
             commBean.setCode(jiangSuMapper.selectAll().size());
             commBean.setMsg("成功");
+            commBean.setData(listEx);
         } catch (Exception e) {
             e.printStackTrace();
             commBean.setCode(-1);

@@ -87,9 +87,11 @@ public class PoiReader {
         }
     }
 
-    public static void checkHasNums(HashMap<String , Integer> jobs)
+    static String EXCEPTION_TEMPLATE = "position : i = %d , j = %d , file = %s";
+    public static List<String> checkHasNums(HashMap<String , Integer> jobs)
             throws Exception
     {
+        ArrayList<String> list = new ArrayList<>();
         File fileDir = new File("C:\\Users\\Vincent\\Downloads\\has");
         File[] files = fileDir.listFiles();
         for(File tmp : files){
@@ -98,7 +100,9 @@ public class PoiReader {
             HSSFSheet sheet = null;
             for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
                 sheet = workbook.getSheetAt(i);
-                for (int j = 0; j < sheet.getLastRowNum() + 1; j++) {// getLastRowNum，获取最后一行的行标
+
+                int LastRowNum =  sheet.getLastRowNum() + 1;
+                for (int j = 0; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
                     HSSFRow row = sheet.getRow(j);
                     if (row != null) {
                     /*for (int k = 0; k < row.getLastCellNum(); k++) {// getLastCellNum，是获取最后一个不为空的列是第几个
@@ -108,49 +112,60 @@ public class PoiReader {
                             System.out.print("\t");
                         }
                     }*/
-                        String first = row.getCell(0).toString();
-                        String second = row.getCell(1).toString();
-                        StringBuffer stringBuffer = new StringBuffer();
-                        if (first.contains("[") && first.contains("]")){
-                            stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("]")));
-                        }else if (first.contains("[") && first.contains("】")){
-                            stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("】")));
-                        }else if (first.contains("【") && first.contains("】")){
-                            stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("】")));
-                        }else if (first.contains("【") && first.contains("]")){
-                            stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("]")));
-                        }
-
-                        if (second.contains("[") && second.contains("]")){
-                            stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("]")));
-                        }else if (second.contains("[") && second.contains("】")){
-                            stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("】")));
-                        }else if (second.contains("【") && second.contains("】")){
-                            stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("】")));
-                        }else if (second.contains("【") && second.contains("]")){
-                            stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("]")));
-                        }
-
-                        String finalCode = stringBuffer.toString().trim();
-                        if (!TextUtils.isEmpty(finalCode)){
-                            String jobCode = finalCode.substring(1);
-                            if (jobs.containsKey(jobCode)){
-                                if (row.getCell(4).getCellType() == CellType.NUMERIC){
-                                    int has = (int) row.getCell(4).getNumericCellValue();
-                                    if (has != 0){
-                                        jobs.replace(jobCode , has);
-                                    }
-                                }
-
+                        System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                        try {
+                            String first = row.getCell(0).toString();
+                            String second = row.getCell(1).toString();
+                            if (TextUtils.isEmpty(first) || TextUtils.isEmpty(second)){
+                                list.add(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()) );
+                                continue;
                             }
-                        }
+                            StringBuffer stringBuffer = new StringBuffer();
+                            if (first.contains("[") && first.contains("]")){
+                                stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("]")));
+                            }else if (first.contains("[") && first.contains("】")){
+                                stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("】")));
+                            }else if (first.contains("【") && first.contains("】")){
+                                stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("】")));
+                            }else if (first.contains("【") && first.contains("]")){
+                                stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("]")));
+                            }
 
+                            if (second.contains("[") && second.contains("]")){
+                                stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("]")));
+                            }else if (second.contains("[") && second.contains("】")){
+                                stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("】")));
+                            }else if (second.contains("【") && second.contains("】")){
+                                stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("】")));
+                            }else if (second.contains("【") && second.contains("]")){
+                                stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("]")));
+                            }
+
+                            String finalCode = stringBuffer.toString().trim();
+                            if (!TextUtils.isEmpty(finalCode)){
+                                String jobCode = finalCode.substring(1);
+                                if (jobs.containsKey(jobCode)){
+                                    Integer integer = jobs.get(jobCode);
+                                    if (row.getCell(4).getCellType() == CellType.NUMERIC){
+                                        int has = (int) row.getCell(4).getNumericCellValue();
+                                        if (has != integer){
+                                            jobs.replace(jobCode , has);
+                                        }
+                                    }
+
+                                }
+                            }
+
+                        }catch (NullPointerException e){
+
+                        }
                     }
-                    // 读完一行后换行
+
                 }
             }}
         }
 
+        return list;
     }
 
     // 读取，指定sheet表及数据

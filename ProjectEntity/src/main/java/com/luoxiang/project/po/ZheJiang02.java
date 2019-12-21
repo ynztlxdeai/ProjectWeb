@@ -1,6 +1,9 @@
 package com.luoxiang.project.po;
 
 public class ZheJiang02 {
+
+    private Integer priId;
+
     private String zhaoLuDanWei;
 
     private String jobCode;
@@ -36,6 +39,16 @@ public class ZheJiang02 {
     private String zhuanYe;
 
     private String beiZhu;
+
+    private Integer hasNums;
+
+    public Integer getPriId() {
+        return priId;
+    }
+
+    public void setPriId(Integer priId) {
+        this.priId = priId;
+    }
 
     public String getZhaoLuDanWei() {
         return zhaoLuDanWei;
@@ -180,4 +193,13 @@ public class ZheJiang02 {
     public void setBeiZhu(String beiZhu) {
         this.beiZhu = beiZhu == null ? null : beiZhu.trim();
     }
+
+    public Integer getHasNums() {
+        return hasNums;
+    }
+
+    public void setHasNums(Integer hasNums) {
+        this.hasNums = hasNums;
+    }
+
 }

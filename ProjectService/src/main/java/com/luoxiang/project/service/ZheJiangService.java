@@ -1,5 +1,10 @@
 package com.luoxiang.project.service;
 
+import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.po.ZheJiang02;
+
+import java.util.List;
+
 /**
  * projectName: 	    com.luoxiang.parent
  * packageName:	        com.luoxiang.project.service
@@ -15,4 +20,9 @@ package com.luoxiang.project.service;
  */
 
 
-interface ZheJiangService {}
+public interface ZheJiangService {
+
+    List<ZheJiang02> selectAll();
+
+    CommBean update(int limit);
+}

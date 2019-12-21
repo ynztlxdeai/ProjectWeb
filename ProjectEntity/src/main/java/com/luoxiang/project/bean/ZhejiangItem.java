@@ -15,4 +15,15 @@ package com.luoxiang.project.bean;
  */
 
 
-class ZhejiangItem {}
+public class ZhejiangItem {
+    public String jobCode;
+    public String jobName;
+    public String unitName;
+    public String needNums;
+    public int hasNums;
+
+    @Override
+    public String toString() {
+        return "ZhejiangItem{" + "jobCode='" + jobCode + '\'' + ", jobName='" + jobName + '\'' + ", unitName='" + unitName + '\'' + ", needNums='" + needNums + '\'' + ", hasNums=" + hasNums + '}' + "\n";
+    }
+}

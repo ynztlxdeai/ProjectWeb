@@ -1,5 +1,14 @@
 package com.luoxiang.project;
 
+import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.service.ZheJiangService;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+
 /**
  * projectName: 	    com.luoxiang.parent
  * packageName:	        com.luoxiang.project
@@ -14,5 +23,16 @@ package com.luoxiang.project;
  * upDateDesc:	        TODO
  */
 
+@Controller
+@RequestMapping("zhejiang")
+public class ZhejiangController {
+    @Resource
+    public ZheJiangService zheJiangServiceImpl;
 
-class ZhejiangController {}
+
+    @RequestMapping("update")
+    public @ResponseBody
+    CommBean update(int limit){
+        return zheJiangServiceImpl.update(limit);
+    }
+}

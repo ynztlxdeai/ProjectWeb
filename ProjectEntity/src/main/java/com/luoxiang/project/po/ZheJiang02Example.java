@@ -104,6 +104,66 @@ public class ZheJiang02Example {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andPriIdIsNull() {
+            addCriterion("pri_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdIsNotNull() {
+            addCriterion("pri_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdEqualTo(Integer value) {
+            addCriterion("pri_id =", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdNotEqualTo(Integer value) {
+            addCriterion("pri_id <>", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdGreaterThan(Integer value) {
+            addCriterion("pri_id >", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pri_id >=", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdLessThan(Integer value) {
+            addCriterion("pri_id <", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pri_id <=", value, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdIn(List<Integer> values) {
+            addCriterion("pri_id in", values, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdNotIn(List<Integer> values) {
+            addCriterion("pri_id not in", values, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdBetween(Integer value1, Integer value2) {
+            addCriterion("pri_id between", value1, value2, "priId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pri_id not between", value1, value2, "priId");
+            return (Criteria) this;
+        }
+
         public Criteria andZhaoLuDanWeiIsNull() {
             addCriterion("zhao_lu_dan_wei is null");
             return (Criteria) this;
@@ -1361,6 +1421,66 @@ public class ZheJiang02Example {
 
         public Criteria andBeiZhuNotBetween(String value1, String value2) {
             addCriterion("bei_zhu not between", value1, value2, "beiZhu");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsIsNull() {
+            addCriterion("has_nums is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsIsNotNull() {
+            addCriterion("has_nums is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsEqualTo(Integer value) {
+            addCriterion("has_nums =", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsNotEqualTo(Integer value) {
+            addCriterion("has_nums <>", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsGreaterThan(Integer value) {
+            addCriterion("has_nums >", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("has_nums >=", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsLessThan(Integer value) {
+            addCriterion("has_nums <", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsLessThanOrEqualTo(Integer value) {
+            addCriterion("has_nums <=", value, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsIn(List<Integer> values) {
+            addCriterion("has_nums in", values, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsNotIn(List<Integer> values) {
+            addCriterion("has_nums not in", values, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsBetween(Integer value1, Integer value2) {
+            addCriterion("has_nums between", value1, value2, "hasNums");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasNumsNotBetween(Integer value1, Integer value2) {
+            addCriterion("has_nums not between", value1, value2, "hasNums");
             return (Criteria) this;
         }
     }

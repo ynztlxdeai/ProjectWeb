@@ -60,12 +60,10 @@ public class ZheJiangServiceImpl implements ZheJiangService {
                 Map.Entry<String, Integer> next = iterator.next();
                 Integer                    value = next.getValue();
                 String                     key  = next.getKey();
-                if (key.equals("13301002003000001")){
-                    System.out.println(String.format("key = %s , value = %d" , key , value));
-                }
+
                 ZheJiang02 zheJiang02 = allMap.get(key);
-                zheJiang02.setHasNums(value);
-                if (value <= limit){
+
+                if (value <= limit && zheJiang02.getZhuanYe().contains("电子信息工程")){
                     ZhejiangItem item = new ZhejiangItem();
                     item.hasNums = value;
                     item.jobCode = zheJiang02.getJobCode();
@@ -74,11 +72,10 @@ public class ZheJiangServiceImpl implements ZheJiangService {
                     item.unitName = zheJiang02.getZhaoLuDanWei();
                     items.add(item);
                 }
-                if (value == zheJiang02.getHasNums()){
-                    continue;
+                if (value > zheJiang02.getHasNums()){
+                    zheJiang02.setHasNums(value);
+                    zheJiang02Mapper.updateByPrimaryKey(zheJiang02);
                 }
-
-                zheJiang02Mapper.updateByPrimaryKey(zheJiang02);
             }
             commBean.setCode(zheJiang02Mapper.selectAll().size());
             commBean.setMsg("成功");

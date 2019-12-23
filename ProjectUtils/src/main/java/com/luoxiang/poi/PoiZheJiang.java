@@ -53,6 +53,7 @@ public class PoiZheJiang {
                                 String first = row.getCell(2).toString();
 
                                 String finalCode = first.toString().trim();
+
                                 if (!TextUtils.isEmpty(finalCode)){
 
                                     if (jobs.containsKey(finalCode)){
@@ -72,9 +73,7 @@ public class PoiZheJiang {
                                             }
                                         }
 
-                                        if (finalCode.equals("13301002003000001")){
-                                            System.out.println(String.format("key = %s , value = %d" , finalCode , has));
-                                        }
+
                                     }
                                 }
 

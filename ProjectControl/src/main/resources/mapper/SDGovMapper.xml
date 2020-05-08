@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luoxiang.project.mapper.SDGovMapper" >
+  <resultMap id="BaseResultMap" type="com.luoxiang.project.po.SDGov" >
+    <id column="position" property="position" jdbcType="INTEGER" />
+    <result column="zhao_lu_ji_guan" property="zhaoLuJiGuan" jdbcType="VARCHAR" />
+    <result column="yong_ren_dan_wei" property="yongRenDanWei" jdbcType="VARCHAR" />
+    <result column="zhi_wei_dai_ma" property="zhiWeiDaiMa" jdbcType="VARCHAR" />
+    <result column="zhi_wei_ming_cheng" property="zhiWeiMingCheng" jdbcType="VARCHAR" />
+    <result column="kao_shi_lei_bie" property="kaoShiLeiBie" jdbcType="VARCHAR" />
+    <result column="zhi_wei_jian_jie" property="zhiWeiJianJie" jdbcType="VARCHAR" />
+    <result column="lu_yong_ji_hua" property="luYongJiHua" jdbcType="VARCHAR" />
+    <result column="zhao_lu_dui_xiang" property="zhaoLuDuiXiang" jdbcType="VARCHAR" />
+    <result column="xue_li" property="xueLi" jdbcType="VARCHAR" />
+    <result column="xue_wei" property="xueWei" jdbcType="VARCHAR" />
+    <result column="zhuan_ke" property="zhuanKe" jdbcType="VARCHAR" />
+    <result column="ben_ke" property="benKe" jdbcType="VARCHAR" />
+    <result column="yan_jiu_sheng" property="yanJiuSheng" jdbcType="VARCHAR" />
+    <result column="xing_bie" property="xingBie" jdbcType="VARCHAR" />
+    <result column="hu_ji" property="huJi" jdbcType="VARCHAR" />
+    <result column="zheng_zhi_mian_mao" property="zhengZhiMianMao" jdbcType="VARCHAR" />
+    <result column="gong_zuo_nian_xian" property="gongZuoNianXian" jdbcType="VARCHAR" />
+    <result column="zhuan_ye_kao_shi" property="zhuanYeKaoShi" jdbcType="VARCHAR" />
+    <result column="ti_jian" property="tiJian" jdbcType="VARCHAR" />
+    <result column="di_dian" property="diDian" jdbcType="VARCHAR" />
+    <result column="bei_zhu" property="beiZhu" jdbcType="VARCHAR" />
+    <result column="wang_zhan" property="wangZhan" jdbcType="VARCHAR" />
+    <result column="dian_hua_1" property="dianHua1" jdbcType="VARCHAR" />
+    <result column="dian_hua_2" property="dianHua2" jdbcType="VARCHAR" />
+    <result column="pass_check" property="passCheck" jdbcType="VARCHAR" />
+    <result column="pass_pay" property="passPay" jdbcType="VARCHAR" />
+    <result column="pass_pay_int" property="passPayInt" jdbcType="INTEGER" />
+    <result column="pass_check_int" property="passCheckInt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    position, zhao_lu_ji_guan, yong_ren_dan_wei, zhi_wei_dai_ma, zhi_wei_ming_cheng, 
+    kao_shi_lei_bie, zhi_wei_jian_jie, lu_yong_ji_hua, zhao_lu_dui_xiang, xue_li, xue_wei, 
+    zhuan_ke, ben_ke, yan_jiu_sheng, xing_bie, hu_ji, zheng_zhi_mian_mao, gong_zuo_nian_xian, 
+    zhuan_ye_kao_shi, ti_jian, di_dian, bei_zhu, wang_zhan, dian_hua_1, dian_hua_2, pass_check, 
+    pass_pay, pass_pay_int, pass_check_int
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.SDGovExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_d_gov
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_d_gov
+    where position = #{position,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_d_gov
+    where position = #{position,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luoxiang.project.po.SDGovExample" >
+    delete from s_d_gov
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luoxiang.project.po.SDGov" >
+    insert into s_d_gov (position, zhao_lu_ji_guan, yong_ren_dan_wei, 
+      zhi_wei_dai_ma, zhi_wei_ming_cheng, kao_shi_lei_bie, 
+      zhi_wei_jian_jie, lu_yong_ji_hua, zhao_lu_dui_xiang, 
+      xue_li, xue_wei, zhuan_ke, 
+      ben_ke, yan_jiu_sheng, xing_bie, 
+      hu_ji, zheng_zhi_mian_mao, gong_zuo_nian_xian, 
+      zhuan_ye_kao_shi, ti_jian, di_dian, 
+      bei_zhu, wang_zhan, dian_hua_1, 
+      dian_hua_2, pass_check, pass_pay, 
+      pass_pay_int, pass_check_int)
+    values (#{position,jdbcType=INTEGER}, #{zhaoLuJiGuan,jdbcType=VARCHAR}, #{yongRenDanWei,jdbcType=VARCHAR}, 
+      #{zhiWeiDaiMa,jdbcType=VARCHAR}, #{zhiWeiMingCheng,jdbcType=VARCHAR}, #{kaoShiLeiBie,jdbcType=VARCHAR}, 
+      #{zhiWeiJianJie,jdbcType=VARCHAR}, #{luYongJiHua,jdbcType=VARCHAR}, #{zhaoLuDuiXiang,jdbcType=VARCHAR}, 
+      #{xueLi,jdbcType=VARCHAR}, #{xueWei,jdbcType=VARCHAR}, #{zhuanKe,jdbcType=VARCHAR}, 
+      #{benKe,jdbcType=VARCHAR}, #{yanJiuSheng,jdbcType=VARCHAR}, #{xingBie,jdbcType=VARCHAR}, 
+      #{huJi,jdbcType=VARCHAR}, #{zhengZhiMianMao,jdbcType=VARCHAR}, #{gongZuoNianXian,jdbcType=VARCHAR}, 
+      #{zhuanYeKaoShi,jdbcType=VARCHAR}, #{tiJian,jdbcType=VARCHAR}, #{diDian,jdbcType=VARCHAR}, 
+      #{beiZhu,jdbcType=VARCHAR}, #{wangZhan,jdbcType=VARCHAR}, #{dianHua1,jdbcType=VARCHAR}, 
+      #{dianHua2,jdbcType=VARCHAR}, #{passCheck,jdbcType=VARCHAR}, #{passPay,jdbcType=VARCHAR}, 
+      #{passPayInt,jdbcType=INTEGER}, #{passCheckInt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.luoxiang.project.po.SDGov" >
+    insert into s_d_gov
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="zhaoLuJiGuan != null" >
+        zhao_lu_ji_guan,
+      </if>
+      <if test="yongRenDanWei != null" >
+        yong_ren_dan_wei,
+      </if>
+      <if test="zhiWeiDaiMa != null" >
+        zhi_wei_dai_ma,
+      </if>
+      <if test="zhiWeiMingCheng != null" >
+        zhi_wei_ming_cheng,
+      </if>
+      <if test="kaoShiLeiBie != null" >
+        kao_shi_lei_bie,
+      </if>
+      <if test="zhiWeiJianJie != null" >
+        zhi_wei_jian_jie,
+      </if>
+      <if test="luYongJiHua != null" >
+        lu_yong_ji_hua,
+      </if>
+      <if test="zhaoLuDuiXiang != null" >
+        zhao_lu_dui_xiang,
+      </if>
+      <if test="xueLi != null" >
+        xue_li,
+      </if>
+      <if test="xueWei != null" >
+        xue_wei,
+      </if>
+      <if test="zhuanKe != null" >
+        zhuan_ke,
+      </if>
+      <if test="benKe != null" >
+        ben_ke,
+      </if>
+      <if test="yanJiuSheng != null" >
+        yan_jiu_sheng,
+      </if>
+      <if test="xingBie != null" >
+        xing_bie,
+      </if>
+      <if test="huJi != null" >
+        hu_ji,
+      </if>
+      <if test="zhengZhiMianMao != null" >
+        zheng_zhi_mian_mao,
+      </if>
+      <if test="gongZuoNianXian != null" >
+        gong_zuo_nian_xian,
+      </if>
+      <if test="zhuanYeKaoShi != null" >
+        zhuan_ye_kao_shi,
+      </if>
+      <if test="tiJian != null" >
+        ti_jian,
+      </if>
+      <if test="diDian != null" >
+        di_dian,
+      </if>
+      <if test="beiZhu != null" >
+        bei_zhu,
+      </if>
+      <if test="wangZhan != null" >
+        wang_zhan,
+      </if>
+      <if test="dianHua1 != null" >
+        dian_hua_1,
+      </if>
+      <if test="dianHua2 != null" >
+        dian_hua_2,
+      </if>
+      <if test="passCheck != null" >
+        pass_check,
+      </if>
+      <if test="passPay != null" >
+        pass_pay,
+      </if>
+      <if test="passPayInt != null" >
+        pass_pay_int,
+      </if>
+      <if test="passCheckInt != null" >
+        pass_check_int,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="position != null" >
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="zhaoLuJiGuan != null" >
+        #{zhaoLuJiGuan,jdbcType=VARCHAR},
+      </if>
+      <if test="yongRenDanWei != null" >
+        #{yongRenDanWei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiDaiMa != null" >
+        #{zhiWeiDaiMa,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiMingCheng != null" >
+        #{zhiWeiMingCheng,jdbcType=VARCHAR},
+      </if>
+      <if test="kaoShiLeiBie != null" >
+        #{kaoShiLeiBie,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiJianJie != null" >
+        #{zhiWeiJianJie,jdbcType=VARCHAR},
+      </if>
+      <if test="luYongJiHua != null" >
+        #{luYongJiHua,jdbcType=VARCHAR},
+      </if>
+      <if test="zhaoLuDuiXiang != null" >
+        #{zhaoLuDuiXiang,jdbcType=VARCHAR},
+      </if>
+      <if test="xueLi != null" >
+        #{xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="xueWei != null" >
+        #{xueWei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanKe != null" >
+        #{zhuanKe,jdbcType=VARCHAR},
+      </if>
+      <if test="benKe != null" >
+        #{benKe,jdbcType=VARCHAR},
+      </if>
+      <if test="yanJiuSheng != null" >
+        #{yanJiuSheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xingBie != null" >
+        #{xingBie,jdbcType=VARCHAR},
+      </if>
+      <if test="huJi != null" >
+        #{huJi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhengZhiMianMao != null" >
+        #{zhengZhiMianMao,jdbcType=VARCHAR},
+      </if>
+      <if test="gongZuoNianXian != null" >
+        #{gongZuoNianXian,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanYeKaoShi != null" >
+        #{zhuanYeKaoShi,jdbcType=VARCHAR},
+      </if>
+      <if test="tiJian != null" >
+        #{tiJian,jdbcType=VARCHAR},
+      </if>
+      <if test="diDian != null" >
+        #{diDian,jdbcType=VARCHAR},
+      </if>
+      <if test="beiZhu != null" >
+        #{beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="wangZhan != null" >
+        #{wangZhan,jdbcType=VARCHAR},
+      </if>
+      <if test="dianHua1 != null" >
+        #{dianHua1,jdbcType=VARCHAR},
+      </if>
+      <if test="dianHua2 != null" >
+        #{dianHua2,jdbcType=VARCHAR},
+      </if>
+      <if test="passCheck != null" >
+        #{passCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="passPay != null" >
+        #{passPay,jdbcType=VARCHAR},
+      </if>
+      <if test="passPayInt != null" >
+        #{passPayInt,jdbcType=INTEGER},
+      </if>
+      <if test="passCheckInt != null" >
+        #{passCheckInt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luoxiang.project.po.SDGovExample" resultType="java.lang.Integer" >
+    select count(*) from s_d_gov
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_d_gov
+    <set >
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhaoLuJiGuan != null" >
+        zhao_lu_ji_guan = #{record.zhaoLuJiGuan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yongRenDanWei != null" >
+        yong_ren_dan_wei = #{record.yongRenDanWei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiDaiMa != null" >
+        zhi_wei_dai_ma = #{record.zhiWeiDaiMa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiMingCheng != null" >
+        zhi_wei_ming_cheng = #{record.zhiWeiMingCheng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kaoShiLeiBie != null" >
+        kao_shi_lei_bie = #{record.kaoShiLeiBie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiWeiJianJie != null" >
+        zhi_wei_jian_jie = #{record.zhiWeiJianJie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.luYongJiHua != null" >
+        lu_yong_ji_hua = #{record.luYongJiHua,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhaoLuDuiXiang != null" >
+        zhao_lu_dui_xiang = #{record.zhaoLuDuiXiang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueLi != null" >
+        xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueWei != null" >
+        xue_wei = #{record.xueWei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuanKe != null" >
+        zhuan_ke = #{record.zhuanKe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.benKe != null" >
+        ben_ke = #{record.benKe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yanJiuSheng != null" >
+        yan_jiu_sheng = #{record.yanJiuSheng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xingBie != null" >
+        xing_bie = #{record.xingBie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huJi != null" >
+        hu_ji = #{record.huJi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhengZhiMianMao != null" >
+        zheng_zhi_mian_mao = #{record.zhengZhiMianMao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gongZuoNianXian != null" >
+        gong_zuo_nian_xian = #{record.gongZuoNianXian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuanYeKaoShi != null" >
+        zhuan_ye_kao_shi = #{record.zhuanYeKaoShi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiJian != null" >
+        ti_jian = #{record.tiJian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diDian != null" >
+        di_dian = #{record.diDian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beiZhu != null" >
+        bei_zhu = #{record.beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wangZhan != null" >
+        wang_zhan = #{record.wangZhan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dianHua1 != null" >
+        dian_hua_1 = #{record.dianHua1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dianHua2 != null" >
+        dian_hua_2 = #{record.dianHua2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passCheck != null" >
+        pass_check = #{record.passCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passPay != null" >
+        pass_pay = #{record.passPay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passPayInt != null" >
+        pass_pay_int = #{record.passPayInt,jdbcType=INTEGER},
+      </if>
+      <if test="record.passCheckInt != null" >
+        pass_check_int = #{record.passCheckInt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_d_gov
+    set position = #{record.position,jdbcType=INTEGER},
+      zhao_lu_ji_guan = #{record.zhaoLuJiGuan,jdbcType=VARCHAR},
+      yong_ren_dan_wei = #{record.yongRenDanWei,jdbcType=VARCHAR},
+      zhi_wei_dai_ma = #{record.zhiWeiDaiMa,jdbcType=VARCHAR},
+      zhi_wei_ming_cheng = #{record.zhiWeiMingCheng,jdbcType=VARCHAR},
+      kao_shi_lei_bie = #{record.kaoShiLeiBie,jdbcType=VARCHAR},
+      zhi_wei_jian_jie = #{record.zhiWeiJianJie,jdbcType=VARCHAR},
+      lu_yong_ji_hua = #{record.luYongJiHua,jdbcType=VARCHAR},
+      zhao_lu_dui_xiang = #{record.zhaoLuDuiXiang,jdbcType=VARCHAR},
+      xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      xue_wei = #{record.xueWei,jdbcType=VARCHAR},
+      zhuan_ke = #{record.zhuanKe,jdbcType=VARCHAR},
+      ben_ke = #{record.benKe,jdbcType=VARCHAR},
+      yan_jiu_sheng = #{record.yanJiuSheng,jdbcType=VARCHAR},
+      xing_bie = #{record.xingBie,jdbcType=VARCHAR},
+      hu_ji = #{record.huJi,jdbcType=VARCHAR},
+      zheng_zhi_mian_mao = #{record.zhengZhiMianMao,jdbcType=VARCHAR},
+      gong_zuo_nian_xian = #{record.gongZuoNianXian,jdbcType=VARCHAR},
+      zhuan_ye_kao_shi = #{record.zhuanYeKaoShi,jdbcType=VARCHAR},
+      ti_jian = #{record.tiJian,jdbcType=VARCHAR},
+      di_dian = #{record.diDian,jdbcType=VARCHAR},
+      bei_zhu = #{record.beiZhu,jdbcType=VARCHAR},
+      wang_zhan = #{record.wangZhan,jdbcType=VARCHAR},
+      dian_hua_1 = #{record.dianHua1,jdbcType=VARCHAR},
+      dian_hua_2 = #{record.dianHua2,jdbcType=VARCHAR},
+      pass_check = #{record.passCheck,jdbcType=VARCHAR},
+      pass_pay = #{record.passPay,jdbcType=VARCHAR},
+      pass_pay_int = #{record.passPayInt,jdbcType=INTEGER},
+      pass_check_int = #{record.passCheckInt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luoxiang.project.po.SDGov" >
+    update s_d_gov
+    <set >
+      <if test="zhaoLuJiGuan != null" >
+        zhao_lu_ji_guan = #{zhaoLuJiGuan,jdbcType=VARCHAR},
+      </if>
+      <if test="yongRenDanWei != null" >
+        yong_ren_dan_wei = #{yongRenDanWei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiDaiMa != null" >
+        zhi_wei_dai_ma = #{zhiWeiDaiMa,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiMingCheng != null" >
+        zhi_wei_ming_cheng = #{zhiWeiMingCheng,jdbcType=VARCHAR},
+      </if>
+      <if test="kaoShiLeiBie != null" >
+        kao_shi_lei_bie = #{kaoShiLeiBie,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiWeiJianJie != null" >
+        zhi_wei_jian_jie = #{zhiWeiJianJie,jdbcType=VARCHAR},
+      </if>
+      <if test="luYongJiHua != null" >
+        lu_yong_ji_hua = #{luYongJiHua,jdbcType=VARCHAR},
+      </if>
+      <if test="zhaoLuDuiXiang != null" >
+        zhao_lu_dui_xiang = #{zhaoLuDuiXiang,jdbcType=VARCHAR},
+      </if>
+      <if test="xueLi != null" >
+        xue_li = #{xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="xueWei != null" >
+        xue_wei = #{xueWei,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanKe != null" >
+        zhuan_ke = #{zhuanKe,jdbcType=VARCHAR},
+      </if>
+      <if test="benKe != null" >
+        ben_ke = #{benKe,jdbcType=VARCHAR},
+      </if>
+      <if test="yanJiuSheng != null" >
+        yan_jiu_sheng = #{yanJiuSheng,jdbcType=VARCHAR},
+      </if>
+      <if test="xingBie != null" >
+        xing_bie = #{xingBie,jdbcType=VARCHAR},
+      </if>
+      <if test="huJi != null" >
+        hu_ji = #{huJi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhengZhiMianMao != null" >
+        zheng_zhi_mian_mao = #{zhengZhiMianMao,jdbcType=VARCHAR},
+      </if>
+      <if test="gongZuoNianXian != null" >
+        gong_zuo_nian_xian = #{gongZuoNianXian,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanYeKaoShi != null" >
+        zhuan_ye_kao_shi = #{zhuanYeKaoShi,jdbcType=VARCHAR},
+      </if>
+      <if test="tiJian != null" >
+        ti_jian = #{tiJian,jdbcType=VARCHAR},
+      </if>
+      <if test="diDian != null" >
+        di_dian = #{diDian,jdbcType=VARCHAR},
+      </if>
+      <if test="beiZhu != null" >
+        bei_zhu = #{beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="wangZhan != null" >
+        wang_zhan = #{wangZhan,jdbcType=VARCHAR},
+      </if>
+      <if test="dianHua1 != null" >
+        dian_hua_1 = #{dianHua1,jdbcType=VARCHAR},
+      </if>
+      <if test="dianHua2 != null" >
+        dian_hua_2 = #{dianHua2,jdbcType=VARCHAR},
+      </if>
+      <if test="passCheck != null" >
+        pass_check = #{passCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="passPay != null" >
+        pass_pay = #{passPay,jdbcType=VARCHAR},
+      </if>
+      <if test="passPayInt != null" >
+        pass_pay_int = #{passPayInt,jdbcType=INTEGER},
+      </if>
+      <if test="passCheckInt != null" >
+        pass_check_int = #{passCheckInt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where position = #{position,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luoxiang.project.po.SDGov" >
+    update s_d_gov
+    set zhao_lu_ji_guan = #{zhaoLuJiGuan,jdbcType=VARCHAR},
+      yong_ren_dan_wei = #{yongRenDanWei,jdbcType=VARCHAR},
+      zhi_wei_dai_ma = #{zhiWeiDaiMa,jdbcType=VARCHAR},
+      zhi_wei_ming_cheng = #{zhiWeiMingCheng,jdbcType=VARCHAR},
+      kao_shi_lei_bie = #{kaoShiLeiBie,jdbcType=VARCHAR},
+      zhi_wei_jian_jie = #{zhiWeiJianJie,jdbcType=VARCHAR},
+      lu_yong_ji_hua = #{luYongJiHua,jdbcType=VARCHAR},
+      zhao_lu_dui_xiang = #{zhaoLuDuiXiang,jdbcType=VARCHAR},
+      xue_li = #{xueLi,jdbcType=VARCHAR},
+      xue_wei = #{xueWei,jdbcType=VARCHAR},
+      zhuan_ke = #{zhuanKe,jdbcType=VARCHAR},
+      ben_ke = #{benKe,jdbcType=VARCHAR},
+      yan_jiu_sheng = #{yanJiuSheng,jdbcType=VARCHAR},
+      xing_bie = #{xingBie,jdbcType=VARCHAR},
+      hu_ji = #{huJi,jdbcType=VARCHAR},
+      zheng_zhi_mian_mao = #{zhengZhiMianMao,jdbcType=VARCHAR},
+      gong_zuo_nian_xian = #{gongZuoNianXian,jdbcType=VARCHAR},
+      zhuan_ye_kao_shi = #{zhuanYeKaoShi,jdbcType=VARCHAR},
+      ti_jian = #{tiJian,jdbcType=VARCHAR},
+      di_dian = #{diDian,jdbcType=VARCHAR},
+      bei_zhu = #{beiZhu,jdbcType=VARCHAR},
+      wang_zhan = #{wangZhan,jdbcType=VARCHAR},
+      dian_hua_1 = #{dianHua1,jdbcType=VARCHAR},
+      dian_hua_2 = #{dianHua2,jdbcType=VARCHAR},
+      pass_check = #{passCheck,jdbcType=VARCHAR},
+      pass_pay = #{passPay,jdbcType=VARCHAR},
+      pass_pay_int = #{passPayInt,jdbcType=INTEGER},
+      pass_check_int = #{passCheckInt,jdbcType=INTEGER}
+    where position = #{position,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_d_gov
+  </select>
+
+</mapper>

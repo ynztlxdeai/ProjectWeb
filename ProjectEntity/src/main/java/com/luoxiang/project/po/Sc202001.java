@@ -156,6 +156,9 @@ public class Sc202001 {
     }
 
     public String getTrend() {
+        if (trend == null || trend == ""){
+            return "";
+        }
         return trend;
     }
 

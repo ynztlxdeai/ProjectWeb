@@ -1,5 +1,7 @@
 package com.luoxiang.poi;
 
+import com.luoxiang.project.po.Sc202001;
+
 import org.apache.http.util.TextUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -31,7 +33,7 @@ public class PoiSC {
     public static final String POI_ORIGIN_PATH = "";
 
 
-    public static List<String> checkHasNums(HashMap<String, Integer> jobs)
+    public static List<String> checkHasNums(HashMap<String,Sc202001> jobs)
             throws Exception
     {
         ArrayList<String> list    = new ArrayList<>();
@@ -49,7 +51,6 @@ public class PoiSC {
                         HSSFRow row = sheet.getRow(j);
                         if (row != null) {
 
-
                                 String first = row.getCell(2).toString();
 
                                 String finalCode = first.toString().trim();
@@ -57,22 +58,23 @@ public class PoiSC {
                                 if (!TextUtils.isEmpty(finalCode)){
 
                                     if (jobs.containsKey(finalCode)){
-                                        Integer integer = jobs.get(finalCode);
+                                        Sc202001 current = jobs.get(finalCode);
+                                        Integer integer = current.getTotalNums();
                                         int has = 0;
-                                        if (row.getCell(5).getCellType() == CellType.NUMERIC){
-                                            has = (int) row.getCell(5).getNumericCellValue();
-                                            if (has != integer){
-                                                jobs.replace(finalCode , has);
-                                            }
+                                        if (row.getCell(3).getCellType() == CellType.NUMERIC){
+                                            has = (int) row.getCell(3).getNumericCellValue();
                                         }else {
-                                            String s = row.getCell(5)
-                                                          .toString();
+                                            String s = row.getCell(3).toString();
                                             has = Integer.parseInt(s);
-                                            if (has != integer){
-                                                jobs.replace(finalCode , has);
-                                            }
                                         }
 
+                                        if (has != integer && has > integer){
+                                            current.setTotalNums(has);
+                                        }
+                                        StringBuffer buffer = new StringBuffer(current.getTrend());
+                                        buffer.append(has).append(",");
+                                        current.setTrend(buffer.toString());
+                                        jobs.replace(finalCode , current);
 
                                     }
                                 }

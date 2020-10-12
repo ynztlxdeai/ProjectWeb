@@ -19,4 +19,6 @@ import com.luoxiang.project.bean.CommBean;
 
 public interface Jd2020Service {
     CommBean update();
+
+    CommBean updateJN(String cookies, String examid);
 }

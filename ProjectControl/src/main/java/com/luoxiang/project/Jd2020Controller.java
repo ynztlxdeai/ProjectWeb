@@ -50,64 +50,12 @@ public class Jd2020Controller {
 
     @RequestMapping("updateJNJsp")
     public String updateJNJsp(Model model){
-        String cookies = "JSESSIONID=61557A9EE1DE293DBF92D71AD3E7B76F; JSESSIONID=BC9E2546EE148D6F2B9DDC63BC767FAA; Hm_lvt_ad65617c1b92d555455e06647127f54e=1602316457,1602330094,1602470811,1602483393; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1602483393; SERVERID=c067d38b3d290d8792062bcde9fddf61|1602484040|1602483391";
+        String cookies = "JSESSIONID=0DE746DF29F576B1AFB52A1D9556B60F; JSESSIONID=BC9E2546EE148D6F2B9DDC63BC767FAA; Hm_lvt_ad65617c1b92d555455e06647127f54e=1602316457,1602330094,1602470811,1602483393; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1602569043; SERVERID=bd86a84024ed8a496627fcea0473731c|1602569060|1602557170";
         String examid = "71005279ef64a0ac";
         CommBean<ArrayList<Jd2020JnBean>> commBean =  jd2020ServiceImpl.updateJN(cookies , examid);
         StringBuffer stringBuffer = new StringBuffer();
         ArrayList<Jd2020JnBean>           data     = commBean.getData();
-        for (int i = 0; i < data.size(); i++) {
-            /**
-             *
-             <ul>
-             <li>咖啡</li>
-             <li>茶</li>
-             <li>牛奶</li>
-             </ul>
-             */
-            stringBuffer.append("<li>");
-            stringBuffer.append(data.get(i).toString());
-            stringBuffer.append("</li>");
-        }
-        model.addAttribute("jdwz_data" , stringBuffer.toString());
-        return "jdwz";
-    }
-
-    /**
-     *
-     *
-     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-     <html>
-     <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <title>Insert title here</title>
-     </head>
-     <body>
-     <form method="post" action="${pageContext.request.contextPath }/enterprise/updateUsername">
-     <h2>文件上传</h2>
-     文件:<input type="txt" name="txt"/><br/><br/>
-     <input type="submit" value="上传"/>
-     </form>
-     </body>
-     </html>
-
-     * @return
-     */
-    @RequestMapping("updateJNHtml")
-    public String updateJNHtml(){
-        String                            cookies  = "JSESSIONID=61557A9EE1DE293DBF92D71AD3E7B76F; JSESSIONID=BC9E2546EE148D6F2B9DDC63BC767FAA; Hm_lvt_ad65617c1b92d555455e06647127f54e=1602316457,1602330094,1602470811,1602483393; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1602483393; SERVERID=c067d38b3d290d8792062bcde9fddf61|1602484040|1602483391";
-        String                            examid   = "71005279ef64a0ac";
-        CommBean<ArrayList<Jd2020JnBean>> commBean =  jd2020ServiceImpl.updateJN(cookies , examid);
-        StringBuffer stringBuffer = new StringBuffer();
-        ArrayList<Jd2020JnBean>           data     = commBean.getData();
-        stringBuffer.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
-        stringBuffer.append("<html>");
-        stringBuffer.append("<head>");
-        stringBuffer.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-        stringBuffer.append("<title>Insert title here</title>");
-        stringBuffer.append("</head>");
-        stringBuffer.append("<body>");
         stringBuffer.append("<ul>");
-
         for (int i = 0; i < data.size(); i++) {
             /**
              *
@@ -122,9 +70,8 @@ public class Jd2020Controller {
             stringBuffer.append("</li>");
         }
         stringBuffer.append("</ul>");
-        stringBuffer.append("</body>");
-        stringBuffer.append("</html>");
-        System.out.println(stringBuffer.toString());
-        return stringBuffer.toString();
+
+        model.addAttribute("jdwz_data" , stringBuffer.toString());
+        return "jdwz";
     }
 }

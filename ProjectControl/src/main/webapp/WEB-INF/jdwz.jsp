@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
-	${jdwz_data}
-</ul>
+${jdwz_data}
 </body>
 </html>

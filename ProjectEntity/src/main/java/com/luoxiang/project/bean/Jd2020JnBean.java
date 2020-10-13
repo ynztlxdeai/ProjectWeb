@@ -23,6 +23,7 @@ public class Jd2020JnBean implements Comparable<Jd2020JnBean>{
     private int    zprs;
     private String work_limit;
     private int    zwbkrs;
+    private String work_place;
 
     public int getId() { return id;}
 
@@ -52,6 +53,13 @@ public class Jd2020JnBean implements Comparable<Jd2020JnBean>{
 
     public void setZwbkrs(int zwbkrs) { this.zwbkrs = zwbkrs;}
 
+    public String getWork_place() {
+        return work_place;
+    }
+
+    public void setWork_place(String work_place) {
+        this.work_place = work_place;
+    }
 
     @Override
     public int compareTo(Jd2020JnBean o) {
@@ -60,6 +68,6 @@ public class Jd2020JnBean implements Comparable<Jd2020JnBean>{
 
     @Override
     public String toString() {
-        return "职位代码:" + zwdm + " 职位名称:" + zwmc + " 招聘人数:" + zprs + " 现有人数:" + zwbkrs;
+        return "职位代码:" + zwdm + ",职位名称:" + zwmc + ",工作地点:" + work_place + ",招聘人数:" + zprs + ",现有人数:" + zwbkrs;
     }
 }

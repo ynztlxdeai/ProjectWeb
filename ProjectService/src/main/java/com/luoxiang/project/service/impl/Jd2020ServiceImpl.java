@@ -126,7 +126,8 @@ public  class Jd2020ServiceImpl implements Jd2020Service{
                 "L906104",
                 "L906102",
                 "L906437",
-                "L906439"
+                "L906439",
+                "L904032"
                 };
         String   url        = "http://182.92.48.145:82/tyzpwb/stuchooseexam/getPositionInfo.htm";
         HttpClient      httpClient = HttpClients.createDefault();

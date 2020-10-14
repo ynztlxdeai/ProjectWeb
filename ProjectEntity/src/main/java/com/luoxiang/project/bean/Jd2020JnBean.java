@@ -63,7 +63,13 @@ public class Jd2020JnBean implements Comparable<Jd2020JnBean>{
 
     @Override
     public int compareTo(Jd2020JnBean o) {
-        return this.zwbkrs / this.zprs - o.zwbkrs / o.zprs;
+        if (this.zprs == o.zprs){
+            return this.zwbkrs - o.zwbkrs;
+        }
+        int firstI = this.zwbkrs / this.zprs ;
+        int secondI = o.zwbkrs / o.zprs;
+
+        return firstI == secondI ? this.zwbkrs % this.zprs - o.zwbkrs % o.zprs : firstI - secondI;
     }
 
     @Override

@@ -25,7 +25,24 @@ import java.util.ArrayList;
 
 public class TxtReader {
 
-    public static void  main(String[] args){
+    public static final int STEP_SIZE = 10;
+
+    public static void  main(String[] args) {
+
+        readIndex();
+    }
+
+    public static void readIndex(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Vincent\\Downloads\\2.txt"));
+
+
+        }catch (Exception e){
+
+        }
+    }
+
+    public static void readSingle(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Vincent\\Downloads\\1.txt"));
             String         line      = null;
@@ -43,11 +60,11 @@ public class TxtReader {
             reader.close();
 
             int start = 0;
-            int time = unneed.size() / 40;
+            int time = unneed.size() / STEP_SIZE;
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vincent\\Downloads\\1.sql"));
             for (int t = 0; t < time + 1 ; t++) {
-                StringBuffer stringBuffer = new StringBuffer("DELETE FROM gk_2021_copy WHERE zhuan_ye in (");
-                int lenth = start + 40;
+                StringBuffer stringBuffer = new StringBuffer("DELETE yi_bin_2020_02 WHERE zhuan_ye in (");
+                int lenth = start + STEP_SIZE;
                 if (time == t){
                     lenth = unneed.size();
                 }
@@ -56,7 +73,7 @@ public class TxtReader {
                 }
                 stringBuffer.append("'');");
                 bufferedWriter.write(stringBuffer.toString());
-                bufferedWriter.newLine();
+                //bufferedWriter.newLine();
 
                 System.out.println(stringBuffer);
                 System.out.println("");

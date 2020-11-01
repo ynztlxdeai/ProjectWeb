@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>宜宾2020-02</title>
+    <title>sample page</title>
 </head>
 <body>
-${yi_bin_data}
+${comm_data}
 </body>
 </html>

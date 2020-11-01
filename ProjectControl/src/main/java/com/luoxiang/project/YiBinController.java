@@ -40,6 +40,6 @@ public class YiBinController {
     @RequestMapping("updateJsp")
     public String updateJsp(Model model){
 
-        return "yi_bin";
+        return "comm";
     }
 }

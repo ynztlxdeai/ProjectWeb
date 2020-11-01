@@ -28,8 +28,8 @@ public class TxtReader {
     public static final int STEP_SIZE = 10;
 
     public static void  main(String[] args) {
-
-        readIndex();
+        readSingle();
+        //readIndex();
     }
 
     public static void readIndex(){
@@ -56,6 +56,7 @@ public class TxtReader {
                         unneed.add(line);
                     }
                 }
+                need.add(line);
             }
             reader.close();
 
@@ -63,17 +64,20 @@ public class TxtReader {
             int time = unneed.size() / STEP_SIZE;
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vincent\\Downloads\\1.sql"));
             for (int t = 0; t < time + 1 ; t++) {
-                StringBuffer stringBuffer = new StringBuffer("DELETE yi_bin_2020_02 WHERE zhuan_ye in (");
+                StringBuffer stringBuffer = new StringBuffer("DELETE FROM jiang_su_2020_02 WHERE zhuan_ye in (");
                 int lenth = start + STEP_SIZE;
                 if (time == t){
                     lenth = unneed.size();
                 }
                 for (int i = start ; i < lenth ; i++){
-                    stringBuffer.append(unneed.get(i)).append(",");
+                    stringBuffer.append(unneed.get(i));
+                    if (i < (lenth-1)){
+                        stringBuffer.append(",");
+                    }
                 }
-                stringBuffer.append("'');");
+                stringBuffer.append(");");
                 bufferedWriter.write(stringBuffer.toString());
-                //bufferedWriter.newLine();
+                bufferedWriter.newLine();
 
                 System.out.println(stringBuffer);
                 System.out.println("");

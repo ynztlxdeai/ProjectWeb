@@ -2,8 +2,10 @@ package com.luoxiang.project.mapper;
 
 import com.luoxiang.project.po.SiChuan202002;
 import com.luoxiang.project.po.SiChuan202002Example;
-import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SiChuan202002Mapper {
     int countByExample(SiChuan202002Example example);
@@ -29,4 +31,6 @@ public interface SiChuan202002Mapper {
     int updateByPrimaryKeySelective(SiChuan202002 record);
 
     int updateByPrimaryKey(SiChuan202002 record);
+
+    List<SiChuan202002> selectAll();
 }

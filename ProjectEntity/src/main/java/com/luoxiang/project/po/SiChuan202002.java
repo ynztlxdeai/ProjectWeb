@@ -186,6 +186,9 @@ public class SiChuan202002 {
     }
 
     public String getHasing() {
+        if (hasing == null || hasing.equals("")){
+            return "";
+        }
         return hasing;
     }
 
@@ -194,6 +197,9 @@ public class SiChuan202002 {
     }
 
     public Integer getAllnums() {
+        if (allnums == null){
+            return 0;
+        }
         return allnums;
     }
 

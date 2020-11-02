@@ -445,4 +445,15 @@
       allNums = #{allnums,jdbcType=INTEGER}
     where jobIndex = #{jobindex,jdbcType=INTEGER}
   </update>
+
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from si_chuan_2020_02
+  </select>
 </mapper>

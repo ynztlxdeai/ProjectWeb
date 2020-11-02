@@ -36,4 +36,6 @@ public class JiangSuController {
     CommBean update(){
         return jiangSuServiceImpl.update();
     }
+
+
 }

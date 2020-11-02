@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class SiChuan202002 {
+public class SiChuan202002 implements Comparable<SiChuan202002>{
     private Integer jobindex;
 
     private String unitname;
@@ -205,5 +205,22 @@ public class SiChuan202002 {
 
     public void setAllnums(Integer allnums) {
         this.allnums = allnums;
+    }
+
+    public String showData(){
+        return   String.format("单位名称：%s , 职位名称：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s , 专业：%s", unitname , jobcode ,neednum , allnums , hasing , zhuanye);
+    }
+
+    @Override
+    public int compareTo(SiChuan202002 o) {
+        int firstNum = Integer.parseInt(this.neednum);
+        int secondNum = Integer.parseInt(o.neednum);
+        if (firstNum == secondNum){
+            return this.allnums - o.allnums;
+        }
+        int firstI = this.allnums / firstNum ;
+        int secondI = o.allnums / secondNum;
+
+        return firstI == secondI ? this.allnums % firstNum - o.allnums % secondNum : firstI - secondI;
     }
 }

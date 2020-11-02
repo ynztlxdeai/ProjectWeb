@@ -34,7 +34,7 @@ import javax.annotation.Resource;
 public class SiChuan202002ServiceImpl implements SiChuan202002Service {
 
     @Resource
-    SiChuan202002Mapper siChuan202002Mapper;
+    public SiChuan202002Mapper siChuan202002Mapper;
 
     @Override
     public List<SiChuan202002> selectAll() {

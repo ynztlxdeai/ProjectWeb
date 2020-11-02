@@ -19,6 +19,7 @@ import java.util.List;
  * upDateDesc:	        TODO
  */
 public interface SiChuan202002Service {
+
     List<SiChuan202002> selectAll();
 
     CommBean update(int limit);

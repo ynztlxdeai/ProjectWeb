@@ -31,6 +31,10 @@ public class JiangSu202002 {
 
     private String qiTa;
 
+    private String hasing;
+
+    private Integer allNum;
+
     public Integer getJobIndex() {
         return jobIndex;
     }
@@ -149,5 +153,24 @@ public class JiangSu202002 {
 
     public void setQiTa(String qiTa) {
         this.qiTa = qiTa == null ? null : qiTa.trim();
+    }
+
+    public String getHasing() {
+        if (hasing == null || "".equals(hasing)){
+            return "";
+        }
+        return hasing;
+    }
+
+    public void setHasing(String hasing) {
+        this.hasing = hasing == null ? null : hasing.trim();
+    }
+
+    public Integer getAllNum() {
+        return allNum;
+    }
+
+    public void setAllNum(Integer allNum) {
+        this.allNum = allNum;
     }
 }

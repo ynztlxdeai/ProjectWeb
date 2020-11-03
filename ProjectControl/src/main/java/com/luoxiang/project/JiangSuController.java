@@ -4,6 +4,7 @@ import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.service.JiangSuService;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,4 +39,10 @@ public class JiangSuController {
     }
 
 
+    @RequestMapping("update202002")
+    public String update202002(Model model){
+        CommBean commBean = jiangSuServiceImpl.update2();
+
+        return "comm";
+    }
 }

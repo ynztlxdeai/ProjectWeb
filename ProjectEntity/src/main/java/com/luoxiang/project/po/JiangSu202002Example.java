@@ -1143,6 +1143,136 @@ public class JiangSu202002Example {
             addCriterion("qi_ta not between", value1, value2, "qiTa");
             return (Criteria) this;
         }
+
+        public Criteria andHasingIsNull() {
+            addCriterion("hasing is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingIsNotNull() {
+            addCriterion("hasing is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingEqualTo(String value) {
+            addCriterion("hasing =", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingNotEqualTo(String value) {
+            addCriterion("hasing <>", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingGreaterThan(String value) {
+            addCriterion("hasing >", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingGreaterThanOrEqualTo(String value) {
+            addCriterion("hasing >=", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingLessThan(String value) {
+            addCriterion("hasing <", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingLessThanOrEqualTo(String value) {
+            addCriterion("hasing <=", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingLike(String value) {
+            addCriterion("hasing like", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingNotLike(String value) {
+            addCriterion("hasing not like", value, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingIn(List<String> values) {
+            addCriterion("hasing in", values, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingNotIn(List<String> values) {
+            addCriterion("hasing not in", values, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingBetween(String value1, String value2) {
+            addCriterion("hasing between", value1, value2, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasingNotBetween(String value1, String value2) {
+            addCriterion("hasing not between", value1, value2, "hasing");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumIsNull() {
+            addCriterion("all_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumIsNotNull() {
+            addCriterion("all_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumEqualTo(Integer value) {
+            addCriterion("all_num =", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotEqualTo(Integer value) {
+            addCriterion("all_num <>", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumGreaterThan(Integer value) {
+            addCriterion("all_num >", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("all_num >=", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumLessThan(Integer value) {
+            addCriterion("all_num <", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumLessThanOrEqualTo(Integer value) {
+            addCriterion("all_num <=", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumIn(List<Integer> values) {
+            addCriterion("all_num in", values, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotIn(List<Integer> values) {
+            addCriterion("all_num not in", values, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumBetween(Integer value1, Integer value2) {
+            addCriterion("all_num between", value1, value2, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("all_num not between", value1, value2, "allNum");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

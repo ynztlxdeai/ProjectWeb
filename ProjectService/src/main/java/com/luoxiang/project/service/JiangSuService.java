@@ -2,6 +2,7 @@ package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.JiangSu;
+import com.luoxiang.project.po.JiangSu202002;
 
 import java.util.List;
 
@@ -25,4 +26,7 @@ public interface JiangSuService {
 
     CommBean update();
 
+    List<JiangSu202002> selectAll2();
+
+    CommBean update2();
 }

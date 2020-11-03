@@ -45,6 +45,7 @@ public class SiChuan202002Controller {
             stringBuffer.append("<li>");
             stringBuffer.append(siChuan202002s.get(i).showData());
             stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
         }
         stringBuffer.append("</ul>");
 

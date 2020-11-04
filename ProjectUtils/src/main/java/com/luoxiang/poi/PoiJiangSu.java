@@ -12,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -75,9 +76,11 @@ public class PoiJiangSu
         bufferedWriter.close();
     }
 
+    static String EXCEPTION_TEMPLATE = "position : i = %d , j = %d , file = %s";
     public static void updateData(HashMap<String, JiangSu202002> jobs) throws Exception {
-        File  fileDir = new File("C:\\Users\\Vincent\\Downloads\\has");
-        File[] files   = fileDir.listFiles();
+        ArrayList<String> list    = new ArrayList<>();
+        File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\has_jiangsu");
+        File[]            files   = fileDir.listFiles();
         for (File tmp : files) {
             if (tmp.getName().endsWith(".xls"))
             {
@@ -86,43 +89,78 @@ public class PoiJiangSu
                 for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
                     sheet = workbook.getSheetAt(i);
 
-                    int LastRowNum = sheet.getLastRowNum() + 1;
-                    for (int j = 1; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
+                    int LastRowNum =  sheet.getLastRowNum() + 1;
+                    for (int j = 2; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
                         HSSFRow row = sheet.getRow(j);
                         if (row != null) {
-
-                            String first = row.getCell(2)
-                                              .toString();
-
-                            String finalCode = first.toString()
-                                                    .trim();
-
-                            if (!TextUtils.isEmpty(finalCode)) {
-
-                                if (jobs.containsKey(finalCode)) {
-                                    JiangSu202002 current = jobs.get(finalCode);
-                                    Integer       integer  = current.getAllNum();
-                                    int           has     = 0;
-                                    if (row.getCell(3)
-                                           .getCellType() == CellType.NUMERIC)
-                                    {
-                                        has = (int) row.getCell(3)
-                                                       .getNumericCellValue();
-                                    } else {
-                                        String s = row.getCell(3)
-                                                      .toString();
-                                        has = Integer.parseInt(s);
-                                    }
-
-                                    if (has != integer && has > integer) {
-                                        current.setAllNum(has);
-                                    }
-                                    StringBuffer buffer = new StringBuffer(current.getHasing());
-                                    buffer.append(has).append(",");
-                                    current.setHasing(buffer.toString());
-                                    jobs.replace(finalCode, current);
+                    /*for (int k = 0; k < row.getLastCellNum(); k++) {// getLastCellNum，是获取最后一个不为空的列是第几个
+                        if (row.getCell(k) != null) { // getCell 获取单元格数据
+                            System.out.print(row.getCell(k) + "\t");
+                        } else {
+                            System.out.print("\t");
+                        }
+                    }*/
+                            //System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                                String first = row.getCell(0).toString();
+                                String second = row.getCell(1).toString();
+                                if (TextUtils.isEmpty(first) || TextUtils.isEmpty(second)){
+                                    list.add(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()) );
+                                    continue;
                                 }
-                            }
+                                StringBuffer stringBuffer = new StringBuffer();
+                                if (first.contains("[") && first.contains("]")){
+                                    stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("]")));
+                                }else if (first.contains("[") && first.contains("】")){
+                                    stringBuffer.append(first.substring(first.lastIndexOf("[")+1, first.lastIndexOf("】")));
+                                }else if (first.contains("【") && first.contains("】")){
+                                    stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("】")));
+                                }else if (first.contains("【") && first.contains("]")){
+                                    stringBuffer.append(first.substring(first.lastIndexOf("【")+1, first.lastIndexOf("]")));
+                                }
+
+                                if (second.contains("[") && second.contains("]")){
+                                    stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("]")));
+                                }else if (second.contains("[") && second.contains("】")){
+                                    stringBuffer.append(second.substring(second.lastIndexOf("[") +1, second.lastIndexOf("】")));
+                                }else if (second.contains("【") && second.contains("】")){
+                                    stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("】")));
+                                }else if (second.contains("【") && second.contains("]")){
+                                    stringBuffer.append(second.substring(second.lastIndexOf("【") +1, second.lastIndexOf("]")));
+                                }
+
+                                String finalCode = stringBuffer.toString().trim();
+                                if (!TextUtils.isEmpty(finalCode)){
+                                    String jobCode = finalCode.substring(1);
+                                    if (jobCode.equals("08000053301")){
+                                        System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                                    }
+                                    if (jobs.containsKey(jobCode)){
+                                        JiangSu202002 jiangSu202002 = jobs.get(jobCode);
+                                        if (row.getCell(4).getCellType() == CellType.NUMERIC){
+                                            int has = (int) row.getCell(4).getNumericCellValue();
+                                            if (has != jiangSu202002.getAllNum()){
+                                                jiangSu202002.setAllNum(has);
+                                            }
+                                            StringBuffer sb = new StringBuffer(jiangSu202002.getHasing());
+                                            sb.append(has).append(",");
+                                            jiangSu202002.setHasing(sb.toString());
+                                            jobs.replace(jobCode , jiangSu202002);
+                                        }else if (row.getCell(4).getCellType() == CellType.BLANK){
+                                            System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                                        }else {
+                                            String s = row.getCell(4).toString();
+                                            int has = Integer.parseInt(s);
+                                            if (has != jiangSu202002.getAllNum()){
+                                                jiangSu202002.setAllNum(has);
+                                            }
+                                            StringBuffer sb = new StringBuffer(jiangSu202002.getHasing());
+                                            sb.append(has);
+                                            jiangSu202002.setHasing(sb.toString());
+                                            jobs.replace(jobCode , jiangSu202002);
+                                        }
+
+                                    }
+                                }
 
                         }
 

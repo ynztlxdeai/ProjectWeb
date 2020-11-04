@@ -167,6 +167,9 @@ public class JiangSu202002 {
     }
 
     public Integer getAllNum() {
+        if (allNum == null){
+            return 0;
+        }
         return allNum;
     }
 

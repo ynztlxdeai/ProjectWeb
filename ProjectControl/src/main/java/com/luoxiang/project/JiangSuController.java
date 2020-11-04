@@ -38,7 +38,6 @@ public class JiangSuController {
         return jiangSuServiceImpl.update();
     }
 
-
     @RequestMapping("update202002")
     public String update202002(Model model){
         CommBean commBean = jiangSuServiceImpl.update2();

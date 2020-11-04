@@ -97,12 +97,16 @@ public class JiangSuServiceImpl
             HashMap<String , JiangSu202002> maps = new HashMap<>();
             for (JiangSu202002 j : jiangSu202002s){
                 StringBuffer stringBuffer = new StringBuffer();
-
+                stringBuffer.append(j.getDiQuCode()).append(j.getUnitCode()).append(j.getJobCode());
                 maps.put(stringBuffer.toString() , j);
             }
 
             PoiJiangSu.updateData(maps);
-
+            Iterator<Map.Entry<String, JiangSu202002>> iterator = maps.entrySet().iterator();
+            while (iterator.hasNext()){
+                JiangSu202002 value = iterator.next().getValue();
+                jiangSu202002Mapper.updateByPrimaryKey(value);
+            }
             commBean.setCode(0);
         }catch (Exception e){
             commBean.setCode(-1);

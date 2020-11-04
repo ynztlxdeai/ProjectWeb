@@ -44,8 +44,10 @@ public class JiangSuController {
     }
 
     @RequestMapping("update202002")
-    public String update202002(Model model , int option , int filter){
-        CommBean commBean = jiangSuServiceImpl.update2();
+    public String update202002(Model model , int option , int filter , boolean skip){
+        if (!skip){
+            jiangSuServiceImpl.update2();
+        }
         List<JiangSu202002> list = new ArrayList<>();
         List<JiangSu202002> tmp = jiangSuServiceImpl.selectAll2();
         for (JiangSu202002 j : tmp){

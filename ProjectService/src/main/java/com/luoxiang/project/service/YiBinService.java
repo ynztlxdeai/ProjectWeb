@@ -1,5 +1,10 @@
 package com.luoxiang.project.service;
 
+import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.po.YiBin202002;
+
+import java.util.List;
+
 /**
  * projectName: 	    com.luoxiang.parent
  * packageName:	        com.luoxiang.project.service
@@ -16,5 +21,7 @@ package com.luoxiang.project.service;
 
 
 public interface YiBinService {
+    List<YiBin202002> selectAll();
 
+    CommBean update();
 }

@@ -1283,6 +1283,66 @@ public class YiBin202002Example {
             addCriterion("current not between", value1, value2, "current");
             return (Criteria) this;
         }
+
+        public Criteria andAllNumIsNull() {
+            addCriterion("all_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumIsNotNull() {
+            addCriterion("all_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumEqualTo(Integer value) {
+            addCriterion("all_num =", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotEqualTo(Integer value) {
+            addCriterion("all_num <>", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumGreaterThan(Integer value) {
+            addCriterion("all_num >", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("all_num >=", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumLessThan(Integer value) {
+            addCriterion("all_num <", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumLessThanOrEqualTo(Integer value) {
+            addCriterion("all_num <=", value, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumIn(List<Integer> values) {
+            addCriterion("all_num in", values, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotIn(List<Integer> values) {
+            addCriterion("all_num not in", values, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumBetween(Integer value1, Integer value2) {
+            addCriterion("all_num between", value1, value2, "allNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("all_num not between", value1, value2, "allNum");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -19,6 +19,7 @@
     <result column="mian_shi_xing_shi" property="mianShiXingShi" jdbcType="VARCHAR" />
     <result column="yue_ding" property="yueDing" jdbcType="VARCHAR" />
     <result column="current" property="current" jdbcType="VARCHAR" />
+    <result column="all_num" property="allNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -81,7 +82,7 @@
   <sql id="Base_Column_List" >
     index_code, zhao_ping_dan_wei, job_name, gang_wei_lei_bie, job_code, need_num, xue_li, 
     zhuan_ye, nian_ling, qi_ta, kai_kao_bi_li, xin_li_su_zhi, gong_gong_ke_mu, zhuan_ye_ke_mu, 
-    mian_shi_xing_shi, yue_ding, current
+    mian_shi_xing_shi, yue_ding, current, all_num
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.YiBin202002Example" >
     select
@@ -119,13 +120,15 @@
       xue_li, zhuan_ye, nian_ling, 
       qi_ta, kai_kao_bi_li, xin_li_su_zhi, 
       gong_gong_ke_mu, zhuan_ye_ke_mu, mian_shi_xing_shi, 
-      yue_ding, current)
+      yue_ding, current, all_num
+      )
     values (#{indexCode,jdbcType=INTEGER}, #{zhaoPingDanWei,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, 
       #{gangWeiLeiBie,jdbcType=VARCHAR}, #{jobCode,jdbcType=VARCHAR}, #{needNum,jdbcType=VARCHAR}, 
       #{xueLi,jdbcType=VARCHAR}, #{zhuanYe,jdbcType=VARCHAR}, #{nianLing,jdbcType=VARCHAR}, 
       #{qiTa,jdbcType=VARCHAR}, #{kaiKaoBiLi,jdbcType=VARCHAR}, #{xinLiSuZhi,jdbcType=VARCHAR}, 
       #{gongGongKeMu,jdbcType=VARCHAR}, #{zhuanYeKeMu,jdbcType=VARCHAR}, #{mianShiXingShi,jdbcType=VARCHAR}, 
-      #{yueDing,jdbcType=VARCHAR}, #{current,jdbcType=VARCHAR})
+      #{yueDing,jdbcType=VARCHAR}, #{current,jdbcType=VARCHAR}, #{allNum,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.luoxiang.project.po.YiBin202002" >
     insert into yi_bin_2020_02
@@ -181,6 +184,9 @@
       <if test="current != null" >
         current,
       </if>
+      <if test="allNum != null" >
+        all_num,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="indexCode != null" >
@@ -233,6 +239,9 @@
       </if>
       <if test="current != null" >
         #{current,jdbcType=VARCHAR},
+      </if>
+      <if test="allNum != null" >
+        #{allNum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -296,6 +305,9 @@
       <if test="record.current != null" >
         current = #{record.current,jdbcType=VARCHAR},
       </if>
+      <if test="record.allNum != null" >
+        all_num = #{record.allNum,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -319,7 +331,8 @@
       zhuan_ye_ke_mu = #{record.zhuanYeKeMu,jdbcType=VARCHAR},
       mian_shi_xing_shi = #{record.mianShiXingShi,jdbcType=VARCHAR},
       yue_ding = #{record.yueDing,jdbcType=VARCHAR},
-      current = #{record.current,jdbcType=VARCHAR}
+      current = #{record.current,jdbcType=VARCHAR},
+      all_num = #{record.allNum,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -375,6 +388,9 @@
       <if test="current != null" >
         current = #{current,jdbcType=VARCHAR},
       </if>
+      <if test="allNum != null" >
+        all_num = #{allNum,jdbcType=INTEGER},
+      </if>
     </set>
     where index_code = #{indexCode,jdbcType=INTEGER}
   </update>
@@ -395,7 +411,8 @@
       zhuan_ye_ke_mu = #{zhuanYeKeMu,jdbcType=VARCHAR},
       mian_shi_xing_shi = #{mianShiXingShi,jdbcType=VARCHAR},
       yue_ding = #{yueDing,jdbcType=VARCHAR},
-      current = #{current,jdbcType=VARCHAR}
+      current = #{current,jdbcType=VARCHAR},
+      all_num = #{allNum,jdbcType=INTEGER}
     where index_code = #{indexCode,jdbcType=INTEGER}
   </update>
 
@@ -408,5 +425,4 @@
     <include refid="Base_Column_List" />
     from yi_bin_2020_02
   </select>
-
 </mapper>

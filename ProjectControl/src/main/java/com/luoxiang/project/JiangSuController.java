@@ -51,7 +51,7 @@ public class JiangSuController {
         List<JiangSu202002> list = new ArrayList<>();
         List<JiangSu202002> tmp = jiangSuServiceImpl.selectAll2();
         for (JiangSu202002 j : tmp){
-            if (j.getAllNum() <= filter){
+            if (j.getAllNum() / Integer.parseInt(j.getNeedNum()) <= filter){
                 list.add(j);
             }
         }

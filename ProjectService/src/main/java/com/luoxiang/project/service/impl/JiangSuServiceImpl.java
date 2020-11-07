@@ -4,9 +4,11 @@ import com.luoxiang.poi.PoiJiangSu;
 import com.luoxiang.poi.PoiReader;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.mapper.JiangSu202002Mapper;
+import com.luoxiang.project.mapper.JiangSu202002ShMapper;
 import com.luoxiang.project.mapper.JiangSuMapper;
 import com.luoxiang.project.po.JiangSu;
 import com.luoxiang.project.po.JiangSu202002;
+import com.luoxiang.project.po.JiangSu202002Sh;
 import com.luoxiang.project.service.JiangSuService;
 
 import org.springframework.stereotype.Service;
@@ -41,6 +43,9 @@ public class JiangSuServiceImpl
 
     @Resource
     JiangSu202002Mapper jiangSu202002Mapper;
+
+    @Resource
+    JiangSu202002ShMapper jiangSu202002ShMapper;
 
     @Override
     public List<JiangSu> selectAll() {
@@ -113,5 +118,36 @@ public class JiangSuServiceImpl
             commBean.setMsg(e.getMessage());
         }
         return commBean;
+    }
+
+    @Override
+    public CommBean update3() {
+        List<JiangSu202002Sh> jiangSu202002s = selectAll3();
+        CommBean commBean = new CommBean();
+        try {
+            HashMap<String , JiangSu202002Sh> maps = new HashMap<>();
+            for (JiangSu202002Sh j : jiangSu202002s){
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(j.getDiQuCode()).append(j.getUnitCode()).append(j.getJobCode());
+                maps.put(stringBuffer.toString() , j);
+            }
+
+            PoiJiangSu.updateData2(maps);
+            Iterator<Map.Entry<String, JiangSu202002Sh>> iterator = maps.entrySet().iterator();
+            while (iterator.hasNext()){
+                JiangSu202002Sh value = iterator.next().getValue();
+                jiangSu202002ShMapper.updateByPrimaryKey(value);
+            }
+            commBean.setCode(0);
+        }catch (Exception e){
+            commBean.setCode(-1);
+            commBean.setMsg(e.getMessage());
+        }
+        return commBean;
+    }
+
+    @Override
+    public List<JiangSu202002Sh> selectAll3() {
+        return jiangSu202002ShMapper.selectAll();
     }
 }

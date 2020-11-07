@@ -50,7 +50,7 @@ public class TxtReader {
             ArrayList<String> unneed = new ArrayList<>();
             while ((line = reader.readLine()) != null){
                 if (!TextUtils.isEmpty(line)){
-                    if (line.contains("不限") || line.contains("电子信息")){
+                    if (line.contains("不限") || line.contains("教育类") || line.contains("中文文秘类") || line.contains("汉语国际教育")){
                         need.add(line);
                     }else {
                         unneed.add(line);
@@ -64,7 +64,7 @@ public class TxtReader {
             int time = unneed.size() / STEP_SIZE;
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vincent\\Downloads\\1.sql"));
             for (int t = 0; t < time + 1 ; t++) {
-                StringBuffer stringBuffer = new StringBuffer("DELETE FROM jiang_su_2020_02 WHERE zhuan_ye in (");
+                StringBuffer stringBuffer = new StringBuffer("DELETE FROM jiang_su_2020_02_sh WHERE zhuan_ye in (");
                 int lenth = start + STEP_SIZE;
                 if (time == t){
                     lenth = unneed.size();

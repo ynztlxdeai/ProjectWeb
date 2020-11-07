@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class JiangSu202002 implements Comparable<JiangSu202002>{
+public class JiangSu202002Sh implements Comparable<JiangSu202002Sh>{
     private Integer jobIndex;
 
     private String liShuGuanXi;
@@ -155,6 +155,8 @@ public class JiangSu202002 implements Comparable<JiangSu202002>{
         this.qiTa = qiTa == null ? null : qiTa.trim();
     }
 
+
+
     public String getHasing() {
         if (hasing == null || "".equals(hasing)){
             return "";
@@ -182,7 +184,7 @@ public class JiangSu202002 implements Comparable<JiangSu202002>{
     }
 
     @Override
-    public int compareTo(JiangSu202002 o) {
+    public int compareTo(JiangSu202002Sh o) {
         int firstNum = Integer.parseInt(this.needNum);
         int secondNum = Integer.parseInt(o.needNum);
         if (firstNum == secondNum){

@@ -44,6 +44,8 @@ public class JiangSuController {
         return jiangSuServiceImpl.update();
     }
 
+    static String SENDING_CODE = "06000022101,02000021403,11000023002,09000023402,07000023501,10230000701,08260000701";
+
     @RequestMapping("update202002")
     public String update202002(Model model , int option , int filter , boolean skip){
         if (!skip){
@@ -51,23 +53,27 @@ public class JiangSuController {
         }
         List<JiangSu202002> list = new ArrayList<>();
         List<JiangSu202002> tmp = jiangSuServiceImpl.selectAll2();
+
         for (JiangSu202002 j : tmp){
-            if (j.getAllNum() / Integer.parseInt(j.getNeedNum()) <= filter){
+            if (option == 4){
+                if (SENDING_CODE.contains(j.getCompleteJobCode())){
+                    list.add(j);
+                }
+            }else if (j.getAllNum() / Integer.parseInt(j.getNeedNum()) <= filter){
                 list.add(j);
             }
+
         }
         Collections.sort(list);
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         if (option == 0){
-
             for (int i = 0; i < list.size(); i++) {
                 stringBuffer.append("<li>");
                 stringBuffer.append(list.get(i).showData());
                 stringBuffer.append("</li>");
                 stringBuffer.append("<br></br>");
             }
-
         }else if (option == 1){
 
             for (JiangSu202002 j : list) {
@@ -97,6 +103,13 @@ public class JiangSuController {
                     stringBuffer.append("</li>");
                     stringBuffer.append("<br></br>");
                 }
+            }
+        }else if(option == 4){
+            for (JiangSu202002 j : list) {
+                    stringBuffer.append("<li>");
+                    stringBuffer.append(j.showData());
+                    stringBuffer.append("</li>");
+                    stringBuffer.append("<br></br>");
             }
         }
         stringBuffer.append("</ul>");

@@ -44,7 +44,7 @@ public class JiangSuController {
         return jiangSuServiceImpl.update();
     }
 
-    static String SENDING_CODE = "06000022101,02000021403,11000023002,09000023402,07000023501,10230000701,08260000701";
+    static String SENDING_CODE = "06000022101,02000021403,11000023002,09000023402,07000023501,10230000701,08260000701,12830080701,13220082403,03810081401";
 
     @RequestMapping("update202002")
     public String update202002(Model model , int option , int filter , boolean skip){

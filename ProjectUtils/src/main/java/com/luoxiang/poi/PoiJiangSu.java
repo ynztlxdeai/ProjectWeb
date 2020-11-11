@@ -115,7 +115,7 @@ public class PoiJiangSu {
                             for (int j = 2; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
                                 HSSFRow row = sheet.getRow(j);
                                 if (row != null) {
-                                    //System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                                   // System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , xls.getPath()));
                                     String first  = row.getCell(0)
                                                        .toString();
                                     String second = row.getCell(1)

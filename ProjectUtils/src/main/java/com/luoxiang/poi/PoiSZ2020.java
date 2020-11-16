@@ -10,7 +10,12 @@ import org.apache.poi.ss.usermodel.CellType;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * projectName: 	    com.luoxiang.parent
@@ -29,7 +34,7 @@ import java.util.HashMap;
 
 public class PoiSZ2020 {
 
-    public static HashMap<String, ShenZheng2020> checkHasNums(String jobs)
+    public static List<ShenZheng2020> checkHasNums(String jobs)
             throws Exception
     {
         File                           fileDir = new File("C:\\Users\\Vincent\\Downloads\\shenzheng");
@@ -92,7 +97,13 @@ public class PoiSZ2020 {
             }
         }
 
-        return results;
+        List<ShenZheng2020>                        list     = new ArrayList<>();
+        Iterator<Map.Entry<String, ShenZheng2020>> iterator = results.entrySet().iterator();
+        while (iterator.hasNext()){
+            list.add(iterator.next().getValue());
+        }
+        Collections.sort(list);
+        return list;
     }
 
 }

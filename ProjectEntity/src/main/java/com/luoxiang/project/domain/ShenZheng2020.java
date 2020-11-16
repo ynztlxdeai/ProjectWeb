@@ -15,7 +15,7 @@ package com.luoxiang.project.domain;
  */
 
 
-public class ShenZheng2020 {
+public class ShenZheng2020 implements Comparable<ShenZheng2020>{
     public String jobCode;
     public int needNums;
     public int currentNums;
@@ -26,7 +26,18 @@ public class ShenZheng2020 {
 
     @Override
     public String toString() {
-        return String.format("职位名称：%s , 职位代码： %s ,  上级单位：%s , 招考单位：%s , 总人数：%d , 需要人数：%d , 进度：%s",
+        return String.format("职位名称：%s , 职位代码： %s ,  上级单位：%s , 招考单位：%s <br></br> 总人数：%d , 需要人数：%d , 进度：%s <br></br>",
                              jobName , jobCode , firstUnit , secondUnit , currentNums , needNums , hasing);
+    }
+
+    @Override
+    public int compareTo(ShenZheng2020 o) {
+        if (this.needNums == o.needNums){
+            return this.currentNums - o.currentNums;
+        }
+        int firstI = this.currentNums / this.needNums ;
+        int secondI = o.currentNums / o.needNums;
+
+        return firstI == secondI ? this.currentNums % this.needNums - o.currentNums % o.needNums : firstI - secondI;
     }
 }

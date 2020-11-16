@@ -2,6 +2,8 @@ package com.luoxiang.project;
 
 
 import com.luoxiang.poi.PoiSC02;
+import com.luoxiang.poi.PoiSZ2020;
+import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
 
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * projectName: 	    com.luoxiang.parent
@@ -68,4 +72,29 @@ public class CommController {
 
         return "comm";
     }
+
+    @RequestMapping("sz2020")
+    public String shenzheng2020(Model model){
+        String allCode = "2003AC010,2003AC011,2003BC002,2003BC003,2003BN003,2003FC005,2003FG043,2003FG078,2003FG108,2003FL101,2003FN003,2003GC002";
+        try {
+            HashMap<String, ShenZheng2020> result = PoiSZ2020.checkHasNums(allCode);
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("<ul>");
+            Iterator<Map.Entry<String, ShenZheng2020>> iterator = result.entrySet().iterator();
+            while (iterator.hasNext()){
+                ShenZheng2020 value = iterator.next().getValue();
+                stringBuffer.append("<li>");
+                stringBuffer.append(value.toString());
+                stringBuffer.append("</li>");
+            }
+            stringBuffer.append("</ul>");
+            model.addAttribute("comm_data" , stringBuffer.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("comm_data" , e.getMessage());
+        }
+        return "comm";
+    }
+
 }

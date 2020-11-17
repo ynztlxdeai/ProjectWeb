@@ -96,4 +96,28 @@ public class CommController {
         return "comm";
     }
 
+
+    @RequestMapping("yn2020_trans")
+    public String yn2020Trans(Model model){
+        String allCode = "2001,3003,3005";
+        try {
+            List<ShenZheng2020> result = PoiSZ2020.checkHasNums(allCode);
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("<ul>");
+            Iterator<ShenZheng2020> iterator = result.iterator();
+            while (iterator.hasNext()){
+                ShenZheng2020 value = iterator.next();
+                stringBuffer.append("<li>");
+                stringBuffer.append(value.toString());
+                stringBuffer.append("</li>");
+            }
+            stringBuffer.append("</ul>");
+            model.addAttribute("comm_data" , stringBuffer.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("comm_data" , e.getMessage());
+        }
+        return "comm";
+    }
 }

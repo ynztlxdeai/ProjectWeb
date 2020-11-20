@@ -2,6 +2,7 @@ package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.SDGov;
+import com.luoxiang.project.po.ShanDong202002;
 
 import java.util.List;
 
@@ -21,5 +22,9 @@ import java.util.List;
 public interface ShanDongService {
     List<SDGov> selectAll();
 
+    List<ShanDong202002> selectAll2();
+
     CommBean update(String cookies);
+
+    CommBean<List<ShanDong202002>> update2();
 }

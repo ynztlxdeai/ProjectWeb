@@ -3,8 +3,10 @@ package com.luoxiang.project.service.impl;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.mapper.SDGovMapper;
 import com.luoxiang.project.mapper.ShanDong202002Mapper;
+import com.luoxiang.project.mapper.ShanDong202002ShMapper;
 import com.luoxiang.project.po.SDGov;
 import com.luoxiang.project.po.ShanDong202002;
+import com.luoxiang.project.po.ShanDong202002Sh;
 import com.luoxiang.project.service.ShanDongService;
 
 import org.apache.http.HttpEntity;
@@ -50,6 +52,9 @@ public class ShanDongServiceImpl
     @Resource
     ShanDong202002Mapper shanDong202002Mapper;
 
+    @Resource
+    ShanDong202002ShMapper shanDong202002ShMapper;
+
     @Override
     public List<SDGov> selectAll() {
         return sDGovMapper.selectAll();
@@ -61,6 +66,11 @@ public class ShanDongServiceImpl
     }
 
     @Override
+    public List<ShanDong202002Sh> selectAll3() {
+        return shanDong202002ShMapper.selectAll();
+    }
+
+    @Override
     public List<ShanDong202002> sortAll(int mode) {
         List<ShanDong202002> list = selectAll2();
         if (mode == 0){
@@ -69,6 +79,43 @@ public class ShanDongServiceImpl
         }
         List<ShanDong202002> nList = new ArrayList<>();
         for (ShanDong202002 o1: list){
+            String[] split1 = o1.getHasNum().split(",");
+            String[] split2 = o1.getCanNum().split(",");
+            String s1 = split1[split1.length - 1].trim();
+            String s2 = split2[split2.length - 1].trim();
+            if (mode == 1 && s1.equals("3-") && s2.equals("3-")){
+                nList.add(o1);
+            }else if (mode == 2 && s1.equals("3-") && s2.equals("3+")){
+                nList.add(o1);
+            }else if (mode == 3 && s1.equals("3+") && s2.equals("3+")){
+                nList.add(o1);
+            }else if (mode == 4 && s1.equals("30-") && s2.equals("30-")){
+                nList.add(o1);
+            }else if (mode == 5 && s1.equals("30-") && s2.equals("30+")){
+                nList.add(o1);
+            }else if (mode == 6 && s1.equals("30+") && s2.equals("30+")){
+                nList.add(o1);
+            }else if (mode == 7 && s1.equals("50-") && s2.equals("50-")){
+                nList.add(o1);
+            }else if (mode == 8 && s1.equals("50-") && s2.equals("50+")){
+                nList.add(o1);
+            }else if (mode == 9 && s1.equals("50+") && s2.equals("50+")){
+                nList.add(o1);
+            }
+        }
+        Collections.sort(nList);
+        return nList;
+    }
+
+    @Override
+    public List<ShanDong202002Sh> sortAll2(int mode) {
+        List<ShanDong202002Sh> list = selectAll3();
+        if (mode == 0){
+            Collections.sort(list);
+            return list;
+        }
+        List<ShanDong202002Sh> nList = new ArrayList<>();
+        for (ShanDong202002Sh o1: list){
             String[] split1 = o1.getHasNum().split(",");
             String[] split2 = o1.getCanNum().split(",");
             String s1 = split1[split1.length - 1].trim();
@@ -156,6 +203,82 @@ public class ShanDongServiceImpl
                         gov.setHasNum(sb1.toString());
 
                         shanDong202002Mapper.updateByPrimaryKey(gov);
+                        //jobCodePosition.replace(jobCode , gov)
+                    }
+
+                }
+
+
+            }
+
+            //Document     doc      =Jsoup.parse(response.getEntity().getContent().toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return commBean;
+    }
+
+    @Override
+    public CommBean update3() {
+        CommBean   commBean   = new CommBean();
+        String    url        = "http://182.92.48.100:81/sdgwy21/bmtj/bmtj.html";
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpPost   httpPost   = new HttpPost(url);
+        httpPost.addHeader("Cookie" ,"SERVERID=2671e8ba135b07792c420e855485b2da|1588918658|1588916196;Path=/" );
+
+        try {
+
+            HttpResponse response =  httpClient.execute(httpPost);
+            HttpEntity   entity   = response.getEntity();
+            if (entity != null) {
+                String   s     = EntityUtils.toString(entity, "UTF-8");
+                Document doc   = Jsoup.parse(s);
+                Elements table = doc.getElementsByClass("table_style3");
+                Elements trs   = table.select("tr");
+
+                List<ShanDong202002Sh> all = selectAll3();
+                HashMap<String , ShanDong202002Sh> jobCodePosition = new HashMap<>(all.size());
+                ShanDong202002Sh gov = null;
+                for (int i = 0 ; i < all.size() ; i++){
+                    gov = all.get(i);
+                    if (TextUtils.isEmpty(gov.getJobCode())){
+                        continue;
+                    }
+                    if (!jobCodePosition.containsKey(gov.getJobCode())){
+                        jobCodePosition.put(gov.getJobCode() , gov);
+                    }
+                }
+
+
+
+                for (Element element : trs){
+                    String jobCode = element.child(2).text();
+                    if (jobCodePosition.containsKey(jobCode)){
+                        String pass_check = element.child(5).text();
+                        String pass_pay = element.child(6).text();
+
+                        int pass_check_int =Integer.parseInt( pass_check.replace("+","").replace("-",""));
+                        int pass_pay_int = Integer.parseInt(pass_pay.replace("+","").replace("-",""));
+
+                        gov = jobCodePosition.get(jobCode);
+                        int need  = Integer.parseInt(gov.getNeedNum());
+                        int intNum = need * pass_pay_int;
+                        if (pass_pay.contains("-")){
+                            intNum--;
+                        }
+                        gov.setIntNum(intNum);
+
+                        StringBuffer sb1 = new StringBuffer(gov.getCanNum());
+                        sb1.append(TextUtils.isEmpty(gov.getCanNum()) ? "" : "," ).append(pass_check);
+                        gov.setCanNum(sb1.toString());
+
+                        sb1 = new StringBuffer(gov.getHasNum());
+                        sb1.append(TextUtils.isEmpty(gov.getHasNum()) ? "" : "," ).append(pass_pay);
+                        gov.setHasNum(sb1.toString());
+
+                        shanDong202002ShMapper.updateByPrimaryKey(gov);
                         //jobCodePosition.replace(jobCode , gov)
                     }
 

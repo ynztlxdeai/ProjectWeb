@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,11 +43,13 @@ public class ShandongController {
     }
 
     @RequestMapping("refresh_sd_202002")
-    public String refreshSd202002(Model model){
+    public String refreshSd202002(Model model , boolean skip , int cmp){
         try {
-            shanDongServiceImpl.update2();
-            List<ShanDong202002> result = shanDongServiceImpl.selectAll2();
-            Collections.sort(result);
+            if (!skip){
+                shanDongServiceImpl.update2();
+            }
+            List<ShanDong202002> result = shanDongServiceImpl.sortAll(cmp);
+
 
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer.append("<ul>");

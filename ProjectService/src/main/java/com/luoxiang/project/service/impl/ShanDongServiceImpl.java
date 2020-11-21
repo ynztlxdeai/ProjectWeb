@@ -20,6 +20,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,6 +58,43 @@ public class ShanDongServiceImpl
     @Override
     public List<ShanDong202002> selectAll2() {
         return shanDong202002Mapper.selectAll();
+    }
+
+    @Override
+    public List<ShanDong202002> sortAll(int mode) {
+        List<ShanDong202002> list = selectAll2();
+        if (mode == 0){
+            Collections.sort(list);
+            return list;
+        }
+        List<ShanDong202002> nList = new ArrayList<>();
+        for (ShanDong202002 o1: list){
+            String[] split1 = o1.getHasNum().split(",");
+            String[] split2 = o1.getCanNum().split(",");
+            String s1 = split1[split1.length - 1].trim();
+            String s2 = split2[split2.length - 1].trim();
+            if (mode == 1 && s1.equals("3-") && s2.equals("3-")){
+                nList.add(o1);
+            }else if (mode == 2 && s1.equals("3-") && s2.equals("3+")){
+                nList.add(o1);
+            }else if (mode == 3 && s1.equals("3+") && s2.equals("3+")){
+                nList.add(o1);
+            }else if (mode == 4 && s1.equals("30-") && s2.equals("30-")){
+                nList.add(o1);
+            }else if (mode == 5 && s1.equals("30-") && s2.equals("30+")){
+                nList.add(o1);
+            }else if (mode == 6 && s1.equals("30+") && s2.equals("30+")){
+                nList.add(o1);
+            }else if (mode == 7 && s1.equals("50-") && s2.equals("50-")){
+                nList.add(o1);
+            }else if (mode == 8 && s1.equals("50-") && s2.equals("50+")){
+                nList.add(o1);
+            }else if (mode == 9 && s1.equals("50+") && s2.equals("50+")){
+                nList.add(o1);
+            }
+        }
+        Collections.sort(nList);
+        return nList;
     }
 
     @Override
@@ -109,11 +148,11 @@ public class ShanDongServiceImpl
                         gov.setIntNum(intNum);
 
                         StringBuffer sb1 = new StringBuffer(gov.getCanNum());
-                        sb1.append(pass_check).append(",");
+                        sb1.append(TextUtils.isEmpty(gov.getCanNum()) ? "" : "," ).append(pass_check);
                         gov.setCanNum(sb1.toString());
 
                         sb1 = new StringBuffer(gov.getHasNum());
-                        sb1.append(pass_pay).append(",");
+                        sb1.append(TextUtils.isEmpty(gov.getHasNum()) ? "" : "," ).append(pass_pay);
                         gov.setHasNum(sb1.toString());
 
                         shanDong202002Mapper.updateByPrimaryKey(gov);

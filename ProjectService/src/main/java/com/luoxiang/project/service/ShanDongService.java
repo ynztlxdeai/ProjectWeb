@@ -24,6 +24,8 @@ public interface ShanDongService {
 
     List<ShanDong202002> selectAll2();
 
+    List<ShanDong202002> sortAll(int mode);
+
     CommBean update(String cookies);
 
     CommBean<List<ShanDong202002>> update2();

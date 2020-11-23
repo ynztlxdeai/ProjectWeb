@@ -330,7 +330,7 @@ public class ShanDong202002Sh implements Comparable<ShanDong202002Sh>{
 
     @Override
     public String toString() {
-        return String.format("职位名称：%s , 职位代码： %s , 招考单位：%s <br></br> 总人数：%d , 需要人数：%s , 审核进度：%s  缴费进度：%s<br></br>",
-                             jobName , jobCode  , yongRenDanWei , intNum , needNum , canNum , hasNum);
+        return String.format("职位名称：%s , 职位代码： %s , 招考单位：%s <br></br> 总人数：%d , 需要人数：%s , 审核进度：%s  缴费进度：%s<br></br> 专业：%s <br></br>",
+                             jobName , jobCode  , yongRenDanWei , intNum , needNum , canNum , hasNum , daXueBenKe);
     }
 }

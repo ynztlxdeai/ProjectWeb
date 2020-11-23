@@ -71,36 +71,58 @@ public class ShanDongServiceImpl
     }
 
     @Override
-    public List<ShanDong202002> sortAll(int mode) {
+    public List<ShanDong202002> sortAll(int mode, boolean filter) {
         List<ShanDong202002> list = selectAll2();
-        if (mode == 0){
-            Collections.sort(list);
-            return list;
-        }
         List<ShanDong202002> nList = new ArrayList<>();
+        if (mode == 0){
+            for (ShanDong202002 o1: list) {
+                if (filter && o1.getDaXueBenKe().contains("不限"))
+                {
+                    continue;
+                }
+                nList.add(o1);
+            }
+            Collections.sort(nList);
+            return nList;
+        }
+
         for (ShanDong202002 o1: list){
-            String[] split1 = o1.getHasNum().split(",");
-            String[] split2 = o1.getCanNum().split(",");
-            String s1 = split1[split1.length - 1].trim();
-            String s2 = split2[split2.length - 1].trim();
-            if (mode == 1 && s1.equals("3-") && s2.equals("3-")){
-                nList.add(o1);
-            }else if (mode == 2 && s1.equals("3-") && s2.equals("3+")){
-                nList.add(o1);
-            }else if (mode == 3 && s1.equals("3+") && s2.equals("3+")){
-                nList.add(o1);
-            }else if (mode == 4 && s1.equals("30-") && s2.equals("30-")){
-                nList.add(o1);
-            }else if (mode == 5 && s1.equals("30-") && s2.equals("30+")){
-                nList.add(o1);
-            }else if (mode == 6 && s1.equals("30+") && s2.equals("30+")){
-                nList.add(o1);
-            }else if (mode == 7 && s1.equals("50-") && s2.equals("50-")){
-                nList.add(o1);
-            }else if (mode == 8 && s1.equals("50-") && s2.equals("50+")){
-                nList.add(o1);
-            }else if (mode == 9 && s1.equals("50+") && s2.equals("50+")){
-                nList.add(o1);
+            if (filter && o1.getDaXueBenKe().contains("不限")){
+                continue;
+            }
+
+            if (mode == 1){
+                if ( o1.getHasNum().trim().endsWith("3-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 2 ){
+                if ( o1.getHasNum().trim().endsWith("3+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 3 ){
+                if ( o1.getHasNum().trim().endsWith("30-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 4 ){
+                if ( o1.getHasNum().trim().endsWith("30+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 5){
+                if ( o1.getHasNum().trim().endsWith("50-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 6){
+                if ( o1.getHasNum().trim().endsWith("50+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 7 ){
+                if ( o1.getHasNum().trim().endsWith("100-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 8)  {
+                if (o1.getJobCode().equals("13730004001000008") || o1.getJobCode().equals("13724028007000001")){
+                    nList.add(o1);
+                }
             }
         }
         Collections.sort(nList);
@@ -108,36 +130,57 @@ public class ShanDongServiceImpl
     }
 
     @Override
-    public List<ShanDong202002Sh> sortAll2(int mode) {
+    public List<ShanDong202002Sh> sortAll2(int mode, boolean filter) {
         List<ShanDong202002Sh> list = selectAll3();
-        if (mode == 0){
-            Collections.sort(list);
-            return list;
-        }
         List<ShanDong202002Sh> nList = new ArrayList<>();
+        if (mode == 0){
+            for (ShanDong202002Sh o1: list) {
+                if (filter && o1.getDaXueBenKe().contains("不限"))
+                {
+                    continue;
+                }
+                nList.add(o1);
+            }
+            Collections.sort(nList);
+            return nList;
+        }
+
         for (ShanDong202002Sh o1: list){
-            String[] split1 = o1.getHasNum().split(",");
-            String[] split2 = o1.getCanNum().split(",");
-            String s1 = split1[split1.length - 1].trim();
-            String s2 = split2[split2.length - 1].trim();
-            if (mode == 1 && s1.equals("3-") && s2.equals("3-")){
-                nList.add(o1);
-            }else if (mode == 2 && s1.equals("3-") && s2.equals("3+")){
-                nList.add(o1);
-            }else if (mode == 3 && s1.equals("3+") && s2.equals("3+")){
-                nList.add(o1);
-            }else if (mode == 4 && s1.equals("30-") && s2.equals("30-")){
-                nList.add(o1);
-            }else if (mode == 5 && s1.equals("30-") && s2.equals("30+")){
-                nList.add(o1);
-            }else if (mode == 6 && s1.equals("30+") && s2.equals("30+")){
-                nList.add(o1);
-            }else if (mode == 7 && s1.equals("50-") && s2.equals("50-")){
-                nList.add(o1);
-            }else if (mode == 8 && s1.equals("50-") && s2.equals("50+")){
-                nList.add(o1);
-            }else if (mode == 9 && s1.equals("50+") && s2.equals("50+")){
-                nList.add(o1);
+            if (filter && o1.getDaXueBenKe().contains("不限")){
+                continue;
+            }
+            if (mode == 1){
+                if ( o1.getHasNum().trim().endsWith("3-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 2 ){
+                if ( o1.getHasNum().trim().endsWith("3+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 3 ){
+                if ( o1.getHasNum().trim().endsWith("30-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 4 ){
+                if ( o1.getHasNum().trim().endsWith("30+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 5){
+                if ( o1.getHasNum().trim().endsWith("50-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 6){
+                if ( o1.getHasNum().trim().endsWith("50+")){
+                    nList.add(o1);
+                }
+            }else if (mode == 7 ){
+                if ( o1.getHasNum().trim().endsWith("100-")){
+                    nList.add(o1);
+                }
+            }else if (mode == 8)  {
+                if (o1.getJobCode().equals("13730004001000008") || o1.getJobCode().equals("13724028007000001")){
+                    nList.add(o1);
+                }
             }
         }
         Collections.sort(nList);

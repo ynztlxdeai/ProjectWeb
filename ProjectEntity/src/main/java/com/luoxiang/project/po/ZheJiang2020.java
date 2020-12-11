@@ -234,6 +234,9 @@ public class ZheJiang2020 {
     }
 
     public String getHasing() {
+        if (hasing == null || hasing.equals("")){
+            return "";
+        }
         return hasing;
     }
 

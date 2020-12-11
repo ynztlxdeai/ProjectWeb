@@ -1,6 +1,7 @@
 package com.luoxiang.project;
 
 import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.po.ZheJiang2020;
 import com.luoxiang.project.service.ZheJiangService;
 
 import org.apache.http.Header;
@@ -17,6 +18,7 @@ import org.apache.http.protocol.BasicHttpProcessor;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +26,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -192,5 +196,33 @@ public class ZhejiangController {
         scheduledExecutorService.schedule(executorTask , 1 , TimeUnit.MINUTES );
 
         return zheJiangServiceImpl.update(limit);
+    }
+
+
+
+    @RequestMapping("refresh_zj_2020")
+    public String refreshZJ2020(Model model , boolean skip , int cmp , boolean filter){
+        try {
+            if (!skip){
+                zheJiangServiceImpl.update2();
+            }
+            List<ZheJiang2020> result = zheJiangServiceImpl.sortAll(cmp , filter);
+
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("<ul>");
+            Iterator<ZheJiang2020> iterator = result.iterator();
+            while (iterator.hasNext()){
+                ZheJiang2020 value = iterator.next();
+                stringBuffer.append("<li>");
+                stringBuffer.append(value.toString());
+                stringBuffer.append("</li>");
+            }
+            stringBuffer.append("</ul>");
+            model.addAttribute("comm_data" , stringBuffer.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("comm_data" , e.getMessage());
+        }
+        return "comm";
     }
 }

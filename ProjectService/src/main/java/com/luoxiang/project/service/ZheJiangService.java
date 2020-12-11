@@ -2,6 +2,9 @@ package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.ZheJiang02;
+import com.luoxiang.project.po.ZheJiang2020;
+
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.List;
 
@@ -25,4 +28,11 @@ public interface ZheJiangService {
     List<ZheJiang02> selectAll();
 
     CommBean update(int limit);
+
+
+    List<ZheJiang2020> selectAll2();
+
+    CommBean<T> update2();
+
+    List<ZheJiang2020> sortAll(int cmp, boolean filter);
 }

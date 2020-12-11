@@ -4,9 +4,12 @@ import com.luoxiang.poi.PoiZheJiang;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.bean.ZhejiangItem;
 import com.luoxiang.project.mapper.ZheJiang02Mapper;
+import com.luoxiang.project.mapper.ZheJiang2020Mapper;
 import com.luoxiang.project.po.ZheJiang02;
+import com.luoxiang.project.po.ZheJiang2020;
 import com.luoxiang.project.service.ZheJiangService;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,6 +39,9 @@ public class ZheJiangServiceImpl implements ZheJiangService {
 
     @Resource
     ZheJiang02Mapper zheJiang02Mapper;
+
+    @Resource
+    ZheJiang2020Mapper zheJiang2020Mapper;
 
     @Override
     public List<ZheJiang02> selectAll() {
@@ -90,5 +96,39 @@ public class ZheJiangServiceImpl implements ZheJiangService {
 
 
         return commBean;
+    }
+
+    @Override
+    public List<ZheJiang2020> selectAll2() {
+        return zheJiang2020Mapper.selectAll();
+    }
+
+    @Override
+    public CommBean<T> update2() {
+        List<ZheJiang2020> zheJiang2020s = selectAll2();
+        HashMap<String , ZheJiang2020> map = new HashMap<>(zheJiang2020s.size());
+        for (ZheJiang2020 tmp : zheJiang2020s){
+            map.put(tmp.getJobCode() , tmp);
+        }
+        CommBean<T> commBean = new CommBean<>();
+        try {
+            PoiZheJiang.check2020(map);
+            Iterator<Map.Entry<String, ZheJiang2020>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext()){
+                ZheJiang2020 value = iterator.next().getValue();
+                zheJiang2020Mapper.updateByPrimaryKey(value);
+            }
+            commBean.setCode(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            commBean.setCode(-1);
+            commBean.setMsg(e.getMessage());
+        }
+        return commBean;
+    }
+
+    @Override
+    public List<ZheJiang2020> sortAll(int cmp, boolean filter) {
+        return null;
     }
 }

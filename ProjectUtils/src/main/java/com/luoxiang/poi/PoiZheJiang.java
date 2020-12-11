@@ -1,5 +1,7 @@
 package com.luoxiang.poi;
 
+import com.luoxiang.project.po.ZheJiang2020;
+
 import org.apache.http.util.TextUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -84,5 +86,49 @@ public class PoiZheJiang {
         }
 
         return list;
+    }
+
+    public static void check2020 (HashMap<String , ZheJiang2020> maps)
+            throws Exception
+    {
+        File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\zhejiang\\count");
+        File[]            files   = fileDir.listFiles();
+        for(File tmp : files) {
+            if (tmp.getName().endsWith(".xls"))
+            {
+                HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(tmp));
+                HSSFSheet    sheet    = null;
+                for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+                    sheet = workbook.getSheetAt(i);
+
+                    int LastRowNum = sheet.getLastRowNum() + 1;
+                    for (int j = 1; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
+                        HSSFRow row = sheet.getRow(j);
+                        if (row == null) {
+                            continue;
+                        }
+                        String first = row.getCell(2).toString().trim();
+                        if (maps.containsKey(first)){
+                            int current = 0;
+                            CellType cellType = row.getCell(5).getCellType();
+                            if (cellType == CellType.BLANK){
+
+                            }else if (cellType == CellType.NUMERIC){
+                                current = (int) row.getCell(5).getNumericCellValue();
+                            }else {
+                                current = (int) Double.parseDouble(row.getCell(5).toString());
+                            }
+                            ZheJiang2020 zheJiang2020 = maps.get(first);
+                            zheJiang2020.setAllNum(current);
+                            StringBuffer stringBuffer = new StringBuffer(zheJiang2020.getHasing());
+                            stringBuffer.append(TextUtils.isEmpty(zheJiang2020.getHasing()) ? "" : ",").append(current + "");
+                            zheJiang2020.setHasing(stringBuffer.toString());
+                            maps.replace(first , zheJiang2020);
+                        }
+
+                    }
+                }
+            }
+        }
     }
 }

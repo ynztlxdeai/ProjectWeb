@@ -30,7 +30,7 @@ public class PoiIndex {
 
     public static void  main(String[] args) {
         try {
-            readIndex();
+            readIndex2();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -74,4 +74,48 @@ public class PoiIndex {
 
         bufferedWriter.close();
     }
+
+
+    public static void readIndex2() throws Exception{
+        String FILE_PATH = "C:\\Users\\Vincent\\Downloads\\1.xls";
+        HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(new File(FILE_PATH)));
+        HSSFSheet    sheet    = null;
+
+        ArrayList<String> unuse = new ArrayList<>();
+        for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+            sheet = workbook.getSheetAt(i);
+            for (int j = 0; j < sheet.getLastRowNum() + 1; j++) {// getLastRowNum，获取最后一行的行标
+                HSSFRow row = sheet.getRow(j);
+                if (row != null) {
+                    String first = row.getCell(0).toString();
+                    String second = row.getCell(1).toString();
+                    if (TextUtils.isEmpty(second)){
+                        continue;
+                    }
+                    String benKe = "";
+                    if (second.contains("本科")){
+                        int benKeIndex = second.indexOf("本科");
+                        benKe = second.substring(benKeIndex);
+                        if (!benKe.contains("电子信息")){
+                            System.out.println("first = " + first + ",second = " + second);
+                            System.out.println("");
+                            unuse.add(first);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vincent\\Downloads\\1.sql"));
+        for (String index : unuse) {
+            String sTemp = "DELETE FROM zhe_jiang_2020 WHERE job_index = %s ;";
+            bufferedWriter.write(String.format(sTemp , index));
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+    }
+
 }

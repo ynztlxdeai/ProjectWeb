@@ -202,6 +202,7 @@ public class ZhejiangController {
 
     @RequestMapping("refresh_zj_2020")
     public String refreshZJ2020(Model model , boolean skip , int cmp , boolean filter){
+        //http://localhost:8080/zhejiang/refresh_zj_2020?skip=true&cmp=100&filter=false
         try {
             if (!skip){
                 zheJiangServiceImpl.update2();

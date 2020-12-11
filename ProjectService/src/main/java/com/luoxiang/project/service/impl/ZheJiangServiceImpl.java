@@ -13,6 +13,7 @@ import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -129,6 +130,27 @@ public class ZheJiangServiceImpl implements ZheJiangService {
 
     @Override
     public List<ZheJiang2020> sortAll(int cmp, boolean filter) {
-        return null;
+        List<ZheJiang2020> list  = selectAll2();
+        List<ZheJiang2020> nList = new ArrayList<>();
+        if (cmp == 0 && filter){
+            for (ZheJiang2020 o1: list) {
+                if (o1.getZhuanYe().contains("电子信息"))
+                {
+                    nList.add(o1);
+                }
+
+            }
+            Collections.sort(nList);
+            return nList;
+        }
+        for (ZheJiang2020 tmp : list){
+            if (filter && tmp.getZhuanYe().contains("电子信息") && tmp.getAllNum() <= cmp){
+                nList.add(tmp);
+            }else if (tmp.getAllNum() <= cmp && !filter){
+                nList.add(tmp);
+            }
+        }
+        Collections.sort(nList);
+        return nList;
     }
 }

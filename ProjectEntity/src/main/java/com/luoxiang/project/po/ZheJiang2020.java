@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class ZheJiang2020 {
+public class ZheJiang2020 implements Comparable<ZheJiang2020>{
     private Integer jobIndex;
 
     private String unitName;
@@ -242,5 +242,22 @@ public class ZheJiang2020 {
 
     public void setHasing(String hasing) {
         this.hasing = hasing == null ? null : hasing.trim();
+    }
+
+    @Override
+    public int compareTo(ZheJiang2020 o) {
+        if (Integer.parseInt(this.needNum) == Integer.parseInt(o.needNum)){
+            return this.allNum - o.allNum;
+        }
+        int firstI = this.allNum / Integer.parseInt(this.needNum) ;
+        int secondI = o.allNum / Integer.parseInt(o.needNum);
+
+        return firstI == secondI ? this.allNum % Integer.parseInt(this.needNum) - o.allNum % Integer.parseInt(o.needNum) : firstI - secondI;
+
+    }
+
+    @Override
+    public String toString() {
+        return String.format("单位：%s , 代码: %s , 招录人数:%s , 进度：%s <br></br> 专业:%s <br></br>" , unitName , jobCode , needNum , hasing , zhuanYe);
     }
 }

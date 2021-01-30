@@ -57,8 +57,40 @@ public class GuangDongServiceImpl implements GuangDongService{
     }
 
     @Override
-    public CommBean<T> update() {
-        return null;
+    public CommBean<T> update(String cookies) {
+        CommBean commBean = new CommBean();
+        try {
+            getData(cookies ,initMap());
+            commBean.setCode(0);
+            commBean.setMsg("Success");
+        } catch (Exception e) {
+            e.printStackTrace();
+            commBean.setCode(-1);
+            commBean.setMsg("ERROR : " + e.getMessage());
+        }
+        return commBean;
+    }
+
+    @Override
+    public List<GuangDong01> sortAll(int cmp, boolean filter) {
+        List<GuangDong01> all = selectAll();
+        if (filter){
+            ArrayList<GuangDong01> results = new ArrayList<>();
+            for (GuangDong01 t : all){
+                if ((!t.getBenKe().contains("不限")) && t.getAllNum() <= cmp){
+                    results.add(t);
+                }
+            }
+            return results;
+        }else {
+            ArrayList<GuangDong01> results = new ArrayList<>();
+            for (GuangDong01 t : all){
+                if (t.getAllNum() <= cmp){
+                    results.add(t);
+                }
+            }
+            return results;
+        }
     }
 
     public HashMap<String, GuangDong01> initMap() {
@@ -89,7 +121,7 @@ public class GuangDongServiceImpl implements GuangDongService{
 
         for (int i = 0; i < HttpClientUtil.are.length; i++) {
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            nvps.add(new BasicNameValuePair("bfa001", "202001"));
+            nvps.add(new BasicNameValuePair("bfa001", "202101"));
             nvps.add(new BasicNameValuePair("bab301", HttpClientUtil.are[i]));
             nvps.add(new BasicNameValuePair("page","1"));
             nvps.add(new BasicNameValuePair("rows", "1500"));
@@ -110,8 +142,9 @@ public class GuangDongServiceImpl implements GuangDongService{
                         jobCode = rowsBean.getBfe301();
                         GuangDong01 gov = hashMap.get(jobCode);
 
-                        int currentNums = rowsBean.getAab119();
+
                         if (gov != null ){
+                            int currentNums = rowsBean.getAab119();
                             gov.setAllNum(currentNums);
 
                             StringBuffer sb1 = new StringBuffer(gov.getIngNum());

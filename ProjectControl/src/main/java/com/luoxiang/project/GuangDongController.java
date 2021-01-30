@@ -1,7 +1,13 @@
 package com.luoxiang.project;
 
+import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.service.GuangDongService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * projectName: 	    com.luoxiang.parent
@@ -21,4 +27,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("guangdong")
 public class GuangDongController {
 
+    @Resource
+    public GuangDongService guangDongService;
+
+    @RequestMapping("update")
+    public @ResponseBody
+    CommBean update(String cookies){
+        //http://localhost:8080/gd_2020/update?cookies=JSESSIONID=YKMxbJid2CVZsWHEc1GaVQ4vWnMYjXXuQy2y934G5RbvZBGtTqUT!1577052419
+        return guangDongService.update(cookies);
+    }
 }

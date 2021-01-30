@@ -26,5 +26,7 @@ public interface GuangDongService {
 
     List<GuangDong01> selectAll();
 
-    CommBean<T> update();
+    CommBean<T> update(String cookies);
+
+    List<GuangDong01> sortAll(int cmp, boolean filter);
 }

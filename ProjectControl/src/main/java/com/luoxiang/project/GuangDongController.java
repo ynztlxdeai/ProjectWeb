@@ -28,12 +28,12 @@ import javax.annotation.Resource;
 public class GuangDongController {
 
     @Resource
-    public GuangDongService guangDongService;
+    public GuangDongService guangDongServiceImpl;
 
     @RequestMapping("update")
     public @ResponseBody
     CommBean update(String cookies){
         //http://localhost:8080/gd_2020/update?cookies=JSESSIONID=YKMxbJid2CVZsWHEc1GaVQ4vWnMYjXXuQy2y934G5RbvZBGtTqUT!1577052419
-        return guangDongService.update(cookies);
+        return guangDongServiceImpl.update(cookies);
     }
 }

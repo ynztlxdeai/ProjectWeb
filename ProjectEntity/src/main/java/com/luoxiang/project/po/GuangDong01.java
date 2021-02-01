@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class GuangDong01 {
+public class GuangDong01 implements Comparable<GuangDong01>{
     private Integer jobIndex;
 
     private String unitName;
@@ -176,6 +176,9 @@ public class GuangDong01 {
     }
 
     public Integer getAllNum() {
+        if (allNum == null){
+            return 0;
+        }
         return allNum;
     }
 
@@ -184,10 +187,30 @@ public class GuangDong01 {
     }
 
     public String getIngNum() {
+        if (ingNum == null){
+            return "";
+        }
         return ingNum;
     }
 
     public void setIngNum(String ingNum) {
         this.ingNum = ingNum == null ? null : ingNum.trim();
+    }
+
+    public String showData() {
+        return   String.format("单位名称：%s ,  需要人数：%s , 现有人数：%d ,变化趋势：%s  <br></br> 专业：%s", unitName  ,needNum , allNum , ingNum  , benKe);
+    }
+
+    @Override
+    public int compareTo(GuangDong01 o) {
+        int firstNum = Integer.parseInt(this.needNum);
+        int secondNum = Integer.parseInt(o.needNum);
+        if (firstNum == secondNum){
+            return this.allNum - o.allNum;
+        }
+        int firstI = this.allNum / firstNum ;
+        int secondI = o.allNum / secondNum;
+
+        return firstI == secondI ? this.allNum % firstNum - o.allNum % secondNum : firstI - secondI;
     }
 }

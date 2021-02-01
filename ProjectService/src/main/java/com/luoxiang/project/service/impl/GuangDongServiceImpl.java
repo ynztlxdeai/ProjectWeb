@@ -25,6 +25,7 @@ import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -81,6 +82,7 @@ public class GuangDongServiceImpl implements GuangDongService{
                     results.add(t);
                 }
             }
+            Collections.sort(results);
             return results;
         }else {
             ArrayList<GuangDong01> results = new ArrayList<>();
@@ -89,6 +91,7 @@ public class GuangDongServiceImpl implements GuangDongService{
                     results.add(t);
                 }
             }
+            Collections.sort(results);
             return results;
         }
     }

@@ -118,7 +118,7 @@ public class GuangDongServiceImpl implements GuangDongService{
         httpPost.addHeader("Cookie" ,cookies );
         httpPost.addHeader("Host" , "ggfw.gdhrss.gov.cn");
         httpPost.addHeader("Origin" , "https://ggfw.gdhrss.gov.cn");
-        httpPost.addHeader("Referer" , "https://ggfw.gdhrss.gov.cn/gwyks/center.do?nvt=1594262079718");
+        httpPost.addHeader("Referer" , "https://ggfw.gdhrss.gov.cn/gwyks/center.do?nvt=1612230902703");
         httpPost.addHeader("User-Agent" , "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36");
         httpPost.addHeader("X-Requested-With" , "XMLHttpRequest");
 
@@ -151,7 +151,7 @@ public class GuangDongServiceImpl implements GuangDongService{
                             gov.setAllNum(currentNums);
 
                             StringBuffer sb1 = new StringBuffer(gov.getIngNum());
-                            sb1.append(TextUtils.isEmpty(gov.getIngNum()) ? "" : "," ).append(currentNums);
+                            sb1.append(TextUtils.isEmpty(gov.getIngNum()) ? "" : "," ).append(currentNums + "");
                             gov.setIngNum(sb1.toString());
 
                             guangDong01Mapper.updateByPrimaryKey(gov);

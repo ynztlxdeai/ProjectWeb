@@ -33,10 +33,10 @@ public class GuangDongController {
     public GuangDongService guangDongServiceImpl;
 
     @RequestMapping("update")
-    public String update(Model model ,String cookies ,  int cmp , boolean filter , boolean skip){
+    public String update(Model model ,String cookies ,  int cmp , boolean filter , boolean skip , String time){
         //http://localhost:8080/gd_2020/update?cookies=JSESSIONID=YKMxbJid2CVZsWHEc1GaVQ4vWnMYjXXuQy2y934G5RbvZBGtTqUT!1577052419
         if (!skip){
-            guangDongServiceImpl.update(cookies);
+            guangDongServiceImpl.update(cookies , time);
         }
 
         List<GuangDong01> all = guangDongServiceImpl.sortAll(cmp , filter);

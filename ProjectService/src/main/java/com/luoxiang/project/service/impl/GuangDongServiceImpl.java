@@ -58,10 +58,10 @@ public class GuangDongServiceImpl implements GuangDongService{
     }
 
     @Override
-    public CommBean<T> update(String cookies) {
+    public CommBean<T> update(String cookies , String time) {
         CommBean commBean = new CommBean();
         try {
-            getData(cookies ,initMap());
+            getData(cookies ,time ,initMap());
             commBean.setCode(0);
             commBean.setMsg("Success");
         } catch (Exception e) {
@@ -105,7 +105,7 @@ public class GuangDongServiceImpl implements GuangDongService{
         return hashMap;
     }
 
-    public void getData(String cookies ,  HashMap<String , GuangDong01> hashMap) throws Exception{
+    public void getData(String cookies , String time ,  HashMap<String , GuangDong01> hashMap) throws Exception{
         String     url        = "https://ggfw.gdhrss.gov.cn/gwyks/exam/details/spQuery.do";
 
         HttpPost httpPost = new HttpPost(url);
@@ -118,7 +118,8 @@ public class GuangDongServiceImpl implements GuangDongService{
         httpPost.addHeader("Cookie" ,cookies );
         httpPost.addHeader("Host" , "ggfw.gdhrss.gov.cn");
         httpPost.addHeader("Origin" , "https://ggfw.gdhrss.gov.cn");
-        httpPost.addHeader("Referer" , "https://ggfw.gdhrss.gov.cn/gwyks/center.do?nvt=1612230902703");
+        httpPost.addHeader("Referer" , String.format("https://ggfw.gdhrss.gov.cn/gwyks/center.do?nvt=%s" ,
+                                                     time));
         httpPost.addHeader("User-Agent" , "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36");
         httpPost.addHeader("X-Requested-With" , "XMLHttpRequest");
 

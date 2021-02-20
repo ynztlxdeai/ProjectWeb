@@ -5,6 +5,8 @@ import com.luoxiang.poi.PoiSC02;
 import com.luoxiang.poi.PoiSZ2020;
 import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
+import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.service.HuBeiService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 /**
  * projectName: 	    com.luoxiang.parent
@@ -118,6 +122,34 @@ public class CommController {
             e.printStackTrace();
             model.addAttribute("comm_data" , e.getMessage());
         }
+        return "comm";
+    }
+
+
+
+
+    @Resource
+    public HuBeiService huBeiServiceImpl;
+
+    @RequestMapping("hubei202101")
+    public String hubei202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            huBeiServiceImpl.update();
+        }
+
+        List<HuBei202101> all = huBeiServiceImpl.sortAll(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (HuBei202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
         return "comm";
     }
 }

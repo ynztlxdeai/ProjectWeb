@@ -1,12 +1,22 @@
 package com.luoxiang.file;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.luoxiang.project.bean.FuJianBean;
+
 import org.apache.http.util.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * projectName: 	    com.luoxiang.parent
@@ -28,17 +38,54 @@ public class TxtReader {
     public static final int STEP_SIZE = 3;
 
     public static void  main(String[] args) {
-        readSingle();
+        //readSingle();
         //readIndex();
+        String s =  readToString("C:\\Users\\Vincent\\Downloads\\2021\\1.txt");
+        Gson gson = new Gson();
+        List<FuJianBean> list = gson.fromJson(s, new TypeToken<List<FuJianBean>>(){}.getType());
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vincent\\Downloads\\2021\\1.sql"));
+            for (FuJianBean f : list) {
+                bufferedWriter.write(f.toString());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void readIndex(){
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Vincent\\Downloads\\2.txt"));
+            FileInputStream inputStream = new FileInputStream("C:\\Users\\Vincent\\Downloads\\2021\\1.txt");
 
 
         }catch (Exception e){
 
+        }
+    }
+
+    public static String readToString(String fileName) {
+        String encoding    = "UTF-8";
+        File   file        = new File(fileName);
+        Long   filelength  = file.length();
+        byte[] filecontent = new byte[filelength.intValue()];
+        try {
+            FileInputStream in = new FileInputStream(file);
+            in.read(filecontent);
+            in.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            return new String(filecontent, encoding);
+        } catch (UnsupportedEncodingException e) {
+            System.err.println("The OS does not support " + encoding);
+            e.printStackTrace();
+            return null;
         }
     }
 

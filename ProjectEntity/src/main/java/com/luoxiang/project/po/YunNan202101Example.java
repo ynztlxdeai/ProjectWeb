@@ -2054,73 +2054,73 @@ public class YunNan202101Example {
             return (Criteria) this;
         }
 
-        public Criteria andDescIsNull() {
-            addCriterion("desc is null");
+        public Criteria andQiTaDescIsNull() {
+            addCriterion("qi_ta_desc is null");
             return (Criteria) this;
         }
 
-        public Criteria andDescIsNotNull() {
-            addCriterion("desc is not null");
+        public Criteria andQiTaDescIsNotNull() {
+            addCriterion("qi_ta_desc is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDescEqualTo(String value) {
-            addCriterion("desc =", value, "desc");
+        public Criteria andQiTaDescEqualTo(String value) {
+            addCriterion("qi_ta_desc =", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotEqualTo(String value) {
-            addCriterion("desc <>", value, "desc");
+        public Criteria andQiTaDescNotEqualTo(String value) {
+            addCriterion("qi_ta_desc <>", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescGreaterThan(String value) {
-            addCriterion("desc >", value, "desc");
+        public Criteria andQiTaDescGreaterThan(String value) {
+            addCriterion("qi_ta_desc >", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescGreaterThanOrEqualTo(String value) {
-            addCriterion("desc >=", value, "desc");
+        public Criteria andQiTaDescGreaterThanOrEqualTo(String value) {
+            addCriterion("qi_ta_desc >=", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescLessThan(String value) {
-            addCriterion("desc <", value, "desc");
+        public Criteria andQiTaDescLessThan(String value) {
+            addCriterion("qi_ta_desc <", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescLessThanOrEqualTo(String value) {
-            addCriterion("desc <=", value, "desc");
+        public Criteria andQiTaDescLessThanOrEqualTo(String value) {
+            addCriterion("qi_ta_desc <=", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescLike(String value) {
-            addCriterion("desc like", value, "desc");
+        public Criteria andQiTaDescLike(String value) {
+            addCriterion("qi_ta_desc like", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotLike(String value) {
-            addCriterion("desc not like", value, "desc");
+        public Criteria andQiTaDescNotLike(String value) {
+            addCriterion("qi_ta_desc not like", value, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescIn(List<String> values) {
-            addCriterion("desc in", values, "desc");
+        public Criteria andQiTaDescIn(List<String> values) {
+            addCriterion("qi_ta_desc in", values, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotIn(List<String> values) {
-            addCriterion("desc not in", values, "desc");
+        public Criteria andQiTaDescNotIn(List<String> values) {
+            addCriterion("qi_ta_desc not in", values, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescBetween(String value1, String value2) {
-            addCriterion("desc between", value1, value2, "desc");
+        public Criteria andQiTaDescBetween(String value1, String value2) {
+            addCriterion("qi_ta_desc between", value1, value2, "qiTaDesc");
             return (Criteria) this;
         }
 
-        public Criteria andDescNotBetween(String value1, String value2) {
-            addCriterion("desc not between", value1, value2, "desc");
+        public Criteria andQiTaDescNotBetween(String value1, String value2) {
+            addCriterion("qi_ta_desc not between", value1, value2, "qiTaDesc");
             return (Criteria) this;
         }
 

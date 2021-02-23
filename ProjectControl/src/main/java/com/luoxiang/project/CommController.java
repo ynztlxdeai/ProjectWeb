@@ -6,7 +6,9 @@ import com.luoxiang.poi.PoiSZ2020;
 import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.po.YunNan202101;
 import com.luoxiang.project.service.HuBeiService;
+import com.luoxiang.project.service.YunNanService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -129,7 +131,7 @@ public class CommController {
 
 
     @Resource
-    public HuBeiService huBeiServiceImpl;
+      public HuBeiService huBeiServiceImpl;
 
     @RequestMapping("hubei202101")
     public String hubei202101(Model model ,  int cmp , boolean filter , boolean skip ){
@@ -142,6 +144,33 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (HuBei202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+
+    @Resource
+    public YunNanService yunNanServiceImpl;
+
+    @RequestMapping("yunnan202101")
+    public String yunnan202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            yunNanServiceImpl.update();
+        }
+
+        List<YunNan202101> all = yunNanServiceImpl.sortAll(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (YunNan202101 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

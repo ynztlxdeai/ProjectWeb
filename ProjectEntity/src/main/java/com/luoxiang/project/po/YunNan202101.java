@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class YunNan202101 {
+public class YunNan202101 implements Comparable<YunNan202101>{
     private Integer jobIndex;
 
     private String jobCode;
@@ -57,7 +57,7 @@ public class YunNan202101 {
 
     private String qiTa;
 
-    private String desc;
+    private String qiTaDesc;
 
     private String phoneArea;
 
@@ -287,20 +287,20 @@ public class YunNan202101 {
         this.zhuanYeTest = zhuanYeTest == null ? null : zhuanYeTest.trim();
     }
 
+    public String getQiTaDesc() {
+        return qiTaDesc;
+    }
+
+    public void setQiTaDesc(String qiTaDesc) {
+        this.qiTaDesc = qiTaDesc;
+    }
+
     public String getQiTa() {
         return qiTa;
     }
 
     public void setQiTa(String qiTa) {
         this.qiTa = qiTa == null ? null : qiTa.trim();
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
     }
 
     public String getPhoneArea() {
@@ -336,6 +336,9 @@ public class YunNan202101 {
     }
 
     public String getIngNum() {
+        if (ingNum == null){
+            return "";
+        }
         return ingNum;
     }
 
@@ -344,10 +347,30 @@ public class YunNan202101 {
     }
 
     public Integer getAllNum() {
+        if (allNum == null){
+            return 0;
+        }
         return allNum;
     }
 
     public void setAllNum(Integer allNum) {
         this.allNum = allNum;
+    }
+
+    public String showData() {
+        return   String.format("单位名称：%s ,  需要人数：%s , 现有人数：%d ,变化趋势：%s , 职位代码：%s  <br></br> 专业：%s", unitName  ,needNum , allNum , ingNum  ,jobCode ,  zhuanYe);
+    }
+
+    @Override
+    public int compareTo(YunNan202101 o) {
+        int firstNum = Integer.parseInt(this.needNum);
+        int secondNum = Integer.parseInt(o.needNum);
+        if (firstNum == secondNum){
+            return this.allNum - o.allNum;
+        }
+        int firstI = this.allNum / firstNum ;
+        int secondI = o.allNum / secondNum;
+
+        return firstI == secondI ? this.allNum % firstNum - o.allNum % secondNum : firstI - secondI;
     }
 }

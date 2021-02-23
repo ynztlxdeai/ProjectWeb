@@ -30,7 +30,7 @@
     <result column="fa_lv" property="faLv" jdbcType="VARCHAR" />
     <result column="zhuan_ye_test" property="zhuanYeTest" jdbcType="VARCHAR" />
     <result column="qi_ta" property="qiTa" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="qi_ta_desc" property="qiTaDesc" jdbcType="VARCHAR" />
     <result column="phone_area" property="phoneArea" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="web" property="web" jdbcType="VARCHAR" />
@@ -100,7 +100,8 @@
     job_index, job_code, unit_name, unit_class, unit_level, job_name, da_lei, xuan_diao_sheng, 
     is_policy, is_fa_guan, is_xian_ji, job_desc, need_num, shen_fen, sex, min_zu, min_zu_name, 
     xue_li_attr, xue_li, xue_wei, years, zhuan_ye, hu_ji, ji_ceng_xiang_mu, zheng_zhi, 
-    fa_lv, zhuan_ye_test, qi_ta, desc, phone_area, phone, web, kai_kao, ing_num, all_num
+    fa_lv, zhuan_ye_test, qi_ta, qi_ta_desc, phone_area, phone, web, kai_kao, ing_num, 
+    all_num
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.YunNan202101Example" >
     select
@@ -142,7 +143,7 @@
       xue_li, xue_wei, years, 
       zhuan_ye, hu_ji, ji_ceng_xiang_mu, 
       zheng_zhi, fa_lv, zhuan_ye_test, 
-      qi_ta, desc, phone_area, 
+      qi_ta, qi_ta_desc, phone_area, 
       phone, web, kai_kao, 
       ing_num, all_num)
     values (#{jobIndex,jdbcType=INTEGER}, #{jobCode,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
@@ -154,7 +155,7 @@
       #{xueLi,jdbcType=VARCHAR}, #{xueWei,jdbcType=VARCHAR}, #{years,jdbcType=VARCHAR}, 
       #{zhuanYe,jdbcType=VARCHAR}, #{huJi,jdbcType=VARCHAR}, #{jiCengXiangMu,jdbcType=VARCHAR}, 
       #{zhengZhi,jdbcType=VARCHAR}, #{faLv,jdbcType=VARCHAR}, #{zhuanYeTest,jdbcType=VARCHAR}, 
-      #{qiTa,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{phoneArea,jdbcType=VARCHAR}, 
+      #{qiTa,jdbcType=VARCHAR}, #{qiTaDesc,jdbcType=VARCHAR}, #{phoneArea,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{web,jdbcType=VARCHAR}, #{kaiKao,jdbcType=VARCHAR}, 
       #{ingNum,jdbcType=VARCHAR}, #{allNum,jdbcType=INTEGER})
   </insert>
@@ -245,8 +246,8 @@
       <if test="qiTa != null" >
         qi_ta,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="qiTaDesc != null" >
+        qi_ta_desc,
       </if>
       <if test="phoneArea != null" >
         phone_area,
@@ -352,8 +353,8 @@
       <if test="qiTa != null" >
         #{qiTa,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="qiTaDesc != null" >
+        #{qiTaDesc,jdbcType=VARCHAR},
       </if>
       <if test="phoneArea != null" >
         #{phoneArea,jdbcType=VARCHAR},
@@ -468,8 +469,8 @@
       <if test="record.qiTa != null" >
         qi_ta = #{record.qiTa,jdbcType=VARCHAR},
       </if>
-      <if test="record.desc != null" >
-        desc = #{record.desc,jdbcType=VARCHAR},
+      <if test="record.qiTaDesc != null" >
+        qi_ta_desc = #{record.qiTaDesc,jdbcType=VARCHAR},
       </if>
       <if test="record.phoneArea != null" >
         phone_area = #{record.phoneArea,jdbcType=VARCHAR},
@@ -524,7 +525,7 @@
       fa_lv = #{record.faLv,jdbcType=VARCHAR},
       zhuan_ye_test = #{record.zhuanYeTest,jdbcType=VARCHAR},
       qi_ta = #{record.qiTa,jdbcType=VARCHAR},
-      desc = #{record.desc,jdbcType=VARCHAR},
+      qi_ta_desc = #{record.qiTaDesc,jdbcType=VARCHAR},
       phone_area = #{record.phoneArea,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       web = #{record.web,jdbcType=VARCHAR},
@@ -619,8 +620,8 @@
       <if test="qiTa != null" >
         qi_ta = #{qiTa,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="qiTaDesc != null" >
+        qi_ta_desc = #{qiTaDesc,jdbcType=VARCHAR},
       </if>
       <if test="phoneArea != null" >
         phone_area = #{phoneArea,jdbcType=VARCHAR},
@@ -672,7 +673,7 @@
       fa_lv = #{faLv,jdbcType=VARCHAR},
       zhuan_ye_test = #{zhuanYeTest,jdbcType=VARCHAR},
       qi_ta = #{qiTa,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+      qi_ta_desc = #{qiTaDesc,jdbcType=VARCHAR},
       phone_area = #{phoneArea,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       web = #{web,jdbcType=VARCHAR},
@@ -681,6 +682,7 @@
       all_num = #{allNum,jdbcType=INTEGER}
     where job_index = #{jobIndex,jdbcType=INTEGER}
   </update>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <if test="distinct" >

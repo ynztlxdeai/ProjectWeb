@@ -5,8 +5,10 @@ import com.luoxiang.poi.PoiSC02;
 import com.luoxiang.poi.PoiSZ2020;
 import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
+import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
 import com.luoxiang.project.po.YunNan202101;
+import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
 import com.luoxiang.project.service.YunNanService;
 
@@ -171,6 +173,32 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (YunNan202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+    @Resource
+    public HeNanService heNanServiceImpl;
+
+    @RequestMapping("henan202101")
+    public String henan202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            heNanServiceImpl.update();
+        }
+
+        List<HeNan202101> all = heNanServiceImpl.sortAll(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (HeNan202101 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

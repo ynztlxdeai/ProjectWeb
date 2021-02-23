@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luoxiang.project.mapper.HeNan202101Mapper" >
+  <resultMap id="BaseResultMap" type="com.luoxiang.project.po.HeNan202101" >
+    <id column="job_index" property="jobIndex" jdbcType="INTEGER" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_code" property="jobCode" jdbcType="VARCHAR" />
+    <result column="need_num" property="needNum" jdbcType="VARCHAR" />
+    <result column="xue_li" property="xueLi" jdbcType="VARCHAR" />
+    <result column="zhuan_ye" property="zhuanYe" jdbcType="VARCHAR" />
+    <result column="years" property="years" jdbcType="VARCHAR" />
+    <result column="gong_zuo_jing_li" property="gongZuoJingLi" jdbcType="VARCHAR" />
+    <result column="qi_ta" property="qiTa" jdbcType="VARCHAR" />
+    <result column="bei_zhu" property="beiZhu" jdbcType="VARCHAR" />
+    <result column="ing_num" property="ingNum" jdbcType="VARCHAR" />
+    <result column="all_num" property="allNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    job_index, unit_name, job_name, job_code, need_num, xue_li, zhuan_ye, years, gong_zuo_jing_li, 
+    qi_ta, bei_zhu, ing_num, all_num
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luoxiang.project.po.HeNan202101Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from he_nan_2021_01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from he_nan_2021_01
+    where job_index = #{jobIndex,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from he_nan_2021_01
+    where job_index = #{jobIndex,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luoxiang.project.po.HeNan202101Example" >
+    delete from he_nan_2021_01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luoxiang.project.po.HeNan202101" >
+    insert into he_nan_2021_01 (job_index, unit_name, job_name, 
+      job_code, need_num, xue_li, 
+      zhuan_ye, years, gong_zuo_jing_li, 
+      qi_ta, bei_zhu, ing_num, 
+      all_num)
+    values (#{jobIndex,jdbcType=INTEGER}, #{unitName,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobCode,jdbcType=VARCHAR}, #{needNum,jdbcType=VARCHAR}, #{xueLi,jdbcType=VARCHAR}, 
+      #{zhuanYe,jdbcType=VARCHAR}, #{years,jdbcType=VARCHAR}, #{gongZuoJingLi,jdbcType=VARCHAR}, 
+      #{qiTa,jdbcType=VARCHAR}, #{beiZhu,jdbcType=VARCHAR}, #{ingNum,jdbcType=VARCHAR}, 
+      #{allNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.luoxiang.project.po.HeNan202101" >
+    insert into he_nan_2021_01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobIndex != null" >
+        job_index,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="jobCode != null" >
+        job_code,
+      </if>
+      <if test="needNum != null" >
+        need_num,
+      </if>
+      <if test="xueLi != null" >
+        xue_li,
+      </if>
+      <if test="zhuanYe != null" >
+        zhuan_ye,
+      </if>
+      <if test="years != null" >
+        years,
+      </if>
+      <if test="gongZuoJingLi != null" >
+        gong_zuo_jing_li,
+      </if>
+      <if test="qiTa != null" >
+        qi_ta,
+      </if>
+      <if test="beiZhu != null" >
+        bei_zhu,
+      </if>
+      <if test="ingNum != null" >
+        ing_num,
+      </if>
+      <if test="allNum != null" >
+        all_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobIndex != null" >
+        #{jobIndex,jdbcType=INTEGER},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode != null" >
+        #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="needNum != null" >
+        #{needNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xueLi != null" >
+        #{xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanYe != null" >
+        #{zhuanYe,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null" >
+        #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="gongZuoJingLi != null" >
+        #{gongZuoJingLi,jdbcType=VARCHAR},
+      </if>
+      <if test="qiTa != null" >
+        #{qiTa,jdbcType=VARCHAR},
+      </if>
+      <if test="beiZhu != null" >
+        #{beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="ingNum != null" >
+        #{ingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="allNum != null" >
+        #{allNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luoxiang.project.po.HeNan202101Example" resultType="java.lang.Integer" >
+    select count(*) from he_nan_2021_01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update he_nan_2021_01
+    <set >
+      <if test="record.jobIndex != null" >
+        job_index = #{record.jobIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitName != null" >
+        unit_name = #{record.unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobName != null" >
+        job_name = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobCode != null" >
+        job_code = #{record.jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.needNum != null" >
+        need_num = #{record.needNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueLi != null" >
+        xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuanYe != null" >
+        zhuan_ye = #{record.zhuanYe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.years != null" >
+        years = #{record.years,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gongZuoJingLi != null" >
+        gong_zuo_jing_li = #{record.gongZuoJingLi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qiTa != null" >
+        qi_ta = #{record.qiTa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beiZhu != null" >
+        bei_zhu = #{record.beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ingNum != null" >
+        ing_num = #{record.ingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allNum != null" >
+        all_num = #{record.allNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update he_nan_2021_01
+    set job_index = #{record.jobIndex,jdbcType=INTEGER},
+      unit_name = #{record.unitName,jdbcType=VARCHAR},
+      job_name = #{record.jobName,jdbcType=VARCHAR},
+      job_code = #{record.jobCode,jdbcType=VARCHAR},
+      need_num = #{record.needNum,jdbcType=VARCHAR},
+      xue_li = #{record.xueLi,jdbcType=VARCHAR},
+      zhuan_ye = #{record.zhuanYe,jdbcType=VARCHAR},
+      years = #{record.years,jdbcType=VARCHAR},
+      gong_zuo_jing_li = #{record.gongZuoJingLi,jdbcType=VARCHAR},
+      qi_ta = #{record.qiTa,jdbcType=VARCHAR},
+      bei_zhu = #{record.beiZhu,jdbcType=VARCHAR},
+      ing_num = #{record.ingNum,jdbcType=VARCHAR},
+      all_num = #{record.allNum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luoxiang.project.po.HeNan202101" >
+    update he_nan_2021_01
+    <set >
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode != null" >
+        job_code = #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="needNum != null" >
+        need_num = #{needNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xueLi != null" >
+        xue_li = #{xueLi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanYe != null" >
+        zhuan_ye = #{zhuanYe,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null" >
+        years = #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="gongZuoJingLi != null" >
+        gong_zuo_jing_li = #{gongZuoJingLi,jdbcType=VARCHAR},
+      </if>
+      <if test="qiTa != null" >
+        qi_ta = #{qiTa,jdbcType=VARCHAR},
+      </if>
+      <if test="beiZhu != null" >
+        bei_zhu = #{beiZhu,jdbcType=VARCHAR},
+      </if>
+      <if test="ingNum != null" >
+        ing_num = #{ingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="allNum != null" >
+        all_num = #{allNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where job_index = #{jobIndex,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luoxiang.project.po.HeNan202101" >
+    update he_nan_2021_01
+    set unit_name = #{unitName,jdbcType=VARCHAR},
+      job_name = #{jobName,jdbcType=VARCHAR},
+      job_code = #{jobCode,jdbcType=VARCHAR},
+      need_num = #{needNum,jdbcType=VARCHAR},
+      xue_li = #{xueLi,jdbcType=VARCHAR},
+      zhuan_ye = #{zhuanYe,jdbcType=VARCHAR},
+      years = #{years,jdbcType=VARCHAR},
+      gong_zuo_jing_li = #{gongZuoJingLi,jdbcType=VARCHAR},
+      qi_ta = #{qiTa,jdbcType=VARCHAR},
+      bei_zhu = #{beiZhu,jdbcType=VARCHAR},
+      ing_num = #{ingNum,jdbcType=VARCHAR},
+      all_num = #{allNum,jdbcType=INTEGER}
+    where job_index = #{jobIndex,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from he_nan_2021_01
+  </select>
+</mapper>

@@ -7,9 +7,11 @@ import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.YunNan202101;
 import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
+import com.luoxiang.project.service.ScService;
 import com.luoxiang.project.service.YunNanService;
 
 import org.springframework.stereotype.Controller;
@@ -199,6 +201,32 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (HeNan202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+    @Resource
+    public ScService scServiceImpl;
+
+    @RequestMapping("sichuan202101")
+    public String sichuan202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            scServiceImpl.update202101();
+        }
+
+        List<SiChuan202101> all = scServiceImpl.sortAll202101(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (SiChuan202101 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

@@ -3,6 +3,7 @@ package com.luoxiang.poi;
 import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.domain.TableSiChuan;
 import com.luoxiang.project.po.SiChuan202002;
+import com.luoxiang.project.po.SiChuan202101;
 
 import org.apache.http.util.TextUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -284,6 +285,68 @@ public class PoiSC02 {
                                     StringBuffer buffer = new StringBuffer(current.getHasing());
                                     buffer.append(has)
                                           .append(",");
+                                    current.setHasing(buffer.toString());
+                                    jobs.replace(finalCode, current);
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
+
+    public static void checkHasNums202101(HashMap<String,SiChuan202101> jobs)
+            throws Exception
+    {
+        File   fileDir = new File("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\has");
+        File[] files   = fileDir.listFiles();
+        for (File tmp : files) {
+            if (tmp.getName()
+                   .endsWith(".xls"))
+            {
+                HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(tmp));
+                HSSFSheet    sheet    = null;
+                for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+                    sheet = workbook.getSheetAt(i);
+
+                    int LastRowNum = sheet.getLastRowNum() + 1;
+                    for (int j = 1; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
+                        HSSFRow row = sheet.getRow(j);
+                        if (row != null) {
+
+                            String first = row.getCell(2)
+                                              .toString();
+
+                            String finalCode = first.toString()
+                                                    .trim();
+
+                            if (!TextUtils.isEmpty(finalCode)) {
+
+                                if (jobs.containsKey(finalCode)) {
+                                    SiChuan202101 current = jobs.get(finalCode);
+                                    Integer       integer = current.getAllnums();
+                                    int           has     = 0;
+                                    String s = null;
+                                    if (row.getCell(3)
+                                           .getCellType() == CellType.NUMERIC)
+                                    {
+                                        has = (int) row.getCell(3)
+                                                       .getNumericCellValue();
+                                    } else {
+                                        s = row.getCell(3).toString();
+                                        has = Integer.parseInt(s.substring(1 , s.indexOf(":")).trim());
+                                    }
+
+                                    if (has != integer && has > integer) {
+                                        current.setAllnums(has);
+                                    }
+                                    StringBuffer buffer = new StringBuffer(current.getHasing());
+                                    buffer.append(TextUtils.isEmpty(current.getHasing()) ? "" : "," ).append(s);
                                     current.setHasing(buffer.toString());
                                     jobs.replace(finalCode, current);
                                 }

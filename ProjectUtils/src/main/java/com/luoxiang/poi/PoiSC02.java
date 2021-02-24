@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,6 +44,10 @@ public class PoiSC02 {
     public static final String POI_ORIGIN_PATH = "";
 
     public static void  main(String[] args) {
+        resetSC();
+    }
+
+    public static void  test(String[] args) {
 
 
        /* try {
@@ -436,11 +441,12 @@ public class PoiSC02 {
 
         return table;
     }
+
     public static List<TableSiChuan> getTables() throws Exception{
         ArrayList<TableSiChuan> tableSiChuans = new ArrayList<>();
 
 
-        File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\tables\\code\\");
+        File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\all");
         File[]            files   = fileDir.listFiles();
         for(File tmp : files){
             if (tmp.getName().endsWith(".xls")){
@@ -452,13 +458,13 @@ public class PoiSC02 {
 
                     int LastRowNum = sheet.getLastRowNum() + 1;
                     TableIndex tableIndex = new TableIndex();
-                    for (int j = 3; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
+                    for (int j = 2; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
                         HSSFRow row = sheet.getRow(j);
                         if (row == null) {
                             continue;
                         }
 
-                        if (j == 3) {
+                        if (j == 2) {
                             int      index   = 0;
                             String   content = null;
                             HSSFCell cell    = row.getCell(index);
@@ -486,5 +492,107 @@ public class PoiSC02 {
     }
 
 
+    public static void resetSC(){
+        //step 1 : get data from table and write ro txt file
+        try {
+            List<TableSiChuan> list         = getTables();
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\full_table.txt"));
+            outputStream.writeObject(list);
+            outputStream.flush();
+            outputStream.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        //step 2 : filter
+        try {
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\full_table.txt"));
+            List<TableSiChuan> list  = (List<TableSiChuan>) inputStream.readObject();
+            List<TableSiChuan> my = new ArrayList<>();
+            for (TableSiChuan tableSiChuan : list){
+                if (TextUtils.isEmpty(tableSiChuan.jobCode)){
+                    continue;
+                }
+                if (TextUtils.isEmpty(tableSiChuan.zhuanYe)){
+                    my.add(tableSiChuan);
+                }else if (tableSiChuan.zhuanYe.contains("电子信息") || tableSiChuan.zhuanYe.contains("不限") ){
+                    my.add(tableSiChuan);
+                }
+            }
+
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\my_table.txt"));
+            outputStream.writeObject(my);
+            outputStream.flush();
+            outputStream.close();
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+        try {
+            ObjectInputStream  inputStream = new ObjectInputStream(new FileInputStream("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\my_table.txt"));
+            List<TableSiChuan> list        = (List<TableSiChuan>) inputStream.readObject();
+
+            HSSFWorkbook workbook = new HSSFWorkbook();
+
+            HSSFSheet sheet = workbook.createSheet("sheet");
+            for (int i = 0 ; i< list.size() ; i++){
+                //创建HSSFRow对象 （行）
+                HSSFRow row = sheet.createRow(i);
+
+                TableSiChuan tableSiChuan = list.get(i);
+                int start = 0;
+                //创建HSSFCell对象  （单元格）
+                HSSFCell cell=row.createCell(start);
+
+                //单位名称/招录机关
+                //职位类别
+                //职位名称
+                //录用名额
+                //拟任职务
+                //职位编码
+                //招收范围
+                //招收对象
+                //学历
+                //学位
+                //专业
+                //其他
+                //备注
+                //最低服务年限规定
+                //政策咨询电话
+                //内设机构
+                //职位简介
+                //设置单元格的值
+                cell.setCellValue(tableSiChuan.unitName); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.jobLeiBie); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.jobName); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.needNum); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.jobLevel); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.jobCode); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.fanWei); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.duiXiang); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.xueLi); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.xueWei); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.zhuanYe); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.others); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.beiZhu); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.lessYears); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.phone); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.inerName); start++;cell=row.createCell(start);
+                cell.setCellValue(tableSiChuan.jobDesc); start++;
+            }
+
+            //输出Excel文件
+            FileOutputStream output =new FileOutputStream("C:\\Users\\Vincent\\Downloads\\2021\\2021_SI_CHUAN\\workbook.xls");
+            workbook.write(output);
+            output.flush();
+
+            inputStream.close();
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

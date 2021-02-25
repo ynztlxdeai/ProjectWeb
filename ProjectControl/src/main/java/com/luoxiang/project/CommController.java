@@ -5,10 +5,12 @@ import com.luoxiang.poi.PoiSC02;
 import com.luoxiang.poi.PoiSZ2020;
 import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
+import com.luoxiang.project.po.GuangXi202101;
 import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
 import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.YunNan202101;
+import com.luoxiang.project.service.GuangXiService;
 import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
 import com.luoxiang.project.service.ScService;
@@ -227,6 +229,32 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (SiChuan202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+    @Resource
+    public GuangXiService guangXiServiceImpl;
+
+    @RequestMapping("guangxi202101")
+    public String guangxi202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            guangXiServiceImpl.update202101();
+        }
+
+        List<GuangXi202101> all = guangXiServiceImpl.sortAll202101(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (GuangXi202101 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

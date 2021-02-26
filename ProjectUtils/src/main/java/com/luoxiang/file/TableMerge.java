@@ -109,6 +109,8 @@ public class TableMerge {
     {
         //单位名称/招录机关
         public String unitName;
+        //机构性质
+        public String unitAttr;
         //职位类别
         public String jobLeiBie;
         //职位名称
@@ -147,6 +149,8 @@ public class TableMerge {
     static class TableIndex {
         //单位名称/招录机关
         public int unitNameIndex = -1;
+        //机构性质
+        public int unitAttrIndex = -1;
         //职位类别
         public int jobLeiBieIndex = -1;
         //职位名称
@@ -179,17 +183,15 @@ public class TableMerge {
         public int inerNameIndex = -1;
         //职位简介
         public int jobDescIndex = -1;
-
-        @Override
-        public String toString() {
-            return "TableIndex{" + "unitNameIndex=" + unitNameIndex + ", jobLeiBieIndex=" + jobLeiBieIndex + ", jobNameIndex=" + jobNameIndex + ", needNumIndex=" + needNumIndex + ", jobLevelIndex=" + jobLevelIndex + ", jobCodeIndex=" + jobCodeIndex + ", fanWeiIndex=" + fanWeiIndex + ", duiXiangIndex=" + duiXiangIndex + ", xueLiIndex=" + xueLiIndex + ", xueWeiIndex=" + xueWeiIndex + ", zhuanYeIndex=" + zhuanYeIndex + ", othersIndex=" + othersIndex + ", beiZhuIndex=" + beiZhuIndex + ", lessYearsIndex=" + lessYearsIndex + ", phoneIndex=" + phoneIndex + ", inerNameIndex=" + inerNameIndex + ", jobDescIndex=" + jobDescIndex + '}';
-        }
     }
 
     private static void getRowIndex(String key , TableIndex tableIndex , int index){
         switch (key) {
             case "unitName":
                 tableIndex.unitNameIndex = index;
+                break;
+            case "unitAttr":
+                tableIndex.unitAttrIndex = index;
                 break;
             case "jobLeiBie":
                 tableIndex.jobLeiBieIndex = index;
@@ -253,6 +255,7 @@ public class TableMerge {
         TableEntity table = new TableEntity();
 
         table.unitName = tableIndex.unitNameIndex == -1 ? "" : row.getCell(tableIndex.unitNameIndex).toString();
+        table.unitAttr = tableIndex.unitAttrIndex == -1 ? "" : row.getCell(tableIndex.unitAttrIndex).toString();
         table.jobLeiBie = tableIndex.jobLeiBieIndex == -1 ? "" : row.getCell(tableIndex.jobLeiBieIndex).toString();
         table.jobName = tableIndex.jobNameIndex == -1 ? "" : row.getCell(tableIndex.jobNameIndex).toString();
 

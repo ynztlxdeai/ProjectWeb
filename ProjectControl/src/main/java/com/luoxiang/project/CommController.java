@@ -274,6 +274,7 @@ public class CommController {
 
     @RequestMapping("army2021")
     public String army2021(Model model ,  int cmp , boolean skip ){
+        //   http://localhost:8080/comm/army2021?cmp=10&skip=false
         if (!skip){
             armyServiceImpl.update2021();
         }

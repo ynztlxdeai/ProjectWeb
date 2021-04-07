@@ -238,7 +238,7 @@ public class Jd2021 implements Comparable<Jd2021>{
     }
 
     public String showData(){
-        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", unitName , jobCode ,needNum , hasNum , ingNum , zhuanYe);
+        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,地点：%s,变化趋势：%s <br></br> 专业：%s", unitName , jobCode ,needNum , diDian,hasNum , ingNum , zhuanYe);
     }
 
     @Override

@@ -64,8 +64,8 @@ public class ArmyServiceImpl implements ArmyService{
         HashMap<String , Jd2021> map = initMap();
 
         String examid = "5083fd4b2a75e4d1";
-        String cookies = "JSESSIONID=FE82BA4F1049BEBC96F832EE83BCF6C3; JSESSIONID=087241904D3AE5A47AF288F0B2A6DB3A; Hm_lvt_ad65617c1b92d555455e06647127f54e=1617764738,1617764947,1617777720; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1617777720; SERVERID=a3f706d4e03122459119f5fb5c8f0be8|1617777746|1617777717";
-        String url = "http://182.92.48.172/qjwzwb/stuchooseexam/getPositionInfo.htm";
+        String cookies = "JSESSIONID=7ABBC8ABCB3FAFA0362E964CEBA8D990; JSESSIONID=20A9E78008CA950EC0280464A27DA467; Hm_lvt_ad65617c1b92d555455e06647127f54e=1617764738,1617764947,1617777720,1617789505; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1617789505; SERVERID=12362b36d91abc6ad51b6780babee63f|1617789537|1617789503";
+                String url = "http://182.92.48.172/qjwzwb/stuchooseexam/getPositionInfo.htm";
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost   httpPost   = new HttpPost(url);
         httpPost.addHeader("Accept" , "*/*");

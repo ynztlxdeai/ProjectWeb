@@ -8,6 +8,8 @@ import com.luoxiang.project.service.ArmyService;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -42,6 +44,19 @@ public class ArmyServiceImpl implements ArmyService{
         return jd2021Mapper.selectAll();
     }
 
+    @Override
+    public List<Jd2021> sortAll2021(int cmp) {
+        List<Jd2021> all = selectAll2021();
+
+        ArrayList<Jd2021> results = new ArrayList<>();
+        for (Jd2021 t : all){
+            if (t.getHasNum() <= cmp){
+                results.add(t);
+            }
+        }
+        Collections.sort(results);
+        return results;
+    }
 
 
 }

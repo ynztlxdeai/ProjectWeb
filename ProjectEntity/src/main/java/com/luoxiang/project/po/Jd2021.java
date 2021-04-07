@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class Jd2021 {
+public class Jd2021 implements Comparable<Jd2021>{
     private Integer jobIndex;
 
     private String jobCode;
@@ -208,6 +208,9 @@ public class Jd2021 {
     }
 
     public Integer getHasNum() {
+        if (hasNum == null){
+            return 0;
+        }
         return hasNum;
     }
 
@@ -224,10 +227,30 @@ public class Jd2021 {
     }
 
     public String getIngNum() {
+        if (ingNum == null){
+            return "";
+        }
         return ingNum;
     }
 
     public void setIngNum(String ingNum) {
         this.ingNum = ingNum == null ? null : ingNum.trim();
+    }
+
+    public String showData(){
+        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", unitName , jobCode ,needNum , hasNum , ingNum , zhuanYe);
+    }
+
+    @Override
+    public int compareTo(Jd2021 o) {
+        int firstNum = Integer.parseInt(this.getNeedNum());
+        int secondNum = Integer.parseInt(o.getNeedNum());
+        if (firstNum == secondNum){
+            return this.getHasNum() - o.getHasNum();
+        }
+        int firstI = this.getHasNum() / firstNum ;
+        int secondI = o.getHasNum() / secondNum;
+
+        return firstI == secondI ? this.getHasNum() % firstNum - o.getHasNum() % secondNum : firstI - secondI;
     }
 }

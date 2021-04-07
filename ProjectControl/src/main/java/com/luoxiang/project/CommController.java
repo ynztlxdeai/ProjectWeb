@@ -8,8 +8,10 @@ import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.po.GuangXi202101;
 import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.po.Jd2021;
 import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.YunNan202101;
+import com.luoxiang.project.service.ArmyService;
 import com.luoxiang.project.service.GuangXiService;
 import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
@@ -267,5 +269,28 @@ public class CommController {
     }
 
 
+    @Resource
+    public ArmyService armyServiceImpl;
 
+    @RequestMapping("army2021")
+    public String army2021(Model model ,  int cmp , boolean skip ){
+        if (!skip){
+            armyServiceImpl.update2021();
+        }
+
+        List<Jd2021> all = armyServiceImpl.sortAll2021(cmp);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (Jd2021 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
 }

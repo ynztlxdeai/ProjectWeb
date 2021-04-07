@@ -26,4 +26,6 @@ public interface ArmyService {
     CommBean<T> update2021();
 
     List<Jd2021> selectAll2021();
+
+    List<Jd2021> sortAll2021(int cmp);
 }

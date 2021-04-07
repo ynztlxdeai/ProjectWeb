@@ -265,4 +265,7 @@ public class CommController {
         model.addAttribute("comm_data" , stringBuffer.toString());
         return "comm";
     }
+
+
+
 }

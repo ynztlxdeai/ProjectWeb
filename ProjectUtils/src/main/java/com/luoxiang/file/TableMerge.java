@@ -33,7 +33,11 @@ import java.util.List;
 public class TableMerge {
 
     public static void main(String[] args){
-
+        try {
+            resetData("C:\\Users\\Vincent\\Downloads\\2021\\2021_AN_HUI\\" , 3);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
@@ -68,7 +72,7 @@ public class TableMerge {
 
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("sheet");
-        for (int i = 0 ; i< list.size() ; i++){
+        for (int i = 0 ; i< my.size() ; i++){
             //创建HSSFRow对象 （行）
             HSSFRow row = sheet.createRow(i);
 
@@ -78,6 +82,8 @@ public class TableMerge {
             HSSFCell cell=row.createCell(start);
 
             cell.setCellValue(entity.unitName); start++;cell=row.createCell(start);
+            cell.setCellValue(entity.unitAttr); start++;cell=row.createCell(start);
+            cell.setCellValue(entity.unitLevel); start++;cell=row.createCell(start);
             cell.setCellValue(entity.jobLeiBie); start++;cell=row.createCell(start);
             cell.setCellValue(entity.jobName); start++;cell=row.createCell(start);
             cell.setCellValue(entity.needNum); start++;cell=row.createCell(start);
@@ -87,6 +93,7 @@ public class TableMerge {
             cell.setCellValue(entity.duiXiang); start++;cell=row.createCell(start);
             cell.setCellValue(entity.xueLi); start++;cell=row.createCell(start);
             cell.setCellValue(entity.xueWei); start++;cell=row.createCell(start);
+            cell.setCellValue(entity.sex); start++;cell=row.createCell(start);
             cell.setCellValue(entity.zhuanYe); start++;cell=row.createCell(start);
             cell.setCellValue(entity.others); start++;cell=row.createCell(start);
             cell.setCellValue(entity.beiZhu); start++;cell=row.createCell(start);
@@ -111,6 +118,8 @@ public class TableMerge {
         public String unitName;
         //机构性质
         public String unitAttr;
+        //机构层级
+        public String unitLevel;
         //职位类别
         public String jobLeiBie;
         //职位名称
@@ -129,6 +138,8 @@ public class TableMerge {
         public String xueLi;
         //学位
         public String xueWei;
+        //性别
+        public String sex;
         //专业
         public String zhuanYe;
         //其他
@@ -151,6 +162,8 @@ public class TableMerge {
         public int unitNameIndex = -1;
         //机构性质
         public int unitAttrIndex = -1;
+        //机构层级
+        public int unitLevelIndex = -1;
         //职位类别
         public int jobLeiBieIndex = -1;
         //职位名称
@@ -169,6 +182,8 @@ public class TableMerge {
         public int xueLiIndex = -1;
         //学位
         public int xueWeiIndex = -1;
+        //性别
+        public int sexIndex = -1;
         //专业
         public int zhuanYeIndex = -1;
         //其他
@@ -192,6 +207,9 @@ public class TableMerge {
                 break;
             case "unitAttr":
                 tableIndex.unitAttrIndex = index;
+                break;
+            case "unitLevel":
+                tableIndex.unitLevelIndex = index;
                 break;
             case "jobLeiBie":
                 tableIndex.jobLeiBieIndex = index;
@@ -219,6 +237,9 @@ public class TableMerge {
                 break;
             case "xueWei":
                 tableIndex.xueWeiIndex = index;
+                break;
+            case "sex":
+                tableIndex.sexIndex = index;
                 break;
             case "zhuanYe":
                 tableIndex.zhuanYeIndex = index;
@@ -256,6 +277,7 @@ public class TableMerge {
 
         table.unitName = tableIndex.unitNameIndex == -1 ? "" : row.getCell(tableIndex.unitNameIndex).toString();
         table.unitAttr = tableIndex.unitAttrIndex == -1 ? "" : row.getCell(tableIndex.unitAttrIndex).toString();
+        table.unitLevel = tableIndex.unitLevelIndex == -1 ? "" : row.getCell(tableIndex.unitLevelIndex).toString();
         table.jobLeiBie = tableIndex.jobLeiBieIndex == -1 ? "" : row.getCell(tableIndex.jobLeiBieIndex).toString();
         table.jobName = tableIndex.jobNameIndex == -1 ? "" : row.getCell(tableIndex.jobNameIndex).toString();
 
@@ -275,6 +297,7 @@ public class TableMerge {
         //table.needNum = tableIndex.needNumIndex == -1 ? 0 : Integer.parseInt(row.getCell(tableIndex.needNumIndex).toString());
 
         table.jobLevel = tableIndex.jobLevelIndex == -1 ? "" : row.getCell(tableIndex.jobLevelIndex).toString();
+        table.sex = tableIndex.sexIndex == -1 ? "" : row.getCell(tableIndex.sexIndex).toString();
         table.jobCode = tableIndex.jobCodeIndex == -1 ? "" : row.getCell(tableIndex.jobCodeIndex).toString();
         table.fanWei = tableIndex.fanWeiIndex == -1 ? "" : row.getCell(tableIndex.fanWeiIndex).toString();
         table.duiXiang = tableIndex.duiXiangIndex == -1 ? "" : row.getCell(tableIndex.duiXiangIndex).toString();

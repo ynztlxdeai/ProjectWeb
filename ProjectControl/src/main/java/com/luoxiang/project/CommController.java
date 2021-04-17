@@ -294,4 +294,28 @@ public class CommController {
         model.addAttribute("comm_data" , stringBuffer.toString());
         return "comm";
     }
+
+    @RequestMapping("mian_yang_2021_01")
+    public String mian_yang_2021_01(Model model ,  int cmp , boolean skip ){
+        //   http://localhost:8080/comm/army2021?cmp=10&skip=false
+        if (!skip){
+            armyServiceImpl.update2021();
+        }
+
+        List<Jd2021> all = armyServiceImpl.sortAll2021(cmp);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (Jd2021 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
 }

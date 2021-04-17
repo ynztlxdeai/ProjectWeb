@@ -1,5 +1,9 @@
 package com.luoxiang.project.service;
 
+import com.luoxiang.project.bean.MianYang202101;
+
+import java.util.List;
+
 /**
  * projectName: 	    com.luoxiang.parent
  * packageName:	        com.luoxiang.project.service
@@ -16,5 +20,5 @@ package com.luoxiang.project.service;
 
 
 public  interface CommService {
-
+    List<MianYang202101> update202101();
 }

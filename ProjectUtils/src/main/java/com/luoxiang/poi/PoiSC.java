@@ -91,7 +91,7 @@ public class PoiSC {
         return list;
     }
 
-    public static void checkMY202101(List<MianYang202101> list) throws Exception{
+    public static List<MianYang202101> checkMY202101(List<MianYang202101> list) throws Exception{
         HashMap<String , MianYang202101> jobs = new HashMap<>(list.size());
         for (MianYang202101 m : list) {
             jobs.put(m.jobCode , m);
@@ -109,26 +109,26 @@ public class PoiSC {
                     for (int j = 0; j < LastRowNum; j++) {// getLastRowNum，获取最后一行的行标
                         HSSFRow row = sheet.getRow(j);
                         if (row != null) {
-                            String finalCode = row.getCell(2).toString().trim();
-                            if (!TextUtils.isEmpty(finalCode)) {
+                            String finalCode = row.getCell(1).toString().trim();
 
-                                if (jobs.containsKey(finalCode)) {
+                            if (finalCode.contains("(")){
+                                int start = finalCode.lastIndexOf("(") + 1;
+                                int end = finalCode.lastIndexOf(")");
+                                finalCode = finalCode.substring(start , end);
+                            }
 
-                                    MianYang202101 current = jobs.get(finalCode);
-                                    if (!current.isSetup) {
+                            //System.out.println("j = " + j );
+                            if (!TextUtils.isEmpty(finalCode) && jobs.containsKey(finalCode)) {
 
-                                    }
+                                MianYang202101 current = jobs.get(finalCode);
 
                                 Integer integer = current.allNum;
                                 int     has     = 0;
-                                if (row.getCell(3)
-                                       .getCellType() == CellType.NUMERIC)
+                                if (row.getCell(2).getCellType() == CellType.NUMERIC)
                                 {
-                                    has = (int) row.getCell(3)
-                                                   .getNumericCellValue();
+                                    has = (int) row.getCell(2).getNumericCellValue();
                                 } else {
-                                    String s = row.getCell(3)
-                                                  .toString();
+                                    String s = row.getCell(2).toString();
                                     has = Integer.parseInt(s);
                                 }
 
@@ -141,16 +141,15 @@ public class PoiSC {
                                 jobs.replace(finalCode, current);
                             }
                         }
-
-                    }
-                }
                     }
                 }
             }
+        }
         list.clear();
         Iterator<Map.Entry<String, MianYang202101>> iterator = jobs.entrySet().iterator();
         while (iterator.hasNext()){
             list.add(iterator.next().getValue());
         }
+        return list;
     }
 }

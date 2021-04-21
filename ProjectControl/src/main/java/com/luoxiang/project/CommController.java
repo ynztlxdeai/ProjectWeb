@@ -3,6 +3,7 @@ package com.luoxiang.project;
 
 import com.luoxiang.poi.PoiSC02;
 import com.luoxiang.poi.PoiSZ2020;
+import com.luoxiang.project.bean.MianYang202101;
 import com.luoxiang.project.domain.ShenZheng2020;
 import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.po.GuangXi202101;
@@ -12,6 +13,7 @@ import com.luoxiang.project.po.Jd2021;
 import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.YunNan202101;
 import com.luoxiang.project.service.ArmyService;
+import com.luoxiang.project.service.CommService;
 import com.luoxiang.project.service.GuangXiService;
 import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
@@ -295,18 +297,18 @@ public class CommController {
         return "comm";
     }
 
-    @RequestMapping("mian_yang_2021_01")
-    public String mian_yang_2021_01(Model model ,  int cmp , boolean skip ){
-        //   http://localhost:8080/comm/army2021?cmp=10&skip=false
-        if (!skip){
-            armyServiceImpl.update2021();
-        }
+    @Resource
+    CommService commServiceImpl;
 
-        List<Jd2021> all = armyServiceImpl.sortAll2021(cmp);
+    @RequestMapping("mian_yang_2021_01")
+    public String mian_yang_2021_01(Model model ){
+        //   http://localhost:8080/comm/mian_yang_2021_01
+
+        List<MianYang202101> all = commServiceImpl.update202101();
 
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
-        for (Jd2021 gov : all) {
+        for (MianYang202101 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

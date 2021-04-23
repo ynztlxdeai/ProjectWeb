@@ -2,6 +2,9 @@ package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.YiBin202002;
+import com.luoxiang.project.po.YiBin202101;
+
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.List;
 
@@ -24,4 +27,8 @@ public interface YiBinService {
     List<YiBin202002> selectAll();
 
     CommBean update();
+
+    List<YiBin202101> sortAll202101(int cmp , boolean filter);
+
+    CommBean<T> update202101();
 }

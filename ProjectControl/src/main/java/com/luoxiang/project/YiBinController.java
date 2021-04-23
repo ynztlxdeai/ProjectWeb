@@ -2,6 +2,7 @@ package com.luoxiang.project;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.YiBin202002;
+import com.luoxiang.project.po.YiBin202101;
 import com.luoxiang.project.service.impl.YiBinServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -88,6 +89,28 @@ public class YiBinController {
             }
         }
         stringBuffer.append("</ul>");
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+    @RequestMapping("yi_bin_2021_01")
+    public String yiBin202101(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            yiBinServiceImpl.update202101();
+        }
+
+        List<YiBin202101> all = yiBinServiceImpl.sortAll202101(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (YiBin202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
         model.addAttribute("comm_data" , stringBuffer.toString());
         return "comm";
     }

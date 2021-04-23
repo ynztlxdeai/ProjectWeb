@@ -117,7 +117,7 @@ public class PoiSC {
                                 finalCode = finalCode.substring(start , end);
                             }
 
-                            //System.out.println("j = " + j );
+                            //System.out.println(tmp.getName() + " index " + j );
                             if (!TextUtils.isEmpty(finalCode) && jobs.containsKey(finalCode)) {
 
                                 MianYang202101 current = jobs.get(finalCode);

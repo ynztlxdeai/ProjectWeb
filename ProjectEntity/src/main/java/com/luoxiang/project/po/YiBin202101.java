@@ -166,6 +166,9 @@ public class YiBin202101 implements Comparable<YiBin202101>{
     }
 
     public Integer getAllNum() {
+        if (allNum == null){
+            return 0;
+        }
         return allNum;
     }
 
@@ -174,6 +177,9 @@ public class YiBin202101 implements Comparable<YiBin202101>{
     }
 
     public String getIngNum() {
+        if (ingNum == null){
+            return "";
+        }
         return ingNum;
     }
 

@@ -11,6 +11,7 @@ import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
 import com.luoxiang.project.po.Jd2021;
 import com.luoxiang.project.po.SiChuan202101;
+import com.luoxiang.project.po.SiChuan202102;
 import com.luoxiang.project.po.YunNan202101;
 import com.luoxiang.project.service.ArmyService;
 import com.luoxiang.project.service.CommService;
@@ -233,6 +234,28 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (SiChuan202101 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+    @RequestMapping("sichuan202102")
+    public String sichuan202102(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            scServiceImpl.update202102();
+        }
+
+        List<SiChuan202102> all = scServiceImpl.sortAll202102(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (SiChuan202102 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

@@ -343,4 +343,26 @@ public class CommController {
         return "comm";
     }
 
+
+    @RequestMapping("jiangsu2022")
+    public String jiangsu2022(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            scServiceImpl.update202102();
+        }
+
+        List<SiChuan202102> all = scServiceImpl.sortAll202102(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (SiChuan202102 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
 }

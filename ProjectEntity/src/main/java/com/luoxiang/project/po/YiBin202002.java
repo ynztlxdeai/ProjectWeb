@@ -188,7 +188,7 @@ public class YiBin202002 implements Comparable<YiBin202002>{
     }
 
     public String showData() {
-        return   String.format("单位名称：%s ,需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", zhaoPingDanWei  ,needNum , allNum , current , zhuanYe);
+        return   String.format("单位名称：%s ,职位code：%s ,需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", zhaoPingDanWei  ,jobCode,needNum , allNum , current , zhuanYe);
     }
 
     @Override

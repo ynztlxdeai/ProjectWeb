@@ -91,7 +91,8 @@ public class PoiYiBin {
             throws Exception
     {
         int               jobCodeIndex = 1;
-        int               numIndex     = 3;
+        int               numIndex     = 2;
+        int               numIndex2    = 3;
         int               dataIndex = 1;
         ArrayList<String> list         = new ArrayList<>();
         File              fileDir      = new File("C:\\Users\\Vincent\\Downloads\\2021\\2021_01_YI_BIN\\has");
@@ -118,7 +119,7 @@ public class PoiYiBin {
                             first = row.getCell(jobCodeIndex).toString().trim();
                         }
 
-                        System.out.println(tmp.getName() + " index " + j );
+                        //System.out.println(tmp.getName() + " index " + j );
                         if (!TextUtils.isEmpty(first) && jobs.containsKey(first)){
                                 YiBin202101 current = jobs.get(first);
                                 Integer integer = current.getAllNum();
@@ -133,8 +134,18 @@ public class PoiYiBin {
                                 if (has != integer && has > integer){
                                     current.setAllNum(has);
                                 }
+
+                            int hasPass = 0;
+                            if (row.getCell(numIndex2).getCellType() == CellType.NUMERIC){
+                                hasPass = (int) row.getCell(numIndex2).getNumericCellValue();
+                            }else {
+                                String s = row.getCell(numIndex2).toString();
+                                hasPass = Integer.parseInt(s);
+                            }
+
+
                                 StringBuffer buffer = new StringBuffer(current.getIngNum());
-                                buffer.append(TextUtils.isEmpty(current.getIngNum()) ? "" : "," ).append(has + "");
+                                buffer.append(TextUtils.isEmpty(current.getIngNum()) ? "" : "," ).append("(" + has + "," + hasPass + ")");
                                 current.setIngNum(buffer.toString());
                                 jobs.replace(first , current);
                         }

@@ -2,6 +2,7 @@ package com.luoxiang.poi;
 
 import com.luoxiang.project.po.JiangSu202002;
 import com.luoxiang.project.po.JiangSu202002Sh;
+import com.luoxiang.project.po.JiangSu2022;
 
 import org.apache.http.util.TextUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -310,6 +311,107 @@ public class PoiJiangSu {
                     }
                 }
             }
+        }
+    }
+
+
+    public static void checkHasNums2022(HashMap<String, JiangSu2022> jobs) throws Exception {
+        ArrayList<String> list    = new ArrayList<>();
+        File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\2022\\2022_JIANG_SU_01\\has");
+        File[]            files   = fileDir.listFiles();
+        int num_index = 5;
+        for (File xls : files) {
+
+                    if (xls.getName().endsWith(".xls"))
+                    {
+                        HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(xls));
+                        HSSFSheet    sheet    = null;
+                        for (int i = 0; i < workbook.getNumberOfSheets(); i++) {// 获取每个Sheet表
+                            sheet = workbook.getSheetAt(i);
+                            // getLastRowNum，获取最后一行的行标
+                            int LastRowNum = sheet.getLastRowNum() + 1;
+                            for (int j = 2; j < LastRowNum; j++) {
+                                HSSFRow row = sheet.getRow(j);
+                                if (row != null) {
+                                    //System.out.println(String.format(EXCEPTION_TEMPLATE , i , j , tmp.getPath()));
+                                    String first  = row.getCell(0)
+                                                       .toString();
+                                    String second = row.getCell(1)
+                                                       .toString();
+                                    if (TextUtils.isEmpty(first) || TextUtils.isEmpty(second)) {
+                                        list.add(String.format(EXCEPTION_TEMPLATE, i, j, xls.getPath()));
+                                        continue;
+                                    }
+                                    StringBuffer stringBuffer = new StringBuffer();
+                                    if (first.contains("[") && first.contains("]")) {
+                                        stringBuffer.append(first.substring(first.lastIndexOf("[") + 1,
+                                                                            first.lastIndexOf("]")));
+                                    } else if (first.contains("[") && first.contains("】")) {
+                                        stringBuffer.append(first.substring(first.lastIndexOf("[") + 1,
+                                                                            first.lastIndexOf("】")));
+                                    } else if (first.contains("【") && first.contains("】")) {
+                                        stringBuffer.append(first.substring(first.lastIndexOf("【") + 1,
+                                                                            first.lastIndexOf("】")));
+                                    } else if (first.contains("【") && first.contains("]")) {
+                                        stringBuffer.append(first.substring(first.lastIndexOf("【") + 1,
+                                                                            first.lastIndexOf("]")));
+                                    }
+
+                                    if (second.contains("[") && second.contains("]")) {
+                                        stringBuffer.append(second.substring(second.lastIndexOf("[") + 1,
+                                                                             second.lastIndexOf("]")));
+                                    } else if (second.contains("[") && second.contains("】")) {
+                                        stringBuffer.append(second.substring(second.lastIndexOf("[") + 1,
+                                                                             second.lastIndexOf("】")));
+                                    } else if (second.contains("【") && second.contains("】")) {
+                                        stringBuffer.append(second.substring(second.lastIndexOf("【") + 1,
+                                                                             second.lastIndexOf("】")));
+                                    } else if (second.contains("【") && second.contains("]")) {
+                                        stringBuffer.append(second.substring(second.lastIndexOf("【") + 1,
+                                                                             second.lastIndexOf("]")));
+                                    }
+
+                                    String finalCode = stringBuffer.toString().trim();
+                                    if (!TextUtils.isEmpty(finalCode)) {
+                                        String jobCode = finalCode.substring(1);
+
+                                        if (jobs.containsKey(jobCode)) {
+                                            JiangSu2022 jiangSu202002 = jobs.get(jobCode);
+                                            if (row.getCell(num_index).getCellType() == CellType.NUMERIC)
+                                            {
+                                                int has = (int) row.getCell(num_index).getNumericCellValue();
+                                                if (has != jiangSu202002.getAllNum()) {
+                                                    jiangSu202002.setAllNum(has);
+                                                }
+                                                StringBuffer buffer = new StringBuffer(jiangSu202002.getIngNum());
+                                                buffer.append(TextUtils.isEmpty(jiangSu202002.getIngNum()) ? "" : "," ).append(has  + "");
+                                                jiangSu202002.setIngNum(buffer.toString());
+                                                jobs.replace(jobCode, jiangSu202002);
+                                            } else if (row.getCell(num_index).getCellType() == CellType.BLANK) {
+                                                System.out.println(String.format(EXCEPTION_TEMPLATE, i, j, xls.getPath()));
+                                            } else {
+                                                String s   = row.getCell(num_index).toString();
+                                                int    has = Integer.parseInt(s);
+                                                if (has != jiangSu202002.getAllNum()) {
+                                                    jiangSu202002.setAllNum(has);
+                                                }
+                                                StringBuffer buffer = new StringBuffer(jiangSu202002.getIngNum());
+                                                buffer.append(TextUtils.isEmpty(jiangSu202002.getIngNum()) ? "" : "," ).append(s);
+                                                jiangSu202002.setIngNum(buffer.toString());
+                                                jobs.replace(jobCode, jiangSu202002);
+                                            }
+
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
         }
     }
 }

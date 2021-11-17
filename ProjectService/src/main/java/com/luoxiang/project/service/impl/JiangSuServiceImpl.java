@@ -5,14 +5,19 @@ import com.luoxiang.poi.PoiReader;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.mapper.JiangSu202002Mapper;
 import com.luoxiang.project.mapper.JiangSu202002ShMapper;
+import com.luoxiang.project.mapper.JiangSu2022Mapper;
 import com.luoxiang.project.mapper.JiangSuMapper;
 import com.luoxiang.project.po.JiangSu;
 import com.luoxiang.project.po.JiangSu202002;
 import com.luoxiang.project.po.JiangSu202002Sh;
+import com.luoxiang.project.po.JiangSu2022;
 import com.luoxiang.project.service.JiangSuService;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +51,9 @@ public class JiangSuServiceImpl
 
     @Resource
     JiangSu202002ShMapper jiangSu202002ShMapper;
+
+    @Resource
+    JiangSu2022Mapper jiangSu2022Mapper;
 
     @Override
     public List<JiangSu> selectAll() {
@@ -149,5 +157,69 @@ public class JiangSuServiceImpl
     @Override
     public List<JiangSu202002Sh> selectAll3() {
         return jiangSu202002ShMapper.selectAll();
+    }
+
+
+
+
+
+
+    @Override
+    public List<JiangSu2022> selectAll2022() {
+        return jiangSu2022Mapper.selectAll();
+    }
+
+    @Override
+    public CommBean<T> update2022() {
+        CommBean                       c       = new CommBean();
+        List<JiangSu2022>             all     = selectAll2022();
+        HashMap<String , JiangSu2022> hashMap = new HashMap<>(all.size());
+        for (JiangSu2022 tmp : all){
+
+            hashMap.put(tmp.getDiQuDaiMa() + tmp.getDanWeiDaiMa() + tmp.getZhiWeiDaiMa(), tmp);
+        }
+        try {
+            PoiJiangSu.checkHasNums2022(hashMap);
+            Iterator<Map.Entry<String , JiangSu2022>> iterat = hashMap.entrySet().iterator();
+            JiangSu2022                               data   = null;
+            while (iterat.hasNext()){
+                data = iterat.next().getValue();
+                if (data == null){
+                    continue;
+                }
+                jiangSu2022Mapper.updateByPrimaryKey(data);
+            }
+            c.setCode(0);
+            c.setMsg("finish");
+        }catch (Exception e){
+            c.setMsg(e.toString());
+            c.setCode(-1);
+        }
+
+        return c;
+    }
+
+    @Override
+    public List<JiangSu2022> sortAll2022(int cmp, boolean filter) {
+        List<JiangSu2022> all  = selectAll2022();
+        if (filter){
+            ArrayList<JiangSu2022> results = new ArrayList<>();
+            for (JiangSu2022 t : all){
+                if ((!t.getZhuanYe().contains("不限")) && t.getAllNum() <= cmp){
+                    results.add(t);
+                }
+            }
+            Collections.sort(results);
+            return results;
+        }else {
+            ArrayList<JiangSu2022> results = new ArrayList<>();
+            for (JiangSu2022 t : all){
+                if (t.getAllNum() <= cmp){
+                    results.add(t);
+                }
+            }
+            Collections.sort(results);
+            return results;
+        }
     }
 }

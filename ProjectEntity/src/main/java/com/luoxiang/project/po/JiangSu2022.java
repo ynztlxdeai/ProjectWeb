@@ -195,6 +195,6 @@ public class JiangSu2022 implements Comparable<JiangSu2022>{
     }
 
     public String showData(){
-        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", danWeiMingCheng , jobCode ,zhaoKaoRenShu , allNum , ingNum , zhuanYe);
+        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", danWeiMingCheng , diQuDaiMa+danWeiDaiMa+zhiWeiDaiMa ,zhaoKaoRenShu , allNum , ingNum , zhuanYe);
     }
 }

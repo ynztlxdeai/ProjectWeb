@@ -4,6 +4,9 @@ import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.JiangSu;
 import com.luoxiang.project.po.JiangSu202002;
 import com.luoxiang.project.po.JiangSu202002Sh;
+import com.luoxiang.project.po.JiangSu2022;
+
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.List;
 
@@ -34,4 +37,14 @@ public interface JiangSuService {
     CommBean update3();
 
     List<JiangSu202002Sh> selectAll3();
+
+
+
+
+    List<JiangSu2022> selectAll2022();
+
+    CommBean<T> update2022();
+
+    List<JiangSu2022> sortAll2022(int cmp, boolean filter);
+
 }

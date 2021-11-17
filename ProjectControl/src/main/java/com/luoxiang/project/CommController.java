@@ -10,6 +10,7 @@ import com.luoxiang.project.po.GuangXi202101;
 import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
 import com.luoxiang.project.po.Jd2021;
+import com.luoxiang.project.po.JiangSu2022;
 import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.SiChuan202102;
 import com.luoxiang.project.po.YunNan202101;
@@ -18,6 +19,7 @@ import com.luoxiang.project.service.CommService;
 import com.luoxiang.project.service.GuangXiService;
 import com.luoxiang.project.service.HeNanService;
 import com.luoxiang.project.service.HuBeiService;
+import com.luoxiang.project.service.JiangSuService;
 import com.luoxiang.project.service.ScService;
 import com.luoxiang.project.service.YunNanService;
 
@@ -344,17 +346,20 @@ public class CommController {
     }
 
 
+    @Resource
+    JiangSuService jiangSuServiceImpl;
+
     @RequestMapping("jiangsu2022")
     public String jiangsu2022(Model model ,  int cmp , boolean filter , boolean skip ){
         if (!skip){
-            scServiceImpl.update202102();
+            jiangSuServiceImpl.update2022();
         }
 
-        List<SiChuan202102> all = scServiceImpl.sortAll202102(cmp , filter);
+        List<JiangSu2022> all = jiangSuServiceImpl.sortAll2022(cmp , filter);
 
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
-        for (SiChuan202102 gov : all) {
+        for (JiangSu2022 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

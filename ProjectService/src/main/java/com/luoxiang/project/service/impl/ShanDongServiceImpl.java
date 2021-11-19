@@ -190,10 +190,10 @@ public class ShanDongServiceImpl
     @Override
     public CommBean<List<ShanDong202002>> update2() {
         CommBean   commBean   = new CommBean();
-        String    url        = "http://182.92.48.100:81/sdgwy21/bmtj/bmtj.html";
+        String    url        = "http://182.92.170.21:81/sdgwy22/bmtj/bmtj.html";
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost   httpPost   = new HttpPost(url);
-        httpPost.addHeader("Cookie" ,"SERVERID=2671e8ba135b07792c420e855485b2da|1588918658|1588916196;Path=/" );
+        httpPost.addHeader("Cookie" ,"SERVERID=39866afb71fd31e294aca1219768e37f|1637314736|1637314709;Path=/" );
 
         try {
 
@@ -224,7 +224,13 @@ public class ShanDongServiceImpl
                     String jobCode = element.child(2).text();
                     if (jobCodePosition.containsKey(jobCode)){
                         String pass_check = element.child(5).text();
-                        String pass_pay = element.child(6).text();
+
+                        String pass_pay;
+                        try {
+                            pass_pay = element.child(6).text();
+                        }catch (Exception e){
+                            pass_pay = "0";
+                        }
 
                         int pass_check_int =Integer.parseInt( pass_check.replace("+","").replace("-",""));
                         int pass_pay_int = Integer.parseInt(pass_pay.replace("+","").replace("-",""));

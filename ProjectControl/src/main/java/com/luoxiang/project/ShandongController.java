@@ -43,6 +43,15 @@ public class ShandongController {
         return shanDongServiceImpl.update(cookies);
     }
 
+    /**
+     * 更新数据库
+     * http://localhost:8080/shandong/refresh_sd_202002?skip=false&cmp=0&filter=true
+     *
+     * 不更新数据库
+     * http://localhost:8080/shandong/refresh_sd_202002?skip=true&cmp=0&filter=true
+     *
+     * @return
+     */
     @RequestMapping("refresh_sd_202002")
     public String refreshSd202002(Model model , boolean skip , int cmp , boolean filter){
         try {

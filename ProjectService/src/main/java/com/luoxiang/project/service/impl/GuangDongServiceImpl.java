@@ -125,7 +125,7 @@ public class GuangDongServiceImpl implements GuangDongService{
 
         for (int i = 0; i < HttpClientUtil.are.length; i++) {
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            nvps.add(new BasicNameValuePair("bfa001", "202101"));
+            nvps.add(new BasicNameValuePair("bfa001", "202201"));
             nvps.add(new BasicNameValuePair("bab301", HttpClientUtil.are[i]));
             nvps.add(new BasicNameValuePair("page","1"));
             nvps.add(new BasicNameValuePair("rows", "1500"));

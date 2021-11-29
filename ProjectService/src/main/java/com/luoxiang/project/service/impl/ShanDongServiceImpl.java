@@ -92,31 +92,31 @@ public class ShanDongServiceImpl
             }
 
             if (mode == 1){
-                if ( o1.getHasNum().trim().endsWith("3-")){
+                if ( o1.getCanNum().trim().endsWith("3-")){
                     nList.add(o1);
                 }
             }else if (mode == 2 ){
-                if ( o1.getHasNum().trim().endsWith("3+")){
+                if ( o1.getCanNum().trim().endsWith("3+")){
                     nList.add(o1);
                 }
             }else if (mode == 3 ){
-                if ( o1.getHasNum().trim().endsWith("30-")){
+                if ( o1.getCanNum().trim().endsWith("30-")){
                     nList.add(o1);
                 }
             }else if (mode == 4 ){
-                if ( o1.getHasNum().trim().endsWith("30+")){
+                if ( o1.getCanNum().trim().endsWith("30+")){
                     nList.add(o1);
                 }
             }else if (mode == 5){
-                if ( o1.getHasNum().trim().endsWith("50-")){
+                if ( o1.getCanNum().trim().endsWith("50-")){
                     nList.add(o1);
                 }
             }else if (mode == 6){
-                if ( o1.getHasNum().trim().endsWith("50+")){
+                if ( o1.getCanNum().trim().endsWith("50+")){
                     nList.add(o1);
                 }
             }else if (mode == 7 ){
-                if ( o1.getHasNum().trim().endsWith("100-")){
+                if ( o1.getCanNum().trim().endsWith("100-")){
                     nList.add(o1);
                 }
             }else if (mode == 8)  {
@@ -150,31 +150,31 @@ public class ShanDongServiceImpl
                 continue;
             }
             if (mode == 1){
-                if ( o1.getHasNum().trim().endsWith("3-")){
+                if ( o1.getCanNum().trim().endsWith("3-")){
                     nList.add(o1);
                 }
             }else if (mode == 2 ){
-                if ( o1.getHasNum().trim().endsWith("3+")){
+                if ( o1.getCanNum().trim().endsWith("3+")){
                     nList.add(o1);
                 }
             }else if (mode == 3 ){
-                if ( o1.getHasNum().trim().endsWith("30-")){
+                if ( o1.getCanNum().trim().endsWith("30-")){
                     nList.add(o1);
                 }
             }else if (mode == 4 ){
-                if ( o1.getHasNum().trim().endsWith("30+")){
+                if ( o1.getCanNum().trim().endsWith("30+")){
                     nList.add(o1);
                 }
             }else if (mode == 5){
-                if ( o1.getHasNum().trim().endsWith("50-")){
+                if ( o1.getCanNum().trim().endsWith("50-")){
                     nList.add(o1);
                 }
             }else if (mode == 6){
-                if ( o1.getHasNum().trim().endsWith("50+")){
+                if ( o1.getCanNum().trim().endsWith("50+")){
                     nList.add(o1);
                 }
             }else if (mode == 7 ){
-                if ( o1.getHasNum().trim().endsWith("100-")){
+                if ( o1.getCanNum().trim().endsWith("100-")){
                     nList.add(o1);
                 }
             }else if (mode == 8)  {
@@ -193,7 +193,7 @@ public class ShanDongServiceImpl
         String    url        = "http://182.92.170.21:81/sdgwy22/bmtj/bmtj.html";
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost   httpPost   = new HttpPost(url);
-        httpPost.addHeader("Cookie" ,"SERVERID=39866afb71fd31e294aca1219768e37f|1637314736|1637314709;Path=/" );
+        httpPost.addHeader("Cookie" ,"SERVERID=39866afb71fd31e294aca1219768e37f|1637497998|1637497855;Path=/" );
 
         try {
 

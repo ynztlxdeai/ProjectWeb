@@ -1,7 +1,6 @@
 package com.luoxiang.project.service.impl;
 
 import com.google.gson.Gson;
-import com.luoxiang.project.HttpClientUtil;
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.bean.ServerBean;
 import com.luoxiang.project.mapper.GuangDong01Mapper;
@@ -49,6 +48,32 @@ import javax.net.ssl.SSLContext;
 @Service
 public class GuangDongServiceImpl implements GuangDongService{
 
+    private static final String[] ARE_LIST = {
+            "99",//省直
+            "01",//广州
+            "02",//深圳
+            "03",//珠海
+            "04",//汕头
+            "05",//佛山
+            "06",//韶关
+            "07",//河源
+            "08",//梅州
+            "09",//惠州
+            "10",//汕尾
+            "11",//东莞
+            "12",//中山
+            "13",//江门
+            "14",//阳江
+            "15",//湛江
+            "16",//茂名
+            "17",//肇庆
+            "18",//清远
+            "19",//潮州
+            "20",//揭阳
+            "21",//云浮
+
+    };
+
     @Resource
     public GuangDong01Mapper guangDong01Mapper;
 
@@ -78,7 +103,7 @@ public class GuangDongServiceImpl implements GuangDongService{
         if (filter){
             ArrayList<GuangDong01> results = new ArrayList<>();
             for (GuangDong01 t : all){
-                if ((!t.getBenKe().contains("不限")) && t.getAllNum() <= cmp){
+                if ((!t.getBenKe().contains("不限")) && (t.getAllNum() / Integer.parseInt(t.getNeedNum())) <= cmp){
                     results.add(t);
                 }
             }
@@ -87,7 +112,7 @@ public class GuangDongServiceImpl implements GuangDongService{
         }else {
             ArrayList<GuangDong01> results = new ArrayList<>();
             for (GuangDong01 t : all){
-                if (t.getAllNum() <= cmp){
+                if ((t.getAllNum() / Integer.parseInt(t.getNeedNum())) <= cmp){
                     results.add(t);
                 }
             }
@@ -123,10 +148,10 @@ public class GuangDongServiceImpl implements GuangDongService{
         httpPost.addHeader("User-Agent" , "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36");
         httpPost.addHeader("X-Requested-With" , "XMLHttpRequest");
 
-        for (int i = 0; i < HttpClientUtil.are.length; i++) {
+        for (int i = 0; i < ARE_LIST.length; i++) {
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
             nvps.add(new BasicNameValuePair("bfa001", "202201"));
-            nvps.add(new BasicNameValuePair("bab301", HttpClientUtil.are[i]));
+            nvps.add(new BasicNameValuePair("bab301", ARE_LIST[i]));
             nvps.add(new BasicNameValuePair("page","1"));
             nvps.add(new BasicNameValuePair("rows", "1500"));
 

@@ -39,6 +39,8 @@ public class GuangDong01 implements Comparable<GuangDong01>{
 
     private String ingNum;
 
+    private String zhiWeiLeiXing;
+
     public Integer getJobIndex() {
         return jobIndex;
     }
@@ -197,8 +199,17 @@ public class GuangDong01 implements Comparable<GuangDong01>{
         this.ingNum = ingNum == null ? null : ingNum.trim();
     }
 
+
+    public String getZhiWeiLeiXing() {
+        return zhiWeiLeiXing;
+    }
+
+    public void setZhiWeiLeiXing(String zhiWeiLeiXing) {
+        this.zhiWeiLeiXing = zhiWeiLeiXing;
+    }
+
     public String showData() {
-        return   String.format("单位名称：%s ,  需要人数：%s , 现有人数：%d ,变化趋势：%s , 职位代码：%s  <br></br> 专业：%s", unitName  ,needNum , allNum , ingNum  ,jobCode ,  benKe);
+        return   String.format("单位名称：%s , 职位类型：%s ,需要人数：%s , 现有人数：%d ,变化趋势：%s , 职位代码：%s  <br></br> 专业：%s", unitName ,zhiWeiLeiXing,needNum , allNum , ingNum  ,jobCode ,  benKe);
     }
 
     @Override

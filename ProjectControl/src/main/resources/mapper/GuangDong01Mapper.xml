@@ -8,6 +8,7 @@
     <result column="job" property="job" jdbcType="VARCHAR" />
     <result column="job_code" property="jobCode" jdbcType="VARCHAR" />
     <result column="job_desc" property="jobDesc" jdbcType="VARCHAR" />
+    <result column="zhi_wei_lei_xing" property="zhiWeiLeiXing" jdbcType="VARCHAR" />
     <result column="need_num" property="needNum" jdbcType="VARCHAR" />
     <result column="xue_li" property="xueLi" jdbcType="VARCHAR" />
     <result column="xue_wei" property="xueWei" jdbcType="VARCHAR" />
@@ -81,7 +82,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    job_index, unit_name, unit_code, job, job_code, job_desc, need_num, xue_li, xue_wei, 
+    job_index, unit_name, unit_code, job, job_code, job_desc, zhi_wei_lei_xing,need_num, xue_li, xue_wei,
     ben_ke, ji_ceng_jing_yan, zhuan_ye_test, xin_li_test, cha_e_kao_cha, ying_jie_sheng, 
     qi_ta, kao_qu, all_num, ing_num
   </sql>

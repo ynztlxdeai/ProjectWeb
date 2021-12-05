@@ -55,4 +55,29 @@ public class GuangDongController {
         model.addAttribute("comm_data" , stringBuffer.toString());
         return "comm";
     }
+
+    @RequestMapping("get_zero")
+    public String getZero(Model model ,String cookies , String time){
+        //http://localhost:8080/guangdong/get_zero?time=1638165322590&cookies=JSESSIONID=B81qQwjtb2hOKmQloSfYx_tpZPfVDLlfBJpHUWmWnSeZ6MVH98GO!1327406713
+        List<GuangDong01> all = null;
+        try {
+            all = guangDongServiceImpl.checkZero(cookies , time);
+            StringBuffer            stringBuffer = new StringBuffer();
+            stringBuffer.append("<ul>");
+            for (GuangDong01 gov : all) {
+                stringBuffer.append("<li>");
+                stringBuffer.append(gov.showData());
+                stringBuffer.append("</li>");
+                stringBuffer.append("<br></br>");
+            }
+            stringBuffer.append("</ul>");
+
+            model.addAttribute("comm_data" , stringBuffer.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("comm_data" , e.getMessage());
+        }
+
+        return "comm";
+    }
 }

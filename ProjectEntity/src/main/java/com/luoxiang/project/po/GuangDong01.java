@@ -209,7 +209,7 @@ public class GuangDong01 implements Comparable<GuangDong01>{
     }
 
     public String showData() {
-        return   String.format("单位名称：%s , 职位类型：%s ,需要人数：%s , 现有人数：%d ,变化趋势：%s , 职位代码：%s  <br></br> 专业：%s", unitName ,zhiWeiLeiXing,needNum , allNum , ingNum  ,jobCode ,  benKe);
+        return   String.format("单位名称：%s , 职位类型：%s , 工作地点：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s , 职位代码：%s  <br></br> 专业：%s", unitName ,zhiWeiLeiXing,kaoQu,needNum , allNum , ingNum  ,jobCode ,  benKe);
     }
 
     @Override

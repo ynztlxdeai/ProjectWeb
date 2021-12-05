@@ -117,5 +117,10 @@ public class ServerBean {
 
             public void setBfz315(String bfz315) { this.bfz315 = bfz315;}
         }
+
+        @Override
+        public String toString() {
+            return "单位：='" + aab004  + ", 代码=" + bfe301 ;
+        }
     }
 }

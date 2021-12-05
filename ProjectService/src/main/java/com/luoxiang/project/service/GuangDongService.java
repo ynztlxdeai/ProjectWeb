@@ -29,4 +29,7 @@ public interface GuangDongService {
     CommBean<T> update(String cookies, String time);
 
     List<GuangDong01> sortAll(int cmp, boolean filter);
+
+    List<GuangDong01> checkZero(String cookies, String time)
+            throws Exception;
 }

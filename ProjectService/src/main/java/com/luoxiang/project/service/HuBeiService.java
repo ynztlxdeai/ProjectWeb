@@ -2,6 +2,7 @@ package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.po.HuBei202201;
 
 import org.apache.poi.ss.formula.functions.T;
 
@@ -28,4 +29,8 @@ public interface HuBeiService {
     CommBean<T> update();
 
     List<HuBei202101> sortAll(int cmp, boolean filter);
+
+    void update2022();
+
+    List<HuBei202201> sortAll2022(int cmp, boolean filter);
 }

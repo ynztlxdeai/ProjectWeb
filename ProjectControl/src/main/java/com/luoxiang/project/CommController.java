@@ -9,6 +9,7 @@ import com.luoxiang.project.domain.SiChuan;
 import com.luoxiang.project.po.GuangXi202101;
 import com.luoxiang.project.po.HeNan202101;
 import com.luoxiang.project.po.HuBei202101;
+import com.luoxiang.project.po.HuBei202201;
 import com.luoxiang.project.po.Jd2021;
 import com.luoxiang.project.po.JiangSu2022;
 import com.luoxiang.project.po.SiChuan202101;
@@ -360,6 +361,29 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (JiangSu2022 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+    @RequestMapping("hubei2022")
+    public String hubei2022(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            huBeiServiceImpl.update2022();
+        }
+
+        List<HuBei202201> all = huBeiServiceImpl.sortAll2022(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (HuBei202201 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

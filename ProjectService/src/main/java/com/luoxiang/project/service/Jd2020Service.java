@@ -21,4 +21,6 @@ public interface Jd2020Service {
     CommBean update();
 
     CommBean updateJN(String cookies, String examid);
+
+    CommBean updateWZ(String cookies, String examid);
 }

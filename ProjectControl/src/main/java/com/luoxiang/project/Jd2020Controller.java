@@ -2,6 +2,7 @@ package com.luoxiang.project;
 
 import com.luoxiang.project.bean.CommBean;
 import com.luoxiang.project.bean.Jd2020JnBean;
+import com.luoxiang.project.bean.JdWzBean;
 import com.luoxiang.project.service.Jd2020Service;
 
 import org.springframework.stereotype.Controller;
@@ -74,4 +75,32 @@ public class Jd2020Controller {
         model.addAttribute("jdwz_data" , stringBuffer.toString());
         return "jdwz";
     }
+
+    @RequestMapping("jd_2022")
+    public String jd_2022(Model model ){
+        String cookies = "JSESSIONID=79CFD33D1A74BBF8DB511989623FB70D; JSESSIONID=DC87FC4B5019C0295B0073C2C22A6237; Hm_lvt_ad65617c1b92d555455e06647127f54e=1638682905; acw_tc=0bcb2f1916387490510084302e7e8d8e676f0ea7326e1d2d89eb6d31da17df; Hm_lpvt_ad65617c1b92d555455e06647127f54e=1638749052; SERVERID=90287bf69426875f6e070cfa9166afa9|1638749102|1638749051";
+        String examid = "5083fd4b2a75e4d1";
+        CommBean<ArrayList<JdWzBean>> commBean     =  jd2020ServiceImpl.updateWZ(cookies , examid);
+        StringBuffer                  stringBuffer = new StringBuffer();
+        ArrayList<JdWzBean>       data         = commBean.getData();
+        stringBuffer.append("<ul>");
+        for (int i = 0; i < data.size(); i++) {
+            /**
+             *
+             <ul>
+             <li>咖啡</li>
+             <li>茶</li>
+             <li>牛奶</li>
+             </ul>
+             */
+            stringBuffer.append("<li>");
+            stringBuffer.append(data.get(i).show());
+            stringBuffer.append("</li>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("jdwz_data" , stringBuffer.toString());
+        return "jdwz";
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.luoxiang.project.po;
 
-public class HuBei202201 {
+public class HuBei202201 implements Comparable<HuBei202201>{
     private Integer jobIndex;
 
     private String jiGouName;
@@ -175,15 +175,11 @@ public class HuBei202201 {
         this.beiZhu = beiZhu == null ? null : beiZhu.trim();
     }
 
-    public Integer getAllNum() {
-        return allNum;
-    }
-
-    public void setAllNum(Integer allNum) {
-        this.allNum = allNum;
-    }
 
     public String getHasing() {
+        if (hasing == null || hasing.equals("")){
+            return "";
+        }
         return hasing;
     }
 
@@ -191,7 +187,31 @@ public class HuBei202201 {
         this.hasing = hasing == null ? null : hasing.trim();
     }
 
-    public String showData() {
-        return "";
+    public Integer getAllNum() {
+        if (allNum == null){
+            return 0;
+        }
+        return allNum;
     }
+    public void setAllNum(Integer allNum) {
+        this.allNum = allNum;
+    }
+
+    public String showData() {
+        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", jiGouName + ":" + zhaoLuJiGuan , jobCode ,needNum , allNum , hasing , zhuanYe);
+
+    }
+    @Override
+    public int compareTo(HuBei202201 o) {
+        int firstNum = Integer.parseInt(this.getNeedNum());
+        int secondNum = Integer.parseInt(o.getNeedNum());
+        if (firstNum == secondNum){
+            return this.getAllNum() - o.getAllNum();
+        }
+        int firstI = this.getAllNum() / firstNum ;
+        int secondI = o.getAllNum() / secondNum;
+
+        return firstI == secondI ? this.getAllNum() % firstNum - o.getAllNum() % secondNum : firstI - secondI;
+    }
+
 }

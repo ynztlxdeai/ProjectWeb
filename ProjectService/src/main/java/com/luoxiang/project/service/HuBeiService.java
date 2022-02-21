@@ -30,7 +30,7 @@ public interface HuBeiService {
 
     List<HuBei202101> sortAll(int cmp, boolean filter);
 
-    void update2022();
+    CommBean update2022();
 
     List<HuBei202201> sortAll2022(int cmp, boolean filter);
 }

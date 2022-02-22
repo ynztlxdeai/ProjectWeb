@@ -248,7 +248,7 @@ public class YunNan2022 implements Comparable<YunNan2022>{
     }
 
     public String showData() {
-        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s", unitName + ":" + jobName , jobCode ,needNum , allNum , hasing , zhuanYe);
+        return   String.format("单位名称：%s , 职位代码：%s , 需要人数：%s , 现有人数：%d ,变化趋势：%s <br></br> 专业：%s <br></br> 工作地点：%s", unitName + ":" + jobName , jobCode ,needNum , allNum , hasing , zhuanYe, diDian);
 
     }
     @Override

@@ -89,8 +89,8 @@ public class PoiYunNan {
     }
 
     public static List<String>  checkHasNums2022(HashMap<String, YunNan2022> jobs) throws Exception {
-        int jobCodeIndex = 4;
-        int numIndex = 6;
+        int jobCodeIndex = 2;
+        int numIndex = 4;
         ArrayList<String> list    = new ArrayList<>();
         File              fileDir = new File("C:\\Users\\Vincent\\Downloads\\2022\\YUN_NAN\\has");
         File[]            files   = fileDir.listFiles();

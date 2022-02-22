@@ -15,6 +15,7 @@ import com.luoxiang.project.po.JiangSu2022;
 import com.luoxiang.project.po.SiChuan202101;
 import com.luoxiang.project.po.SiChuan202102;
 import com.luoxiang.project.po.YunNan202101;
+import com.luoxiang.project.po.YunNan2022;
 import com.luoxiang.project.service.ArmyService;
 import com.luoxiang.project.service.CommService;
 import com.luoxiang.project.service.GuangXiService;
@@ -384,6 +385,29 @@ public class CommController {
         StringBuffer            stringBuffer = new StringBuffer();
         stringBuffer.append("<ul>");
         for (HuBei202201 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
+
+
+    @RequestMapping("yunnan2022")
+    public String yunnan2022(Model model ,  int cmp , boolean filter , boolean skip ){
+        if (!skip){
+            yunNanServiceImpl.update2022();
+        }
+
+        List<YunNan2022> all = yunNanServiceImpl.sortAll2022(cmp , filter);
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (YunNan2022 gov : all) {
             stringBuffer.append("<li>");
             stringBuffer.append(gov.showData());
             stringBuffer.append("</li>");

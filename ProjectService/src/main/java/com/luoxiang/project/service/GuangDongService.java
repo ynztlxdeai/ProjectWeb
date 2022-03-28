@@ -1,6 +1,7 @@
 package com.luoxiang.project.service;
 
 import com.luoxiang.project.bean.CommBean;
+import com.luoxiang.project.po.GdSydw2022;
 import com.luoxiang.project.po.GuangDong01;
 
 import org.apache.poi.ss.formula.functions.T;
@@ -32,4 +33,12 @@ public interface GuangDongService {
 
     List<GuangDong01> checkZero(String cookies, String time)
             throws Exception;
+
+
+
+    List<GdSydw2022> selectAllSydw();
+    CommBean<T> updateSydw(String cookies, String time);
+    List<GdSydw2022> sortAllSydw(int cmp, boolean filter);
+    List<GdSydw2022> checkZeroSydw(String cookies, String time) throws Exception;
+
 }

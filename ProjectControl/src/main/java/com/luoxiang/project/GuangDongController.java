@@ -80,4 +80,30 @@ public class GuangDongController {
 
         return "comm";
     }
+
+
+
+    @RequestMapping("update/sydw")
+    public String updateSydw(Model model ,String cookies ,  int cmp , boolean filter , boolean skip , String time){
+        //http://localhost:8080/guangdong/update?skip=false&time=1638165322590&filter=false&cmp=5&cookies=JSESSIONID=B81qQwjtb2hOKmQloSfYx_tpZPfVDLlfBJpHUWmWnSeZ6MVH98GO!1327406713
+        if (!skip){
+            guangDongServiceImpl.update(cookies , time);
+        }
+
+        List<GuangDong01> all = guangDongServiceImpl.sortAll(cmp , filter);
+
+
+        StringBuffer            stringBuffer = new StringBuffer();
+        stringBuffer.append("<ul>");
+        for (GuangDong01 gov : all) {
+            stringBuffer.append("<li>");
+            stringBuffer.append(gov.showData());
+            stringBuffer.append("</li>");
+            stringBuffer.append("<br></br>");
+        }
+        stringBuffer.append("</ul>");
+
+        model.addAttribute("comm_data" , stringBuffer.toString());
+        return "comm";
+    }
 }

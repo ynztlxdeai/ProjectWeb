@@ -5,12 +5,16 @@ import com.google.gson.reflect.TypeToken;
 import com.luoxiang.project.bean.FuJianBean;
 
 import org.apache.http.util.TextUtils;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -37,7 +41,7 @@ public class TxtReader {
 
     public static final int STEP_SIZE = 3;
 
-    public static void  main(String[] args) {
+    public static void  main1(String[] args) {
         //readSingle();
         //readIndex();
         String s =  readToString("C:\\Users\\Vincent\\Downloads\\2021\\1.txt");
@@ -138,6 +142,110 @@ public class TxtReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void  main(String[] args) {
+        readQuestions1();
+    }
+
+
+    public static void readQuestions(){
+        boolean debug = false;
+        try {
+            BufferedReader reader   = new BufferedReader(new FileReader("C:\\Users\\Vincent\\Downloads\\单选多选.txt"));
+
+            int            count    = 0;
+            HSSFWorkbook   workbook = new HSSFWorkbook();
+            HSSFSheet      sheet    = workbook.createSheet();
+            while (reader.readLine() != null){
+                String s1 = reader.readLine();
+                String s2 = reader.readLine();
+                String s3 = reader.readLine();
+                String s4 = reader.readLine();
+                String s5 = reader.readLine();
+                String s6 = reader.readLine();
+                String s7 = reader.readLine();
+                String s8 = reader.readLine();
+                if (debug){
+                    System.out.println(s1);
+                    System.out.println(s2);
+                    System.out.println(s7);
+                    System.out.println(s3);
+                    System.out.println(s4);
+                    System.out.println(s5);
+                    System.out.println(s6);
+                    System.out.println(s8);
+                    System.out.println("-------------");
+                }else {
+                    HSSFRow row = sheet.createRow(count);
+                    row.createCell(0).setCellValue(s1);
+                    row.createCell(1).setCellValue(s2);
+                    row.createCell(2).setCellValue(s7);
+                    row.createCell(4).setCellValue(s3);
+                    row.createCell(5).setCellValue(s4);
+                    row.createCell(6).setCellValue(s5);
+                    row.createCell(7).setCellValue(s6);
+                    row.createCell(8);
+                    row.createCell(9);
+                    row.createCell(10);
+                    row.createCell(11);
+                    row.createCell(12);
+                    row.createCell(14);
+                    row.createCell(15);
+                    row.createCell(16);
+                    row.createCell(17);
+                    row.createCell(13).setCellValue(s8);
+                    count++;
+                }
+            }
+            workbook.write(new FileOutputStream("C:\\Users\\Vincent\\Downloads\\question1.xls"));
+            workbook.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    /**
+     * 判断题专用
+     */
+    public static void readQuestions1(){
+        boolean debug = false;
+        try {
+            BufferedReader reader   = new BufferedReader(new FileReader("C:\\Users\\Vincent\\Downloads\\判断.txt"));
+
+            int            count    = 0;
+            HSSFWorkbook   workbook = new HSSFWorkbook();
+            HSSFSheet      sheet    = workbook.createSheet();
+            while (reader.readLine() != null){
+                String s1 = reader.readLine();
+                String s2 = reader.readLine();
+                String s3 = reader.readLine();
+                String s4 = reader.readLine();
+                if (debug){
+                    System.out.println(s1);
+                    System.out.println(s2);
+                    System.out.println(s3);
+                    System.out.println(s4);
+                    System.out.println("-------------");
+                }else {
+                    HSSFRow row = sheet.createRow(count);
+                    row.createCell(0).setCellValue(s1);
+                    row.createCell(1).setCellValue(s2);
+                    row.createCell(2).setCellValue(s3);
+                    row.createCell(13).setCellValue(s4);
+                    count++;
+                }
+            }
+            workbook.write(new FileOutputStream("C:\\Users\\Vincent\\Downloads\\question1.xls"));
+            workbook.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 

@@ -90,8 +90,8 @@ public class PoiYiBin {
     public static void checkHasNums202101(HashMap<String,YiBin202101> jobs)
             throws Exception
     {
-        int               jobCodeIndex = 1;
-        int               numIndex     = 2;
+        int               jobCodeIndex = 2;
+        int               numIndex     = 3;
         int               numIndex2    = 3;
         int               dataIndex = 1;
         ArrayList<String> list         = new ArrayList<>();

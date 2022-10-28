@@ -712,7 +712,7 @@ public class PoiSC02 {
                                     }
 
                                     if (has != integer && has > integer) {
-                                        current.setAllNum(has);
+                                        current.setAllNum(has );
                                     }
                                     StringBuffer buffer = new StringBuffer(current.getHasing());
                                     buffer.append(TextUtils.isEmpty(current.getHasing()) ? "" : "," ).append(s);
